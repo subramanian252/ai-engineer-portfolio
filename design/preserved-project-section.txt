@@ -1,0 +1,102 @@
+        <section
+          id="projects"
+          className="work-section wrap"
+          aria-labelledby="work-title"
+        >
+          <Reveal className="work-heading">
+            <div>
+              <p className="eyebrow">IDEAS I’M PUTTING TO WORK</p>
+              <h2 id="work-title">
+                THE BUILD<span className="outline-text"> LIST.</span>
+              </h2>
+            </div>
+            <p>
+              A few things taking shape.
+              <br />
+              Built to be used, explored and improved.
+            </p>
+          </Reveal>
+          <div className="project-grid">
+            {projects.map((project, index) => (
+              <Reveal
+                className={
+                  "project-card " + (index === 0 ? "project-featured" : "")
+                }
+                key={project.id}
+              >
+                <div className="project-image">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title + " preview"}
+                      fill
+                      sizes="(max-width: 700px) 90vw, 65vw"
+                    />
+                  ) : (
+                    <ProjectCanvas kind={project.visual} />
+                  )}
+                  <span className="project-state">
+                    <i />
+                    {project.status === "completed"
+                      ? "COMPLETED"
+                      : "COMING SOON"}
+                  </span>
+                </div>
+                <div className="project-info">
+                  <div className="project-kicker">
+                    <span>0{index + 1}</span>
+                    <span>{project.category}</span>
+                  </div>
+                  <h3>{project.title}</h3>
+                  <p>{project.summary}</p>
+                  <div className="project-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                  {project.status === "completed" ? (
+                    <div className="project-links">
+                      {project.demoUrl && (
+                        <a
+                          href={project.demoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Try it live <ArrowUpRight size={18} />
+                        </a>
+                      )}
+                      {project.repositoryUrl && (
+                        <a
+                          href={project.repositoryUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View source <Github size={18} />
+                        </a>
+                      )}
+                    </div>
+                  ) : (
+                    <details className="project-details">
+                      <summary>
+                        Behind the idea <Plus size={18} />
+                      </summary>
+                      <p>
+                        This project is still taking shape. The live application
+                        and technical walkthrough will appear here when they’re
+                        ready.
+                      </p>
+                    </details>
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <a
+            className="work-github text-link"
+            href={profile.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Follow the progress on GitHub <ArrowUpRight size={18} />
+          </a>
+        </section>
