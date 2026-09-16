@@ -1,103 +1,148 @@
 # Subramanian — AI Engineer Portfolio
 
-A personal Next.js portfolio set in an illustrated anime world. The original daytime rooftop portrait, workshop artwork and Pip mascot are preserved. A warm paper theme, handwritten accents, minimal animated project covers, illustrated chapter map, technology logos, resume download and profile chat connect the page.
+**A curious mind. A world to build.**
 
-Night mode uses midnight indigo, smoky plum and lilac, with the user-supplied `hero.png`, `mid.png` and `end.png` in the matching sections. Original daytime artwork stays intact. Nine warm fireflies drift across the page at night. Daytime leaves appear only inside the hero and closing artwork. See [the design notes](design/INSPIRATION.md).
-On phones, the hero is a compact cover with the original artwork framed between the headline and introduction. Pip opens a small bottom sheet with four short prompts. The composer follows the visible viewport when the keyboard opens. Desktop layouts retain their existing presentation.
+An illustrated, interactive portfolio for Subramanian M, an AI engineer based in Coimbatore, India. Built with Next.js, it brings together AI engineering projects, a playful day/night world, a small portfolio assistant, and a hands-on tour of how AI systems work.
+
+![Daytime rooftop illustration from the portfolio](public/art/anime-rooftop.webp)
+
+## Inside the portfolio
+
+- **Day and night scenes** — original anime illustrations, coordinated color transitions, drifting leaves in the daytime artwork, and subtle nighttime fireflies.
+- **Pip, the portfolio guide** — a cartoon companion with section-aware comments and a chat interface for questions about Subramanian’s background, skills, and experience.
+- **AI Engineer Mission Control** — eight interactive stations covering data preparation, models, retrieval, agents, guardrails, APIs, deployment, and monitoring.
+- **Project showcase** — a featured project and two supporting entries with minimal animated illustrations. Full LLM Chat, Travel Planner, and Agentic Writer are currently marked **coming soon**.
+- **About, stack, and contact** — technology icons, career background, social links, a downloadable résumé, and an illustrated field guide for navigation.
+- **Responsive and accessible interactions** — a compact mobile hero and chat sheet, keyboard-friendly dialogs, reduced-motion support, and a manual animation control.
+- **Deployment essentials** — optimized responsive images, generated social previews, canonical URL configuration, a sitemap, robots rules, and a matching 404 page.
+
+## Tech stack
+
+| Area      | Tools                                                                             |
+| --------- | --------------------------------------------------------------------------------- |
+| Framework | Next.js 16 App Router, React 19, TypeScript                                       |
+| Styling   | Tailwind CSS 4, custom CSS, CSS Modules                                           |
+| Motion    | Motion for React, CSS animations, SVG illustrations                               |
+| Icons     | Lucide React, Simple Icons                                                        |
+| Chat      | Next.js route handler, saved profile answers, optional OpenAI-compatible provider |
+| Checks    | ESLint, TypeScript, Node.js test runner, production HTTP smoke checks             |
 
 ## Run locally
 
-Use Node.js 24 (see `.nvmrc`) and npm. The minimum supported version is 22.18.0.
+Use **Node.js 24** and npm. The minimum supported Node.js version is **22.18.0**; the recommended version is recorded in [.nvmrc](.nvmrc).
 
 ```sh
+git clone https://github.com/subramanian252/ai-engineer-portfolio.git
+cd ai-engineer-portfolio
 npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:3000.
+Open [localhost:3000](http://127.0.0.1:3000). To use a different port:
 
-## Chat
-
-The chat works immediately in **Profile answers** mode. This is a local, keyword-based search over the owner-supplied profile and résumé facts, not an LLM. Its mode is visible in the interface. It handles the suggested questions, topic follow-ups, and missing information without claiming unknown details.
-
-To enable live AI, copy `.env.example` to `.env.local` and add a server-side key:
-
-```dotenv
-OPENAI_API_KEY=your-key-here
-CHAT_MODEL=gpt-4.1-mini
+```sh
+npm run dev -- --port 3001
 ```
 
-For another OpenAI-compatible provider, configure `CHAT_API_KEY`, `CHAT_BASE_URL` (ending in `/v1`), and `CHAT_MODEL`. The provider must support Chat Completions and `max_completion_tokens`. Keys are never included in client components. Restart the dev server after changing environment settings.
+No API key is required to explore the portfolio or use saved profile answers.
 
-The server sends the conversation and curated public résumé/profile facts to the configured provider. It does not upload the PDF itself. Conversations live in the current browser page's memory and clear on reload or New conversation; no database or analytics is included. A provider error or timeout returns a clearly labeled profile answer. Free-form generative answers require a valid provider configuration; they have not been live-tested without a key.
+## Configuration
 
-The endpoint accepts only user/assistant messages, limits message count and length, and rejects cross-origin browser requests. This is a local portfolio implementation. Before public deployment with a paid key, configure hosting-level rate limits and provider spending limits.
+Copy [.env.example](.env.example) to `.env.local` when configuring the deployment URL or enabling live AI. Restart the development server after changing environment variables.
 
-## Content
+| Variable         | Purpose                                                                      |
+| ---------------- | ---------------------------------------------------------------------------- |
+| `SITE_URL`       | Final public origin, such as `https://your-domain.com`. Set before building. |
+| `OPENAI_API_KEY` | Optional server-side key for live AI answers.                                |
+| `CHAT_MODEL`     | Provider model identifier; defaults to the value in `.env.example`.          |
+| `CHAT_API_KEY`   | Optional provider key override; takes precedence over `OPENAI_API_KEY`.      |
+| `CHAT_BASE_URL`  | OpenAI-compatible API base URL ending in `/v1`.                              |
 
-- `src/content/portfolio.ts`: personal information, socials and the three original coming-soon projects. Add/reorder records to change the project list. Set `status` to `completed` and supply real `demoUrl`/`repositoryUrl` values when a project is ready.
-- `src/content/knowledge.ts`: public résumé and profile facts used by both chat modes. Update this alongside your résumé to keep answers current. Learning areas are distinguished from established experience.
-- `public/subramanian-resume.pdf`: an exact copy of the supplied résumé. All download buttons point to this PDF and use a readable download filename.
-- `src/app/page.tsx`: the skills, career summary and education shown on the page.
-- `src/app/anime.css`: the illustrated theme and responsive scene layouts.
-- `src/app/journal.css`: the fold-out map and paper chat styles.
-- `src/components/ambient-fireflies.tsx` and `src/app/fireflies.css`: 9 nighttime fireflies (4 on phones), hidden for reduced motion and Motion off, paused in background tabs and faded while dialogs are open. Daytime leaves stay inside the hero and closing artwork.
-- `src/app/theme-transitions.css`: persistent artwork layers, synchronized palette fades and the sun/moon icon transition. Night artwork is decoded before the first switch using the same optimized responsive images that appear on screen.
-- `src/app/mobile.css`: phone hero composition, compact chat launcher and chat sheet.
-- `src/app/after-hours.css`: the full-site dark palette and nighttime artwork treatment.
-- `src/components/field-guide.tsx` and `living-hero.tsx`: chapter navigation, theme switching, original daytime artwork and the night landscape slot.
-- `src/app/storybook.css`: the paper theme, cartoon details, responsive covers and animation styles.
-- `src/components/scene-art.tsx`: scroll-driven image movement, leaves and paper edges.
-- `src/components/chapter-trail.tsx`: scroll-driven cloud banks, a rising sun and a travelling paper plane between sections.
-- `src/components/project-doodle.tsx`: minimal chat, map and notebook drawings. Animation pauses outside the viewport. Set a project's `image` to replace its drawing with a real screenshot later.
-- `src/components/pip.tsx` and `tool-sticker.tsx`: the interactive mascot and technology cards that reveal a short explanation when selected.
-- `public/art/`: three scene PNGs and optimized WebP versions used by the page, plus unused project-cover concepts. The original rooftop WebP is the daytime hero. Workshop and horizon illustrations remain in their original sections.
-- `design/ARTWORK.md`: image provenance, final asset paths and the exact generation prompts. Artwork was created with the built-in image tool using the supplied portrait as an identity reference.
+Keep secrets on the server. Do not prefix API keys with `NEXT_PUBLIC_`. Local environment files are excluded from Git.
 
-The additional project list from the supplied biography was not substituted for the existing Full LLM Chat, Travel Planner and Agentic Writer entries. The assistant can also describe production experience documented in the résumé, such as LazyLoop, when asked.
+### How the chat works
 
-## Check and build
+Without a key, Pip uses **Profile answers**: keyword-based retrieval over the curated résumé and profile facts in [knowledge.ts](src/content/knowledge.ts). It answers the suggested questions and supported follow-ups, and acknowledges information that is missing. This mode does not use a language model.
+
+With a provider key, `/api/chat` sends the conversation and curated public profile context to an OpenAI-compatible Chat Completions endpoint. The provider must support `max_completion_tokens`. Provider failures fall back to a clearly labeled saved profile answer.
+
+The chat loads on demand. Conversation history stays in memory for the current page, survives closing and reopening the chat, and clears on reload or **New conversation**. There is no conversation database or analytics integration. The PDF itself is not uploaded to the provider. Live AI requires valid provider credentials and has not been tested with a paid key in this repository checkpoint.
+
+The endpoint validates message roles, length, and conversation size, and rejects cross-origin browser requests. Configure hosting-level rate limits and provider spending limits before publicly enabling a paid model.
+
+## Mission Control
+
+The control room explains eight parts of an AI system:
+
+**Data prep → Model → RAG → Agents → Guardrails → API → Deploy → Monitor**
+
+On desktop, the pipeline occupies approximately 60% of one viewport. The lower 40% starts with a system overview and changes to an interactive explainer when a station is selected. Smaller screens use a four-by-two station layout; details can scroll inside the lower panel.
+
+Experiments include cleaning duplicate rows, comparing training and validation loss, exploring attention and LoRA adapters, stepping through retrieval, selecting agent tools, inspecting requests, breaking a deployment test gate, and comparing cached monitoring readings. **Run the system** guides visitors through every station, with pause, resume, and reset controls.
+
+These are educational simulations. They do not train models, call external tools, deploy containers, or display live infrastructure metrics. Reduced-motion mode supports manual progression. See [the implementation notes](design/MISSION-CONTROL.md).
+
+## Update the content
+
+| Content                                 | Location                                                                         |
+| --------------------------------------- | -------------------------------------------------------------------------------- |
+| Profile, contact links, project records | [src/content/portfolio.ts](src/content/portfolio.ts)                             |
+| Chat knowledge and suggested questions  | [src/content/knowledge.ts](src/content/knowledge.ts)                             |
+| Page sections and technology stack      | [src/app/page.tsx](src/app/page.tsx)                                             |
+| Downloadable résumé                     | [public/subramanian-resume.pdf](public/subramanian-resume.pdf)                   |
+| Day and night artwork                   | [public/art](public/art)                                                         |
+| Mission Control stations                | [src/components/mission-control-data.ts](src/components/mission-control-data.ts) |
+
+### Add a project
+
+Edit the `projects` array in `src/content/portfolio.ts`. Each record contains an ID, title, category, summary, status, tags, and a visual type (`chat`, `travel`, or `writer`).
+
+When a project is ready, set its status to `completed` and add its real `demoUrl` and/or `repositoryUrl`. An optional `image` path replaces the illustrated cover with a screenshot. Keep unfinished projects marked `coming-soon` and update the chat knowledge when adding new project facts.
+
+### Artwork and motion
+
+The day scenes use `anime-rooftop.webp`, `anime-workshop.webp`, and `anime-horizon.webp`. The matching night scenes use `hero.png`, `mid.png`, and `end.png`. Next.js serves responsive optimized versions; the original artwork stays intact.
+
+Pip, project covers, clouds, and paper-plane transitions use SVG and CSS. Animations respect system reduced-motion preferences and the footer’s **Motion** control. Artwork provenance and design references are in [ARTWORK.md](design/ARTWORK.md) and [INSPIRATION.md](design/INSPIRATION.md).
+
+## Checks and production build
 
 ```sh
 npm run check
 npm start
-# In a second terminal, check the running production server:
+```
+
+`check` runs lint, automated tests, and a production build. Individual commands are also available:
+
+| Command             | Purpose                                         |
+| ------------------- | ----------------------------------------------- |
+| `npm run lint`      | ESLint checks                                   |
+| `npm run typecheck` | TypeScript checks                               |
+| `npm run test`      | Pipeline state-machine and deployment URL tests |
+| `npm run build`     | Optimized production build                      |
+| `npm start`         | Production server; respects `PORT`              |
+| `npm run format`    | Format source and configuration files           |
+
+In a second terminal, verify the running production server:
+
+```sh
 npm run smoke -- http://127.0.0.1:3000
 ```
 
-This now uses a Next.js server because `/api/chat` needs a server-side runtime. The old static-export configuration is removed; `out/` from an earlier build is not the current deployable site. Deploy on a host that supports Next.js route handlers. The production start command listens on the host network interface and respects `PORT`. Public hosting has not been published yet.
+The smoke check verifies page sections and navigation, the eight stations, résumé download, social preview dimensions, optimized night images, robots and sitemap routes, the 404 page, and chat validation and saved answers. It skips paid model calls when live AI is configured. Complete a browser review of desktop, mobile, theme switching, and keyboard interactions before a public launch; HTTP checks do not replace visual testing.
 
-## Motion and accessibility
+## Deploy
 
-The landing type enters line by line, scenery moves with scroll, and leaves drift across the scenes. Section content rises and straightens as it enters the viewport; scrolling backward reverses the effect. Cloud banks separate while a paper plane flies across each chapter boundary. Each project has a small looping drawing, with offscreen animation paused. Project details use native disclosures. The footer Motion control disables CSS animation and scroll-driven effects; operating-system reduced-motion preferences are respected. Chat opens in a native modal dialog with keyboard focus containment, Escape dismissal and focus restoration. The chat and résumé download remain available on phones and tablets.
+Use a host that supports **Next.js server rendering and route handlers**, such as Vercel or a Node.js server. Static export hosting does not support the chat endpoint or the image optimizer.
 
-## Design references
+1. Connect this repository and select the `main` branch.
+2. Use Node.js 24, `npm ci` to install, and `npm run build` to build. On a self-hosted Node server, start with `npm start`; managed Next.js platforms handle startup.
+3. Set `SITE_URL` to the final HTTPS origin before building, with no path, query, or fragment. On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` is used automatically if `SITE_URL` is blank.
+4. Leave API keys unset to launch with saved profile answers, or configure the optional live provider and its usage limits.
+5. Run `npm run smoke -- https://your-domain.com` against the deployed site.
 
-The user's [automation portfolio](https://portfolio-subramanian-007.vercel.app/) informed the preference for a strong visual presence. Their supplied cinematic anime references then led to the current illustrated direction. The original project records and featured-plus-two layout are retained with a lighter cartoon treatment. Detailed generated project covers were replaced with minimal code-native drawings following the user's feedback. Technology logos come from Simple Icons.
+Canonical URLs and sitemap entries are omitted until a production origin is configured. Social previews are generated at `/opengraph-image`; crawl configuration is available at `/robots.txt` and `/sitemap.xml`. Vercel preview deployments are marked `noindex`.
 
-API implementation follows the [official Chat Completions reference](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create).
+## Connect
 
-Pip is also the floating chat launcher: a small companion with a dismissible, section-aware comment. Project comments reflect the current coming-soon status. Mobile uses a smaller character and bubble; tapping Pip opens the existing chat. Motion preferences apply to his animations.
-
-## AI Engineer Mission Control
-
-A single-viewport 2D control room between Stack and Contact. Eight left-to-right steps cover Data prep → Model → RAG → Agents → Guardrails → API → Deploy → Monitor. Model groups training, transformer attention and fine-tuning into small experiment tabs. Roughly 60% of the screen holds the pipeline and 40% holds a stable lower panel: a compact system overview initially, or the selected station’s interactive explanation. Selecting or closing a station does not move the pipeline. Smaller screens show all eight stations in a four-by-two arrangement without a horizontal carousel; optional details can scroll inside the lower panel on constrained screens. Run/pause/resume/reset and reduced-motion manual stepping remain available.
-
-All requests, metrics, attention weights and model outputs in this section are illustrative local examples. No model training, network tool calls or deployment occurs. The tour explains that real training and deployment precede serving, and security/evaluation apply across boundaries.
-
-Implementation: `mission-control.tsx`, `mission-control-data.ts`, `mission-machines.tsx`, `mission-experiments.tsx`, and `src/app/mission-control.css`. State-machine checks: `node --test tests/mission-control.test.mjs`.
-
-## Deployment checkpoint
-
-The `main` branch checkpoint **before adding projects** includes the complete portfolio with three clearly labeled coming-soon projects. The daytime and user-supplied nighttime illustrations remain unchanged. Next.js now serves responsive optimized images, and the profile chat loads only when opened; closing and reopening it preserves the conversation for the current page.
-
-### Hosting settings
-
-- Framework: Next.js, Node.js 24.
-- Install: `npm ci`. Build: `npm run build`. Start on a Node host: `npm start`. A managed Next.js host handles the start command itself.
-- Set `SITE_URL` to the final HTTPS origin, with no path (for example `https://your-domain.com`), **before building**. On Vercel, its `VERCEL_PROJECT_PRODUCTION_URL` is used automatically when `SITE_URL` is blank. Canonical and sitemap entries are intentionally omitted until an origin exists.
-- The illustrated social preview is generated at `/opengraph-image`; robots and sitemap are available at `/robots.txt` and `/sitemap.xml`. Vercel preview deployments are marked noindex.
-- Chat needs no environment variables for saved profile answers. Add a server-side provider key only when you want live AI; configure provider spending and hosting rate limits at that point. Never use a `NEXT_PUBLIC_` prefix for a secret.
-- After deployment, run `npm run smoke -- https://your-domain.com`. The smoke check skips paid model calls if live AI is configured.
-
-`npm run check` runs lint, the interaction/configuration tests, and a production build. The smoke check covers navigation anchors, the eight stations, résumé download, the social card, optimized night images, the 404 page and chat request/answer behavior. Desktop/mobile visual review should also be completed before public launch; automated browser access was unavailable during this checkpoint.
+[GitHub](https://github.com/subramanian252) · [LinkedIn](https://www.linkedin.com/in/subramanian-m-9aa117227/) · [Fiverr](https://www.fiverr.com/subramanian007) · [Email](mailto:suryasubramanian252@gmail.com)
