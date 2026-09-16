@@ -24,7 +24,7 @@ export type PortfolioProfile = {
   resumeUrl?: string;
 };
 
-// Replace these defaults with your real details. Empty links stay hidden.
+// Public profile details. Empty optional links stay hidden.
 export const profile: PortfolioProfile = {
   name: "Subramanian M",
   role: "AI Engineer",

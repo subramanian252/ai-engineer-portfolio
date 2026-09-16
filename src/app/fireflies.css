@@ -1,0 +1,118 @@
+/* Night fireflies drift across a non-interactive layer. Leaves stay within the artwork. */
+.ambient-world {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+  transition: opacity 600ms ease;
+}
+.ambient-fireflies {
+  position: absolute;
+  inset: 0;
+  transition: opacity 800ms ease-in-out;
+}
+.ambient-fireflies {
+  --fly-color: #f6f7b1;
+  --fly-halo: #d4ed795c;
+  opacity: 0;
+}
+html[data-theme="night"] .ambient-fireflies {
+  opacity: 0.95;
+}
+.firefly {
+  position: absolute;
+  display: block;
+  width: var(--fly-size);
+  height: var(--fly-size);
+  animation: firefly-flight var(--fly-duration) ease-in-out var(--fly-delay)
+    infinite;
+}
+.firefly:nth-child(even) {
+  animation-direction: reverse;
+}
+.firefly-light {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--fly-color);
+  box-shadow:
+    0 0 5px 1px var(--fly-halo),
+    0 0 14px 5px var(--fly-halo);
+  animation: firefly-breathe var(--glow-duration) ease-in-out var(--fly-delay)
+    infinite;
+}
+.firefly:nth-child(3n) .firefly-light {
+  filter: blur(0.6px);
+}
+body:has(dialog[open]) .ambient-world {
+  opacity: 0;
+}
+.ambient-world[data-sleeping="true"] *,
+html[data-motion="paused"] .ambient-world * {
+  animation-play-state: paused;
+}
+html[data-motion="paused"] .ambient-world {
+  display: none;
+}
+@keyframes firefly-flight {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(
+      calc(var(--fly-travel) * 0.42),
+      calc(var(--fly-rise) * -0.65),
+      0
+    );
+  }
+  43% {
+    transform: translate3d(var(--fly-travel), calc(var(--fly-rise) * -0.2), 0);
+  }
+  66% {
+    transform: translate3d(calc(var(--fly-travel) * 0.55), var(--fly-rise), 0);
+  }
+  84% {
+    transform: translate3d(
+      calc(var(--fly-travel) * -0.3),
+      calc(var(--fly-rise) * 0.45),
+      0
+    );
+  }
+}
+@keyframes firefly-breathe {
+  0%,
+  100% {
+    opacity: 0.18;
+    transform: scale(0.7);
+  }
+  45% {
+    opacity: 0.95;
+    transform: scale(1.12);
+  }
+  68% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 720px) {
+  .firefly:nth-child(n + 5) {
+    display: none;
+  }
+  html[data-theme="night"] .ambient-fireflies {
+    opacity: 0.8;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambient-world {
+    display: none;
+  }
+  .ambient-world * {
+    animation: none;
+  }
+}

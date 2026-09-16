@@ -1,0 +1,202 @@
+/* One small companion doubles as the chat launcher throughout the journey. */
+.scroll-companion {
+  --companion-paper: #fff7de;
+  --companion-ink: #304a38;
+  --companion-outline: #8b9e72;
+  --companion-shadow: #40563524;
+  position: fixed;
+  right: max(22px, env(safe-area-inset-right, 0px));
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+.companion-comment {
+  position: relative;
+  align-self: center;
+  width: 194px;
+  padding: 13px 17px;
+  margin-bottom: 20px;
+  border: 1.5px solid var(--companion-outline);
+  border-radius: 20px 19px 5px 20px;
+  color: var(--companion-ink);
+  background: var(--companion-paper);
+  box-shadow: 3px 4px 0 var(--companion-shadow);
+  transform-origin: bottom right;
+  animation: companion-hello 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transition:
+    color var(--theme-fade, 800ms) ease,
+    background-color var(--theme-fade, 800ms) ease,
+    border-color var(--theme-fade, 800ms) ease,
+    box-shadow var(--theme-fade, 800ms) ease;
+}
+.companion-comment::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  bottom: 9px;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-right: 1.5px solid var(--companion-outline);
+  border-top: 1.5px solid var(--companion-outline);
+  transform: rotate(45deg);
+  transition: border-color var(--theme-fade, 800ms) ease;
+}
+.companion-comment p {
+  margin: 0;
+  font-family: var(--font-hand), cursive;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.12;
+}
+.companion-dismiss {
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--companion-outline);
+  border-radius: 50%;
+  background: var(--companion-paper);
+  color: var(--companion-ink);
+  pointer-events: auto;
+  cursor: pointer;
+  transition:
+    background-color var(--theme-fade, 800ms) ease,
+    color var(--theme-fade, 800ms) ease,
+    border-color var(--theme-fade, 800ms) ease;
+}
+.companion-button {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  color: var(--companion-ink);
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.companion-character {
+  display: block;
+  width: 68px;
+  height: 76px;
+  transform-origin: bottom center;
+  animation: companion-arrive 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.companion-button .pip-drawing {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 0 #fff7de55);
+  transition: transform 200ms ease;
+}
+.companion-button:hover .pip-drawing,
+.companion-button:focus-visible .pip-drawing {
+  transform: translateY(-4px) rotate(-5deg);
+}
+.companion-button:active .pip-drawing {
+  transform: scale(0.9) rotate(5deg);
+}
+.companion-caption {
+  padding: 3px 8px;
+  border: 1px solid var(--companion-outline);
+  border-radius: 8px 6px 8px 5px;
+  color: var(--companion-ink);
+  background: var(--companion-paper);
+  font-family: var(--font-playful), sans-serif;
+  font-size: 11px;
+  line-height: 1.3;
+  white-space: nowrap;
+  transition:
+    color var(--theme-fade, 800ms) ease,
+    background-color var(--theme-fade, 800ms) ease,
+    border-color var(--theme-fade, 800ms) ease;
+}
+html[data-theme="night"] .scroll-companion {
+  --companion-paper: #23263b;
+  --companion-ink: #ede8f5;
+  --companion-outline: #77708e;
+  --companion-shadow: #0c0e2055;
+}
+.scroll-companion[data-chat-open="true"],
+body:has(dialog[open]) .scroll-companion {
+  opacity: 0;
+}
+@keyframes companion-hello {
+  from {
+    opacity: 0;
+    transform: translateY(8px) rotate(4deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+@keyframes companion-arrive {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  40% {
+    transform: translateY(-8px) rotate(-6deg);
+  }
+  70% {
+    transform: translateY(-2px) rotate(3deg);
+  }
+}
+@media (max-width: 720px) {
+  .scroll-companion {
+    right: max(14px, env(safe-area-inset-right, 0px));
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    gap: 7px;
+  }
+  .companion-button {
+    width: 52px;
+    height: 58px;
+  }
+  .companion-character {
+    width: 50px;
+    height: 56px;
+  }
+  .companion-caption {
+    display: none;
+  }
+  .companion-comment {
+    width: 158px;
+    padding: 10px 13px;
+    margin-bottom: 8px;
+  }
+  .companion-comment p {
+    font-size: 18px;
+  }
+  .companion-dismiss {
+    width: 32px;
+    height: 32px;
+    top: -17px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-companion *,
+  .scroll-companion *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+html[data-motion="paused"] .scroll-companion *,
+html[data-motion="paused"] .scroll-companion *::after {
+  animation: none !important;
+  transition: none !important;
+}

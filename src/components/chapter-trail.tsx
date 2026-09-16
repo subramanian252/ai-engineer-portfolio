@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useQuietMotion } from "./scene-art";
 import { PipDrawing } from "./pip";
+import { useQuietMotion } from "./scene-art";
 
 function Cloud({ className = "" }: { className?: string }) {
   return (

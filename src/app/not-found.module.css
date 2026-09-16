@@ -1,0 +1,43 @@
+.page {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  color: var(--text);
+  background: var(--bg);
+}
+.note {
+  width: min(100%, 620px);
+  padding: clamp(24px, 5vw, 58px);
+  border: 2px solid var(--line);
+  border-radius: 22px 18px 26px 16px;
+  text-align: center;
+}
+.stamp {
+  font: 11px var(--font-mono);
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.pip {
+  width: 105px;
+  margin: 30px auto 20px;
+}
+.note h1 {
+  font: 600 clamp(32px, 5vw, 50px)/1.15 var(--font-playful);
+  letter-spacing: -0.04em;
+}
+.note h1 em {
+  display: block;
+  font: 600 1.25em var(--font-hand);
+  color: var(--accent);
+}
+.note p {
+  margin: 22px auto 28px;
+  max-width: 35ch;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.note a {
+  justify-content: center;
+}

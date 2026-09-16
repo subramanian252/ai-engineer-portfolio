@@ -24,18 +24,38 @@ export function useQuietMotion() {
   );
 }
 
+function subscribeTheme(callback: () => void) {
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  return () => observer.disconnect();
+}
+
+function isNightTheme() {
+  return document.documentElement.dataset.theme === "night";
+}
+
 export function SceneArt({
   src,
   alt,
+  nightSrc,
+  nightAlt,
   priority = false,
+  sizes = "100vw",
   className = "",
 }: {
   src: string;
   alt: string;
+  nightSrc?: string;
+  nightAlt?: string;
   priority?: boolean;
+  sizes?: string;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const night = useSyncExternalStore(subscribeTheme, isNightTheme, () => false);
   const quiet = useQuietMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -45,7 +65,26 @@ export function SceneArt({
   return (
     <div ref={ref} className={"scene-art " + className}>
       <motion.div className="scene-art-layer" style={{ y: quiet ? 0 : y }}>
-        <Image src={src} alt={alt} fill preload={priority} sizes="100vw" />
+        <Image
+          className={nightSrc ? "scene-image-day" : undefined}
+          src={src}
+          alt={alt}
+          aria-hidden={nightSrc ? night : undefined}
+          fill
+          preload={priority}
+          sizes={sizes}
+        />
+        {nightSrc && (
+          <Image
+            className="scene-image-night"
+            src={nightSrc}
+            alt={nightAlt || alt}
+            aria-hidden={!night}
+            fill
+            loading={priority ? "eager" : "lazy"}
+            sizes={sizes}
+          />
+        )}
       </motion.div>
     </div>
   );

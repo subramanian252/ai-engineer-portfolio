@@ -25,3 +25,7 @@ Use case: illustration-story. Create a square 1:1 hand-drawn 2D anime film illus
 ### Horizon
 
 Use case: illustration-story. Create an ultra-wide 3:1 cinematic hand-painted anime landscape for the closing section of a website. Input is ONLY art style/character reference. A small adult South Indian man with tousled curly black hair in a dark shirt and a canvas shoulder bag stands at the FAR LEFT lower third, seen from behind overlooking a beautiful expansive mountain valley and distant glimmering town. Golden tall grass and wind-blown leaves in foreground, lush layered sage and dark teal mountains along LOWER THIRD, huge soft apricot pink cloud-filled sky across upper 70 percent. Light center and right sky intentionally calm for dark website title overlay. Distant birds as tiny brushstrokes. Warm magical dusk light, subtle film grain, Japanese 2D animation ink contours and hand painted backgrounds, tranquil adventurous mood, not fantasy sci-fi, no neon. Simple sweeping cinematic composition, no text no logos no watermark, not a website screenshot.
+
+## User-supplied night variants — 2026-09-14
+
+The user added `public/art/hero.png`, `public/art/mid.png` and `public/art/end.png`. They are used directly for the night hero, About workshop and closing valley scene. These files were not generated or altered in this change; no generation prompt is available. Original daytime PNG/WebP files are unchanged. Fireflies are CSS decorations rather than image edits.

@@ -1,0 +1,196 @@
+/* Both scenes stay mounted, so toggling does not change framing or layout. */
+:root {
+  --theme-fade: 800ms;
+}
+.scene-art img.scene-image-day,
+.scene-art img.scene-image-night {
+  transition: opacity var(--theme-fade) ease-in-out;
+}
+.scene-image-day {
+  opacity: 1;
+}
+.scene-image-night {
+  opacity: 0;
+}
+/* The day image stays beneath the night layer to avoid a translucent dip. */
+html[data-theme="night"] .scene-image-night {
+  opacity: 1;
+}
+.living-hero[data-night] .hero-depth .scene-art {
+  filter: none;
+}
+
+/* Gradients cannot interpolate reliably: fade separate day/night overlays. */
+.living-hero[data-night] .hero-atmosphere-day {
+  background: linear-gradient(
+    90deg,
+    #ffebd2ca 0%,
+    #ffe9cd8c 30%,
+    #ffe5c327 53%,
+    transparent 67%
+  );
+  opacity: 1;
+  transition: opacity var(--theme-fade) ease-in-out;
+}
+.living-hero[data-night] .hero-atmosphere-night {
+  background: linear-gradient(90deg, #15172577, transparent);
+  opacity: 0;
+  transition: opacity var(--theme-fade) ease-in-out;
+}
+.living-hero[data-night="true"] .hero-atmosphere-day {
+  opacity: 0;
+}
+.living-hero[data-night="true"] .hero-atmosphere-night {
+  opacity: 1;
+}
+.horizon-scene:after {
+  opacity: 1;
+  transition: opacity var(--theme-fade) ease-in-out;
+}
+.horizon-scene:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, #15172520, #15172535 40%, #15172570);
+  opacity: 0;
+  transition: opacity var(--theme-fade) ease-in-out;
+}
+html[data-theme="night"] .horizon-scene:after {
+  opacity: 0;
+}
+html[data-theme="night"] .horizon-scene:before {
+  opacity: 1;
+}
+
+/* Let surfaces and ink settle together without slowing hover movement. */
+html[data-theme]
+  :where(
+    body,
+    .living-hero,
+    .cartoon-work,
+    .anime-about,
+    .anime-stack,
+    .anime-contact,
+    .site-footer,
+    .horizon-scene,
+    .anime-header,
+    .brand-symbol,
+    .brand-symbol span,
+    .brand-role,
+    .anime-header nav,
+    .header-contact,
+    h1,
+    h1 em,
+    h2,
+    h2 em,
+    .handwritten,
+    .serif-word,
+    .anime-intro,
+    .chapter-label,
+    .ink-button,
+    .ink-resume,
+    .field-guide-trigger,
+    .hero-scroll-sticker,
+    .hero-depth,
+    .paper-edge,
+    .cloud-edge,
+    .sky-switch-coin,
+    .sky-switch-note,
+    .project-card,
+    .project-doodle,
+    .project-state,
+    .project-tags > span,
+    .project-info > p,
+    .project-kicker,
+    .project-details,
+    .project-details summary,
+    .garden-intro,
+    .story-copy p,
+    .story-copy p strong,
+    .story-illustration,
+    .sketch-caption,
+    .creative-proof,
+    .creative-proof strong,
+    .creative-proof p,
+    .story-resume,
+    .education-line,
+    .stack-tool,
+    .learning-note,
+    .chapter-trail,
+    .chapter-sun,
+    .chapter-trail > span,
+    .footer-name,
+    .footer-bottom,
+    .chat-launcher,
+    .chat-dialog-inner,
+    .chat-header,
+    .dialog-topline,
+    .chat-form,
+    .chat-bottom
+  ) {
+  transition:
+    color var(--theme-fade) ease,
+    background-color var(--theme-fade) ease,
+    border-color var(--theme-fade) ease,
+    box-shadow var(--theme-fade) ease,
+    transform 250ms ease;
+}
+.living-hero .sky-switch-coin {
+  position: relative;
+}
+.sky-switch-coin .theme-icon {
+  grid-area: 1 / 1;
+  transition:
+    opacity 550ms ease,
+    transform 700ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+.theme-icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}
+.living-hero[data-night="true"] .theme-icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.4);
+}
+.living-hero[data-night="true"] .theme-icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+.sky-switch[aria-busy="true"] .sky-switch-coin {
+  cursor: progress;
+}
+
+@media (min-width: 721px) {
+  .living-hero[data-night] .drifting-leaves {
+    display: block;
+    opacity: 1;
+    transition: opacity var(--theme-fade) ease;
+  }
+  .living-hero[data-night="true"] .drifting-leaves {
+    opacity: 0;
+  }
+}
+@media (max-width: 720px) {
+  html[data-theme="night"] .living-hero .hero-depth {
+    border-color: var(--night-line);
+    box-shadow: 3px 4px #090b1666;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --theme-fade: 0ms;
+  }
+}
+
+/* Motion owns these transforms; theme easing only affects their surfaces. */
+.living-hero .hero-depth,
+.cartoon-work .project-card,
+.chapter-trail {
+  transition-property: color, background-color, border-color, box-shadow;
+}

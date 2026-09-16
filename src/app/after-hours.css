@@ -1,0 +1,567 @@
+/* Night colors extend the original illustrated daytime portfolio. */
+:root {
+  --night-bg: #151725;
+  --night-secondary: #1d2032;
+  --night-paper: #23263b;
+  --night-ink: #ede8f5;
+  --night-muted: #b5afc9;
+  --night-accent: #c6b2ee;
+  --night-line: #57536c;
+}
+html {
+  overflow-x: clip;
+}
+html[data-theme="night"] {
+  --bg: var(--night-bg);
+  --text: var(--night-ink);
+  --muted: var(--night-muted);
+  --accent: var(--night-accent);
+  --line: var(--night-line);
+  color-scheme: dark;
+}
+body,
+.cartoon-work,
+.anime-about,
+.anime-contact,
+.site-footer {
+  transition:
+    background-color 0.55s ease,
+    color 0.55s ease;
+}
+/* Midnight indigo and smoky plum carry through every chapter. */
+html[data-theme="night"] body,
+html[data-theme="night"] .cartoon-work,
+html[data-theme="night"] .anime-stack,
+html[data-theme="night"] .site-footer {
+  background-color: var(--night-bg);
+  color: var(--night-ink);
+}
+html[data-theme="night"] .living-hero.ai-hero {
+  background-color: var(--night-bg);
+  color: var(--night-ink);
+  background-image: radial-gradient(#bab0d413 0.75px, transparent 0.75px);
+}
+html[data-theme="night"] .ai-hero:after {
+  background-image: radial-gradient(
+    ellipse at 50% 100%,
+    var(--night-bg) 57%,
+    transparent 60%
+  );
+}
+html[data-theme="night"] .ai-hero h1,
+html[data-theme="night"] .ai-hero .anime-intro,
+html[data-theme="night"] .ai-hero .chapter-label,
+html[data-theme="night"] .anime-header {
+  color: var(--night-ink);
+}
+html[data-theme="night"] .ai-hero h1 em,
+html[data-theme="night"] .handwritten,
+html[data-theme="night"] .anime-about .serif-word,
+html[data-theme="night"] .anime-stack .stack-heading h2 .serif-word,
+html[data-theme="night"] .horizon-copy h2 em {
+  color: var(--night-accent);
+}
+html[data-theme="night"] .ai-hero h1 em:after,
+html[data-theme="night"] .handwritten:after {
+  border-color: #c6b2ee66;
+}
+html[data-theme="night"] .anime-header {
+  border-color: #b6a1dd25;
+}
+html[data-theme="night"] .anime-header .brand-role {
+  color: var(--night-muted);
+}
+html[data-theme="night"]
+  body:has(.living-hero[data-night="true"])
+  .anime-header
+  .brand-symbol {
+  background: #29253c;
+  color: #e6ddf9;
+  border-color: #756585;
+}
+html[data-theme="night"] .anime-header .brand-symbol span {
+  color: #ac96d1;
+}
+html[data-theme="night"]
+  body:has(.living-hero[data-night="true"])
+  .anime-header
+  nav,
+html[data-theme="night"]
+  body:has(.living-hero[data-night="true"])
+  .anime-header
+  .header-contact {
+  background: #262236;
+  color: #e6ddf9;
+  border-color: #686078;
+}
+html[data-theme="night"] .ink-button,
+html[data-theme="night"] .living-hero .ink-button {
+  background: #3c304f;
+  color: #f1eafa;
+  border-color: #8e76aa;
+  box-shadow: 3px 4px #0b0c18;
+}
+html[data-theme="night"] .ink-button:hover {
+  background: #4a3963;
+}
+html[data-theme="night"] .ink-resume,
+html[data-theme="night"] .field-guide-trigger,
+html[data-theme="night"] .scene-caption > span {
+  color: var(--night-muted);
+  border-color: #85749680;
+}
+html[data-theme="night"] .ai-hero .sky-switch-coin {
+  background: #30283e;
+  color: #d4bfef;
+  border-color: #79618d;
+  box-shadow: 3px 3px #0d0d1b;
+}
+html[data-theme="night"] .ai-hero .sky-switch-note {
+  color: var(--night-muted);
+}
+html[data-theme="night"] .cartoon-work {
+  background-image: radial-gradient(#b8aad019 0.8px, transparent 0.8px);
+}
+html[data-theme="night"] .cartoon-work .project-card {
+  background: var(--night-secondary);
+  border-color: #61566f;
+  box-shadow: 5px 6px #090b1660;
+}
+html[data-theme="night"] .cartoon-work .project-card:hover {
+  border-color: #a895c4;
+  box-shadow: 7px 9px #090b1690;
+}
+html[data-theme="night"] .cartoon-work .project-info > p,
+html[data-theme="night"] .cartoon-work .project-kicker,
+html[data-theme="night"] .cartoon-work .eyebrow,
+html[data-theme="night"] .garden-intro,
+html[data-theme="night"] .garden-side-note,
+html[data-theme="night"] .work-github,
+html[data-theme="night"] .project-details p {
+  color: var(--night-muted);
+}
+html[data-theme="night"] .cartoon-work .project-kicker > span:first-child {
+  color: var(--night-accent);
+}
+html[data-theme="night"] .cartoon-work .project-tags > span {
+  color: #c2c6d7;
+  background: #28353c;
+  border-color: #596e77;
+}
+html[data-theme="night"] .cartoon-work .project-tags > span:nth-child(2n) {
+  background: #352b41;
+  color: #d1c3e0;
+  border-color: #766184;
+}
+html[data-theme="night"] .cartoon-work .project-details {
+  border-color: #6e5f8050;
+}
+html[data-theme="night"] .cartoon-work .project-details summary {
+  color: var(--night-ink);
+}
+html[data-theme="night"] .cartoon-work .project-state {
+  color: #d4c6e9;
+  background: #241f32ed;
+  border-color: #736385;
+  box-shadow: 2px 3px #0b0b17aa;
+}
+html[data-theme="night"] .project-state i {
+  background: #c9aae9;
+}
+html[data-theme="night"] .project-doodle {
+  background: #352b41;
+  color: #ccbadd;
+}
+html[data-theme="night"] .doodle-travel {
+  background: #203637;
+  color: #b7ccc3;
+}
+html[data-theme="night"] .doodle-writer {
+  background: #2c2d48;
+  color: #c3bbdf;
+}
+html[data-theme="night"] .project-doodle > svg {
+  filter: brightness(0.8) saturate(0.5);
+}
+html[data-theme="night"] .anime-about {
+  background: #1c1e2e;
+  color: var(--night-ink);
+}
+html[data-theme="night"] .anime-about:before {
+  background-image: radial-gradient(
+    ellipse at 50% 0,
+    var(--night-bg) 55%,
+    transparent 58%
+  );
+}
+html[data-theme="night"] .anime-about .story-copy p,
+html[data-theme="night"] .anime-about .story-copy p strong,
+html[data-theme="night"] .story-resume,
+html[data-theme="night"] .creative-proof p,
+html[data-theme="night"] .proof-intro,
+html[data-theme="night"] .education-line,
+html[data-theme="night"] .about-header {
+  color: var(--night-muted);
+}
+html[data-theme="night"] .anime-about .story-copy .story-lead,
+html[data-theme="night"] .anime-about .creative-proof strong {
+  color: var(--night-ink);
+}
+html[data-theme="night"] .anime-about .creative-proof strong > span {
+  color: var(--night-accent);
+}
+html[data-theme="night"] .creative-proof,
+html[data-theme="night"] .education-line {
+  border-color: #6e638250;
+}
+html[data-theme="night"] .story-illustration {
+  border-color: #353044;
+  background: #252339;
+  box-shadow: 3px 6px #10101c;
+}
+html[data-theme="night"] .story-illustration:before,
+html[data-theme="night"] .story-illustration:after {
+  background: #76618c80;
+  border-color: #b3a1c340;
+}
+html[data-theme="night"] .story-illustration img {
+  filter: none;
+}
+html[data-theme="night"] .sketch-caption {
+  color: #c7b9d7;
+}
+html[data-theme="night"] .anime-stack .stack-heading .eyebrow,
+html[data-theme="night"] .anime-stack .stack-heading > p,
+html[data-theme="night"] .anime-stack .stack-practice,
+html[data-theme="night"] .anime-stack .learning-note,
+html[data-theme="night"] .sticker-hint {
+  color: var(--night-muted);
+}
+html[data-theme="night"] .anime-stack .stack-practice > p,
+html[data-theme="night"] .anime-stack .learning-star {
+  color: var(--night-accent);
+}
+html[data-theme="night"] .anime-stack .stack-practice > span {
+  border-color: #75658470;
+}
+html[data-theme="night"] .anime-stack .stack-tool,
+html[data-theme="night"] .anime-stack .stack-tool:nth-child(3n + 2),
+html[data-theme="night"] .anime-stack .stack-tool:nth-child(3n) {
+  background: #26273d;
+  color: #ded6ed;
+  border-color: #625775;
+  box-shadow: 4px 5px #080a1655;
+}
+html[data-theme="night"] .anime-stack .stack-tool:nth-child(3n + 2) {
+  background: #213335;
+}
+html[data-theme="night"] .anime-stack .stack-tool:nth-child(3n) {
+  background: #31273d;
+}
+html[data-theme="night"] .anime-stack .stack-tool[data-flipped="true"] {
+  background: #373049 !important;
+}
+html[data-theme="night"] .tool-front > svg,
+html[data-theme="night"] .tool-front > small,
+html[data-theme="night"] .tool-back > small {
+  color: #c0a5de;
+}
+html[data-theme="night"] .tool-front > span,
+html[data-theme="night"] .tool-back {
+  color: var(--night-muted);
+}
+html[data-theme="night"] .chapter-trail {
+  --cloud: #29283e;
+  color: #a68eb9;
+}
+html[data-theme="night"] .chapter-trail > span {
+  color: #b5a7c9;
+}
+html[data-theme="night"] .chapter-sun {
+  background: #47415e;
+  border-color: #9786b1;
+  color: #d7caef;
+  box-shadow: 0 0 55px #b4a1d317;
+}
+html[data-theme="night"] .chapter-spark,
+html[data-theme="night"] .chapter-sprouts {
+  color: #a292b5;
+}
+
+html[data-theme="night"] .anime-contact {
+  background: #1d2032;
+  color: var(--night-ink);
+}
+html[data-theme="night"] .horizon-scene {
+  background: #1b2032;
+}
+html[data-theme="night"] .horizon-scene > .scene-art {
+  opacity: 1;
+  filter: none;
+}
+
+html[data-theme="night"] .horizon-scene .paper-edge {
+  color: #1d2032;
+}
+html[data-theme="night"] .contact-details .email-link {
+  border-color: #7c6c9655;
+}
+html[data-theme="night"] .footer-name {
+  color: #a693bf;
+}
+html[data-theme="night"] .footer-name > span {
+  color: #6b947f;
+}
+html[data-theme="night"] .footer-bottom,
+html[data-theme="night"] .motion-control {
+  color: #aaa2bb;
+}
+
+/* The map and conversation belong to the same night palette. */
+html[data-theme="night"] .field-guide,
+html[data-theme="night"] .chat-dialog {
+  color-scheme: dark;
+  color: var(--night-ink);
+  --text: var(--night-ink);
+  --bg: var(--night-paper);
+  --muted: var(--night-muted);
+  --accent: var(--night-accent);
+}
+html[data-theme="night"] .guide-book {
+  background: #242638;
+  border-color: #766786;
+  box-shadow: 8px 10px #080a1680;
+}
+html[data-theme="night"] .guide-book:after {
+  box-shadow:
+    0 5px #292337,
+    0 6px #645676;
+}
+html[data-theme="night"] .guide-intro {
+  border-color: #75648755;
+}
+html[data-theme="night"] .guide-map {
+  filter: brightness(0.8) saturate(0.5);
+}
+html[data-theme="night"] .guide-intro h2 em,
+html[data-theme="night"] .guide-signature,
+html[data-theme="night"] .guide-compass {
+  color: #c7addc;
+}
+html[data-theme="night"] .guide-intro p,
+html[data-theme="night"] .guide-edition,
+html[data-theme="night"] .guide-origin,
+html[data-theme="night"] .map-handnote,
+html[data-theme="night"] .map-footnote {
+  color: #b7abc7;
+}
+html[data-theme="night"] .chat-launcher,
+html[data-theme="night"] .dialog-close,
+html[data-theme="night"] .guide-close {
+  background: #30283e;
+  color: #e6d9f3;
+  border-color: #8d76a0;
+  box-shadow: 3px 4px #070a174d;
+}
+html[data-theme="night"] .chat-dialog-inner {
+  background: #222436;
+  border-color: #776187;
+  box-shadow: inset 7px 0 #343047;
+}
+html[data-theme="night"] .dialog-topline {
+  background: #2b283c;
+  color: #bfb0d1;
+  border-color: #6f5f8050;
+}
+html[data-theme="night"] .journal-chat .chat-header {
+  border-color: #6c607448;
+}
+html[data-theme="night"] .journal-chat .chat-header p,
+html[data-theme="night"] .journal-chat .chat-welcome-copy,
+html[data-theme="night"] .journal-chat .icon-button,
+html[data-theme="night"] .journal-chat .chat-bottom,
+html[data-theme="night"] .journal-chat .thinking {
+  color: #b7afc7;
+}
+html[data-theme="night"] .journal-chat .chat-welcome-title > span,
+html[data-theme="night"] .welcome-scribble,
+html[data-theme="night"] .chat-handnote,
+html[data-theme="night"] .note-spark {
+  color: #bda5d7;
+}
+html[data-theme="night"] .journal-chat .chat-suggestions > button {
+  background: #2a373c;
+  color: #d3dbdc;
+  border-color: #63748088;
+  box-shadow: 2px 3px #0d142550;
+}
+html[data-theme="night"]
+  .journal-chat
+  .chat-suggestions
+  > button:nth-child(2n) {
+  background: #352b42;
+  color: #ded0e9;
+  border-color: #76638288;
+}
+html[data-theme="night"] .journal-chat .chat-suggestions > button > svg {
+  color: #bca4d3;
+}
+html[data-theme="night"] .journal-chat .chat-form {
+  background: #191c2d;
+  border-color: #796c8b;
+  box-shadow: 3px 4px #0c0d1b66;
+}
+html[data-theme="night"] .journal-chat .chat-form textarea {
+  color: #e5deed;
+}
+html[data-theme="night"] .journal-chat .chat-form textarea::placeholder {
+  color: #9f95b2;
+}
+html[data-theme="night"] .journal-chat .send-button {
+  background: #584369;
+  border-color: #9276a3;
+  color: #eee4f8;
+  box-shadow: 2px 2px #080b1744;
+}
+html[data-theme="night"] .journal-chat .send-button:disabled {
+  background: #312d44;
+  color: #8f80a6;
+  border-color: #5a4b6c;
+}
+html[data-theme="night"] .journal-chat .message-user {
+  background: #393046;
+  color: #e3d5ee;
+  border-color: #786186;
+  box-shadow: 2px 3px #0b0c1855;
+}
+html[data-theme="night"] .journal-chat .message-assistant {
+  background: #292c42;
+  color: #ded8e9;
+  border-color: #6e647f;
+  box-shadow: 2px 3px #0b0c1855;
+}
+html[data-theme="night"] .journal-chat .message-author,
+html[data-theme="night"] .journal-chat .answer-source {
+  color: #b7a4cf;
+  border-color: #8c78a350;
+}
+html[data-theme="night"] .journal-chat .chat-log {
+  scrollbar-color: #6f5b83 transparent;
+}
+html[data-theme="night"] .journal-chat .chat-error {
+  background: #3d2c3c;
+  color: #efbdce;
+  border-color: #997080;
+}
+html[data-theme="night"] .journal-chat .answer-notice {
+  color: #d5b9a1;
+}
+
+html[data-theme="night"] .guide-map {
+  filter: none;
+}
+html[data-theme="night"] .map-terrain > path:first-child {
+  fill: #2b3243;
+  stroke: #66647d;
+}
+html[data-theme="night"] .map-terrain > path:nth-child(2) {
+  stroke: #3e5860;
+}
+html[data-theme="night"] .map-terrain > path:nth-child(3) {
+  stroke: #ac8cc0;
+}
+html[data-theme="night"] .map-terrain g {
+  stroke: #898aa5;
+}
+html[data-theme="night"] .map-terrain g path[fill] {
+  fill: #47536b;
+}
+html[data-theme="night"] .map-stop > svg {
+  color: #c1acd8;
+}
+html[data-theme="night"] .map-stop > svg [fill]:not([fill="none"]) {
+  fill: #4a415d;
+}
+html[data-theme="night"] .map-stop-name {
+  color: #e0d3ef;
+  background: #393247;
+  border-color: #796783;
+  box-shadow: 2px 3px #15152570;
+}
+html[data-theme="night"] .map-stop-name small,
+html[data-theme="night"] .map-stop-note {
+  color: #b4a1c6;
+}
+html[data-theme="night"] .map-stop:hover .map-stop-name {
+  background: #504060;
+}
+
+@media (max-width: 800px) {
+  .cartoon-work .garden-side-note {
+    display: none;
+  }
+}
+
+/* The original daytime artwork and user-provided moonlit landscape. */
+.living-hero[data-night="true"] {
+  background: var(--night-bg);
+}
+.living-hero[data-night="true"] .hero-atmosphere {
+  background: linear-gradient(90deg, #15172577, transparent);
+}
+.night-landscape-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #151725 35%, #202039);
+}
+.night-landscape-placeholder > span {
+  position: absolute;
+  left: 70%;
+  top: 58%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-family: var(--font-hand);
+  font-size: 22px;
+  color: #81718e;
+  white-space: nowrap;
+}
+.living-hero[data-night="true"] .drifting-leaves {
+  display: none;
+}
+.living-hero[data-night="true"] .cloud-edge,
+.living-hero[data-night="true"] > .paper-edge {
+  color: var(--night-bg);
+}
+.living-hero[data-night="true"] .hero-scroll-sticker {
+  background: #30283e;
+  color: #e6d9f3;
+  border-color: #8d76a0;
+  box-shadow: 3px 4px #070a174d;
+}
+.living-hero[data-night="true"] .sky-switch-coin {
+  background: #30283e;
+  color: #d4bfef;
+  border-color: #79618d;
+  box-shadow: 3px 3px #0d0d1b;
+}
+.living-hero[data-night="true"] .sky-switch-note {
+  color: #c6b2ee;
+}
+.living-hero[data-night="true"] h1 em {
+  color: #c6b2ee;
+}
+html[data-theme="night"] .pip-speech,
+html[data-theme="night"] .pip-speech:after {
+  background: #30283e;
+  color: #e0d4ec;
+  border-color: #7c6b92;
+}
+@media (max-width: 600px) {
+  .night-landscape-placeholder > span {
+    left: 50%;
+    top: 76%;
+    font-size: 21px;
+  }
+  .living-hero[data-night="true"] .hero-atmosphere {
+    background: none;
+  }
+}

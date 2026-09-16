@@ -27,10 +27,14 @@ import { MotionControl } from "@/components/animated-type";
 import { ChatLauncher } from "@/components/chat-launcher";
 import { Reveal } from "@/components/reveal";
 import { SceneArt, DriftingLeaves, PaperEdge } from "@/components/scene-art";
+
 import { Pip } from "@/components/pip";
 import { ChapterTrail, CloudEdge } from "@/components/chapter-trail";
 import { ProjectDoodle } from "@/components/project-doodle";
 import { ToolSticker } from "@/components/tool-sticker";
+import { LivingHero } from "@/components/living-hero";
+import { FieldGuide } from "@/components/field-guide";
+import { MissionControl } from "@/components/mission-control";
 
 const stack = [
   { icon: siPython, name: "Python", detail: "The foundation" },
@@ -110,14 +114,7 @@ export default function Home() {
         </a>
       </header>
       <main id="main">
-        <section className="anime-hero" aria-labelledby="hero-title">
-          <SceneArt
-            src="/art/anime-rooftop.webp"
-            alt="Anime illustration of Subramanian with a laptop overlooking the mountains near his hometown"
-            priority
-          />
-          <div className="hero-atmosphere" aria-hidden="true" />
-          <DriftingLeaves />
+        <LivingHero>
           <div className="anime-hero-content wrap">
             <span className="chapter-label">
               <span>01</span> THE ADVENTURE BEGINS
@@ -146,9 +143,7 @@ export default function Home() {
                 Résumé <Download size={17} />
               </a>
             </div>
-            <span className="hero-handnote">
-              A little imagination. A lot of engineering.
-            </span>
+            <FieldGuide />
           </div>
           <div className="scene-caption wrap">
             <span>
@@ -165,7 +160,7 @@ export default function Home() {
           </a>
           <CloudEdge />
           <PaperEdge />
-        </section>
+        </LivingHero>
         <section
           id="projects"
           className="work-section cartoon-work"
@@ -293,6 +288,9 @@ export default function Home() {
               <div className="story-illustration">
                 <SceneArt
                   src="/art/anime-workshop.webp"
+                  sizes="(max-width: 720px) 100vw, 50vw"
+                  nightSrc="/art/mid.png"
+                  nightAlt="Subramanian sketching at his lamplit desk with a moonlit mountain town outside"
                   alt="Anime illustration of Subramanian sketching ideas at a sunlit desk"
                 />
                 <span className="sketch-caption">
@@ -427,9 +425,11 @@ export default function Home() {
           </p>
           <ChapterTrail
             variant="sunset"
-            caption="One more chapter? This one is ours to write."
+            caption="Ready to peek under the hood?"
           />
         </section>
+
+        <MissionControl />
 
         <section
           id="contact"
@@ -439,13 +439,15 @@ export default function Home() {
           <div className="horizon-scene">
             <SceneArt
               src="/art/anime-horizon.webp"
+              nightSrc="/art/end.png"
+              nightAlt="A traveler overlooking a mountain valley and town lights beneath a star-filled night sky"
               alt="Anime illustration of a traveler looking over a sunlit mountain valley"
             />
             <DriftingLeaves />
             <div className="horizon-copy wrap">
               <Reveal>
                 <span className="chapter-label">
-                  <span>05</span> THE NEXT CHAPTER
+                  <span>06</span> THE NEXT CHAPTER
                 </span>
                 <h2 id="contact-title">
                   Something good

@@ -1,0 +1,461 @@
+/* A compact cover and a small conversation sheet for phones. */
+.chat-mobile-copy {
+  display: none;
+}
+.journal-chat .chat-header h2 > .chat-desktop-copy {
+  color: inherit;
+}
+
+@media (max-width: 720px) {
+  .anime-header.wrap {
+    top: 16px;
+    width: calc(100% - 40px);
+    height: 48px;
+    gap: 12px;
+    border: 0;
+    padding: 0 52px 0 0;
+    pointer-events: none;
+  }
+  .anime-header a,
+  .anime-header nav {
+    pointer-events: auto;
+  }
+  .anime-header .brand-symbol {
+    width: 40px;
+    height: 42px;
+    font-size: 28px;
+  }
+  .anime-header .brand > span:last-child,
+  .anime-header .header-contact {
+    display: none;
+  }
+  .anime-header nav {
+    display: flex;
+    margin: 0 0 0 auto;
+    gap: 0;
+    padding: 0 5px;
+    border-radius: 24px;
+    font-size: 12px;
+  }
+  .anime-header nav a,
+  .anime-header nav a:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 10px;
+  }
+
+  .living-hero.anime-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 20px auto minmax(230px, 1fr) auto 48px 44px;
+    gap: 12px;
+    height: max(760px, 100svh);
+    min-height: 0;
+    padding: 88px 20px 32px;
+    background: #f5eedb;
+  }
+  .living-hero .anime-hero-content {
+    display: contents;
+    pointer-events: auto;
+  }
+  .living-hero .chapter-label {
+    grid-row: 1;
+    grid-column: 1;
+    font-size: 8px;
+    letter-spacing: 0.8px;
+    gap: 8px;
+    align-self: center;
+  }
+  .living-hero .chapter-label > span {
+    width: 20px;
+    height: 20px;
+    font-size: 8px;
+  }
+  .living-hero h1 {
+    grid-row: 2;
+    grid-column: 1;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    font-size: clamp(32px, 10vw, 48px);
+    letter-spacing: -0.06em;
+    line-height: 1.07;
+    z-index: 2;
+  }
+  .living-hero h1 .hero-ink-line {
+    white-space: nowrap;
+  }
+  .living-hero h1 em {
+    font-size: 1.16em;
+  }
+  .living-hero .hero-depth,
+  .living-hero > .night-landscape,
+  .living-hero > .night-landscape-placeholder {
+    grid-row: 3;
+    grid-column: 1;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    min-height: 230px;
+    align-self: stretch;
+    border: 1.5px solid #53654b;
+    border-radius: 16px 16px 8px 8px;
+    box-shadow: 3px 4px 0 #50614030;
+    overflow: hidden;
+    transform: none !important;
+  }
+  .living-hero .hero-depth .scene-art {
+    inset: 0;
+    height: 100%;
+    mask-image: none;
+  }
+  .living-hero .scene-art-layer {
+    inset: 0;
+    transform: none !important;
+  }
+  .living-hero .scene-art img {
+    object-position: 77% 35%;
+    object-fit: cover;
+  }
+  .living-hero .hero-atmosphere,
+  .living-hero .drifting-leaves,
+  .living-hero .scene-caption,
+  .living-hero .hero-scroll-sticker,
+  .living-hero .cloud-edge {
+    display: none;
+  }
+  .living-hero > .paper-edge {
+    height: 15px;
+    color: #f5eedb;
+  }
+  .living-hero .anime-intro {
+    grid-row: 4;
+    grid-column: 1;
+    width: 100%;
+    max-width: 390px;
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .living-hero .anime-intro .desktop-break {
+    display: none;
+  }
+  .living-hero .anime-actions {
+    grid-row: 5;
+    grid-column: 1;
+    margin: 0;
+    gap: 20px;
+    align-self: stretch;
+  }
+  .living-hero .ink-button {
+    flex: 1;
+    max-width: 250px;
+    min-height: 48px;
+    padding: 10px 15px;
+    gap: 18px;
+    font-size: 12px;
+  }
+  .living-hero .ink-resume {
+    min-height: 44px;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 12px;
+  }
+  .living-hero .field-guide-trigger {
+    grid-row: 6;
+    grid-column: 1;
+    justify-self: start;
+    margin: 0;
+    padding: 0;
+    gap: 9px;
+    min-height: 44px;
+    font-size: 19px;
+    transform: none;
+  }
+  .living-hero .field-guide-trigger svg {
+    width: 16px;
+    height: 16px;
+  }
+  .living-hero .sky-switch {
+    top: 18px;
+    right: 19px;
+    left: auto;
+    width: 44px;
+    height: 44px;
+    z-index: 12;
+  }
+  .living-hero .sky-switch-coin {
+    width: 42px;
+    height: 42px;
+  }
+  .living-hero .sky-switch-coin svg {
+    width: 24px;
+    height: 24px;
+  }
+  .living-hero .sky-switch-note,
+  .living-hero .sky-switch-cord {
+    display: none;
+  }
+  .living-hero .sky-switch:hover .sky-switch-coin,
+  .living-hero .sky-switch:active .sky-switch-coin {
+    transform: rotate(-12deg);
+  }
+  html[data-theme="night"] .living-hero {
+    background: var(--night-bg);
+  }
+  html[data-theme="night"] .living-hero > .night-landscape,
+  html[data-theme="night"] .living-hero > .night-landscape-placeholder {
+    border-color: var(--night-line);
+    box-shadow: 3px 4px #090b1666;
+  }
+  .living-hero .night-landscape-placeholder > span {
+    left: 50%;
+    top: 50%;
+    font-size: 20px;
+  }
+
+  /* Pip stays present without covering the page. */
+  .chat-launcher {
+    width: 52px;
+    height: 52px;
+    padding: 8px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
+    justify-content: center;
+    border-radius: 50% 46% 50% 44%;
+    border-width: 1.5px;
+    box-shadow: 2px 3px 0 #30463545;
+  }
+  .chat-launcher > span,
+  .chat-launcher > svg:last-child {
+    display: none;
+  }
+  .chat-launcher .pip-drawing {
+    display: block;
+    width: 30px;
+    height: 35px;
+  }
+  .chat-dialog {
+    position: fixed;
+    top: auto;
+    bottom: calc(10px + var(--chat-keyboard-inset, 0px));
+    left: 0;
+    right: 0;
+    width: calc(100% - 20px);
+    max-width: 460px;
+    max-height: calc(var(--chat-viewport-height, 100dvh) - 20px);
+    margin: 0 auto;
+    filter: none;
+  }
+  .chat-dialog::backdrop {
+    background: #1b302c60;
+    backdrop-filter: blur(3px);
+  }
+  .chat-dialog[open] {
+    animation: mobile-chat-open 0.25s ease-out;
+  }
+  .chat-dialog-inner {
+    position: relative;
+    max-height: inherit;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 20px 16px 16px;
+    border-width: 1.5px;
+    box-shadow: 0 10px 45px #10201833;
+  }
+  .chat-dialog .dialog-topline {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    z-index: 2;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+  .chat-dialog .dialog-topline > span {
+    display: none;
+  }
+  .chat-dialog .dialog-close {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .journal-chat.profile-chat {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: calc(var(--chat-viewport-height, 100dvh) - 24px);
+  }
+  .journal-chat .chat-header {
+    flex-shrink: 0;
+    position: relative;
+    min-height: 70px;
+    padding: 13px 102px 13px 16px;
+  }
+  .journal-chat .chat-identity {
+    gap: 9px;
+    min-width: 0;
+  }
+  .journal-chat .chat-pip-avatar {
+    width: 30px;
+    height: 35px;
+  }
+  .journal-chat .chat-header h2 {
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+  }
+  .journal-chat .chat-header h2 > span {
+    color: inherit;
+  }
+  .journal-chat .chat-header p {
+    margin-top: 3px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .journal-chat .reset-chat {
+    position: absolute;
+    right: 50px;
+    top: 11px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+  }
+  .journal-chat .chat-mobile-copy {
+    display: inline;
+  }
+  .journal-chat .chat-desktop-copy,
+  .journal-chat .welcome-note,
+  .journal-chat .chat-welcome-copy,
+  .journal-chat .chat-handnote {
+    display: none;
+  }
+  .journal-chat .chat-log {
+    flex: 0 1 auto;
+    height: auto;
+    min-height: 0;
+    padding: 16px;
+    background-image: none;
+  }
+  .journal-chat[data-has-messages="true"] .chat-log {
+    height: min(320px, 44dvh);
+  }
+  .journal-chat .chat-welcome {
+    padding: 0;
+  }
+  .journal-chat .chat-mobile-greeting {
+    display: block;
+    font-family: var(--font-hand), cursive;
+    font-size: 23px;
+    line-height: 1.2;
+    color: var(--text);
+  }
+  .journal-chat .chat-suggestions {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 14px;
+    gap: 8px;
+  }
+  .journal-chat .chat-suggestions > button,
+  .journal-chat .chat-suggestions > button:nth-child(2n) {
+    min-height: 44px;
+    padding: 9px 11px;
+    border-radius: 10px;
+    box-shadow: none;
+    transform: none;
+    font-size: 12px;
+    gap: 6px;
+  }
+  .journal-chat .chat-suggestions > button > svg:first-child {
+    display: none;
+  }
+  .journal-chat .chat-form {
+    flex-shrink: 0;
+    margin: 0 14px;
+    padding: 5px 6px 5px 12px;
+    border-radius: 12px;
+    box-shadow: none;
+  }
+  .journal-chat .chat-form textarea {
+    height: 40px;
+    padding-block: 8px;
+    font-size: 16px;
+  }
+  .journal-chat .send-button {
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    transform: none;
+    box-shadow: none;
+  }
+  .journal-chat .chat-bottom {
+    flex-shrink: 0;
+    padding: 10px 16px max(12px, env(safe-area-inset-bottom, 0px));
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .journal-chat .enter-hint {
+    display: none;
+  }
+  .journal-chat .chat-message {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 14px;
+    padding: 11px 12px;
+    box-shadow: none;
+  }
+  .journal-chat .message-user {
+    margin-left: 24px;
+  }
+  .journal-chat .message-assistant {
+    margin-right: 0;
+  }
+  .journal-chat .message-author {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+  .journal-chat .chat-error {
+    margin: 0 14px 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .anime-header.wrap {
+    width: calc(100% - 32px);
+    gap: 8px;
+    padding-right: 46px;
+  }
+  .anime-header nav a {
+    padding-inline: 8px;
+    font-size: 11px;
+  }
+  .living-hero.anime-hero {
+    padding-inline: 16px;
+  }
+  .living-hero .sky-switch {
+    right: 14px;
+  }
+}
+
+@keyframes mobile-chat-open {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-dialog[open] {
+    animation: none;
+  }
+}
+html[data-motion="paused"] .chat-dialog[open] {
+  animation: none;
+}
