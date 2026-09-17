@@ -201,22 +201,6 @@ html[data-motion="paused"] .scroll-companion *::after {
   transition: none !important;
 }
 
-/* Pip has a seat inside the lab; keep its floating help button out of the desk. */
-.scroll-companion[data-lab-active="true"] .companion-comment,
-.scroll-companion[data-lab-active="true"] .companion-caption {
-  display: none;
-}
-.scroll-companion[data-lab-active="true"] .companion-button {
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--companion-outline);
-  border-radius: 50%;
-  background: var(--companion-paper);
-}
-.scroll-companion[data-lab-active="true"] .companion-character {
-  width: 34px;
-  height: 38px;
-}
 
 /* Keep Pip present on mobile without covering the compact project grid. */
 @media (max-width: 720px) {

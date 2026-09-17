@@ -527,9 +527,15 @@ html[data-theme="night"] .map-stop:hover .map-stop-name {
 .living-hero[data-night="true"] .drifting-leaves {
   display: none;
 }
-.living-hero[data-night="true"] .cloud-edge,
 .living-hero[data-night="true"] > .paper-edge {
-  color: var(--night-bg);
+  color: #202238;
+}
+.living-hero[data-night="true"] .cloud-edge > div {
+  color: #202238;
+}
+.living-hero[data-night="true"] .cloud-edge svg path:last-child {
+  stroke: #74809b;
+  opacity: 0.16;
 }
 .living-hero[data-night="true"] .hero-scroll-sticker {
   background: #30283e;

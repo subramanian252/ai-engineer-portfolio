@@ -1001,3 +1001,10 @@ body {
     object-position: 73% 50%;
   }
 }
+
+/* Keep the illustrated subject inside the frame on portrait tablets. */
+@media (min-width: 721px) and (max-width: 1100px) {
+  .living-hero .scene-image-day {
+    object-position: right center;
+  }
+}
