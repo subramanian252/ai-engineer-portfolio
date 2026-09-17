@@ -227,7 +227,7 @@ export const knowledge = [
       "interactive",
       "live project",
     ],
-    text: "The current portfolio has three coming-soon entries: Full LLM Chat, Travel Planner and Agentic Writer. These are planned showcases; they are not live applications yet. Subramanian wants his future portfolio projects to be live and interactive, alongside their source code. His résumé also describes independent production work on LazyLoop and an advanced RAG chatbot in development.",
+    text: "LazyChat is a completed portfolio case study with source code available on GitHub; its public live chat is not deployed yet. Subramanian built its FastAPI, LangGraph, SQLite and FAISS backend, including document RAG, selectable OpenRouter models, tool calling, persistent conversations, human approval and usage tracking. The React frontend was built with AI under his direction and supervision. Travel Planner and Agentic Writer remain coming-soon ideas.",
   },
 ] as const;
 

@@ -1,6 +1,9 @@
 export const stations = [
   {
     id: "data",
+    input: "Messy rows",
+    output: "Validated training data",
+    challenge: "Rescue the dataset.",
     name: "Data & preprocessing",
     short: "Data prep",
     tint: "sage",
@@ -14,6 +17,9 @@ export const stations = [
   },
   {
     id: "model",
+    input: "Examples & context",
+    output: "Evaluated predictions",
+    challenge: "Teach it. Then check its homework.",
     name: "Models & training",
     tint: "lilac",
     label: "02 / LEARN. ATTEND. ADAPT.",
@@ -27,6 +33,9 @@ export const stations = [
   },
   {
     id: "rag",
+    input: "A question & documents",
+    output: "An answer with evidence",
+    challenge: "Give the answer a paper trail.",
     name: "RAG",
     short: "RAG",
     tint: "sage",
@@ -40,6 +49,9 @@ export const stations = [
   },
   {
     id: "agents",
+    input: "A task & allowed tools",
+    output: "An action with a result",
+    challenge: "Pick the right tool for the job.",
     name: "AI agents & tool calling",
     short: "Agents",
     tint: "peach",
@@ -53,6 +65,9 @@ export const stations = [
   },
   {
     id: "guardrails",
+    input: "A request & permissions",
+    output: "An allowed action or a refusal",
+    challenge: "Catch trouble at the door.",
     name: "Security & guardrails",
     short: "Guardrails",
     tint: "yellow",
@@ -66,6 +81,9 @@ export const stations = [
   },
   {
     id: "api",
+    input: "An application request",
+    output: "A structured response",
+    challenge: "Deliver an answer. Reject the chaos.",
     name: "Backend APIs",
     short: "API",
     tint: "lilac",
@@ -79,6 +97,9 @@ export const stations = [
   },
   {
     id: "mlops",
+    input: "Code & a tested model",
+    output: "A versioned, running service",
+    challenge: "Ship it without shipping the bug.",
     name: "MLOps / Docker / Kubernetes / CI/CD",
     short: "Deploy",
     tint: "sage",
@@ -92,6 +113,9 @@ export const stations = [
   },
   {
     id: "monitoring",
+    input: "Live signals & traces",
+    output: "Alerts & better decisions",
+    challenge: "Keep the graphs (and the bill) calm.",
     name: "Monitoring & observability",
     short: "Monitor",
     tint: "peach",

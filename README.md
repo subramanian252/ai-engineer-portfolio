@@ -11,7 +11,7 @@ An illustrated, interactive portfolio for Subramanian M, an AI engineer based in
 - **Day and night scenes** — original anime illustrations, coordinated color transitions, drifting leaves in the daytime artwork, and subtle nighttime fireflies.
 - **Pip, the portfolio guide** — a cartoon companion with section-aware comments and a chat interface for questions about Subramanian’s background, skills, and experience.
 - **AI Engineer Mission Control** — eight interactive stations covering data preparation, models, retrieval, agents, guardrails, APIs, deployment, and monitoring.
-- **Project showcase** — a featured project and two supporting entries with minimal animated illustrations. Full LLM Chat, Travel Planner, and Agentic Writer are currently marked **coming soon**.
+- **Project showcase** — a compact one-viewport idea garden with LazyChat as the completed feature and Travel Planner plus Agentic Writer as coming-soon experiments. LazyChat opens into a full illustrated technical case study.
 - **About, stack, and contact** — technology icons, career background, social links, a downloadable résumé, and an illustrated field guide for navigation.
 - **Responsive and accessible interactions** — a compact mobile hero and chat sheet, keyboard-friendly dialogs, reduced-motion support, and a manual animation control.
 - **Deployment essentials** — optimized responsive images, generated social previews, canonical URL configuration, a sitemap, robots rules, and a matching 404 page.
@@ -76,7 +76,7 @@ The control room explains eight parts of an AI system:
 
 **Data prep → Model → RAG → Agents → Guardrails → API → Deploy → Monitor**
 
-On desktop, the pipeline occupies approximately 60% of one viewport. The lower 40% starts with a system overview and changes to an interactive explainer when a station is selected. Smaller screens use a four-by-two station layout; details can scroll inside the lower panel.
+Mission Control stays inside one viewport. A compact eight-stop route sits above a larger experiment desk, with one responsive type scale for the overview, explanations, and controls. Each station shows its input and output; trying its controls earns a stamp in Pip’s lab passport for the current visit. Smaller screens use a four-by-two route, with details scrolling inside the desk rather than extending the section.
 
 Experiments include cleaning duplicate rows, comparing training and validation loss, exploring attention and LoRA adapters, stepping through retrieval, selecting agent tools, inspecting requests, breaking a deployment test gate, and comparing cached monitoring readings. **Run the system** guides visitors through every station, with pause, resume, and reset controls.
 
@@ -95,7 +95,7 @@ These are educational simulations. They do not train models, call external tools
 
 ### Add a project
 
-Edit the `projects` array in `src/content/portfolio.ts`. Each record contains an ID, title, category, summary, status, tags, and a visual type (`chat`, `travel`, or `writer`).
+Edit the `projects` array in `src/content/portfolio.ts`. Each record contains an ID, title, category, summary, status, tags, and a visual type (`chat`, `travel`, or `writer`). A completed project can also provide a `caseStudyUrl` for an internal story page.
 
 When a project is ready, set its status to `completed` and add its real `demoUrl` and/or `repositoryUrl`. An optional `image` path replaces the illustrated cover with a screenshot. Keep unfinished projects marked `coming-soon` and update the chat knowledge when adding new project facts.
 

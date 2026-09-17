@@ -32,10 +32,12 @@ export function ChapterTrail({
   caption,
   className = "",
   variant = "cloud",
+  steady = false,
 }: {
   caption: string;
   className?: string;
   variant?: "cloud" | "meadow" | "sunset";
+  steady?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const quiet = useQuietMotion();
@@ -97,8 +99,8 @@ export function ChapterTrail({
           className="chapter-rider"
           style={{
             left: quiet ? "50%" : left,
-            y: quiet ? 0 : y,
-            rotate: quiet ? 0 : rotate,
+            y: quiet || steady ? 0 : y,
+            rotate: quiet || steady ? 0 : rotate,
           }}
         >
           <div className="rider-bob">

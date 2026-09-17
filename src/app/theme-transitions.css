@@ -194,3 +194,47 @@ html[data-theme]
 .chapter-trail {
   transition-property: color, background-color, border-color, box-shadow;
 }
+
+/* The cord, coin and note swing together from the top of the hanging cord. */
+@media (min-width: 721px) {
+  .living-hero .sky-switch {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    transform-origin: 32px -64px;
+    animation: sky-wind-sway 5.8s ease-in-out infinite;
+  }
+  .living-hero .sky-switch:hover,
+  .living-hero .sky-switch:focus-visible,
+  .living-hero .sky-switch[aria-busy="true"] {
+    animation-play-state: paused;
+  }
+}
+@media (min-width: 721px) and (max-width: 800px) {
+  .living-hero .sky-switch {
+    transform-origin: 26px -64px;
+  }
+}
+@keyframes sky-wind-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  25% {
+    transform: rotate(2.4deg);
+  }
+  50% {
+    transform: rotate(-1.8deg);
+  }
+  75% {
+    transform: rotate(3.2deg);
+  }
+}
+html[data-motion="paused"] .living-hero .sky-switch {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .living-hero .sky-switch {
+    animation: none;
+  }
+}

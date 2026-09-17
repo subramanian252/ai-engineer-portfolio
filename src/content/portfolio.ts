@@ -9,6 +9,7 @@ export type Project = {
   image?: string;
   repositoryUrl?: string;
   demoUrl?: string;
+  caseStudyUrl?: string;
 };
 
 export type PortfolioProfile = {
@@ -48,13 +49,15 @@ export const profile: PortfolioProfile = {
 export const projects: Project[] = [
   {
     id: "full-llm-chat",
-    title: "Full LLM Chat",
-    category: "CONVERSATIONAL AI",
+    title: "LazyChat",
+    category: "STATEFUL LLM AGENT",
     summary:
-      "A space for better conversations. Exploring a complete chat experience powered by large language models.",
-    status: "coming-soon",
-    tags: ["Language models", "Chat experience"],
+      "A stateful agent workspace with document RAG, model selection, visible tool calls, human approval and honest usage tracking.",
+    status: "completed",
+    tags: ["RAG", "LangGraph", "FastAPI", "Tool calling"],
     visual: "chat",
+    repositoryUrl: "https://github.com/subramanian252/full-rag-chatbot",
+    caseStudyUrl: "/projects/lazychat",
   },
   {
     id: "travel-planner",

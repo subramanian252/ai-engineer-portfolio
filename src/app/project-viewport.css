@@ -1,0 +1,674 @@
+/* The idea garden is one complete chapter: heading, wide feature, and two supporting cards. */
+.cartoon-work {
+  height: 100vh;
+  height: 100svh;
+  min-height: 640px;
+  padding: clamp(16px, 2.2vh, 26px) 0 clamp(14px, 1.8vh, 22px);
+  overflow: hidden;
+}
+
+.cartoon-work > .wrap {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - clamp(32px, 5vw, 80px)), 1640px);
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(8px, 1.25vh, 14px);
+}
+
+.cartoon-work .work-heading {
+  min-height: 0;
+  margin: 0;
+  align-items: center;
+  gap: 18px;
+}
+
+.cartoon-work .work-heading h2 {
+  margin-top: 4px;
+  font-size: clamp(32px, min(4vw, 5.6vh), 62px);
+  line-height: 0.92;
+}
+
+.cartoon-work .work-heading h2 br {
+  display: none;
+}
+
+.cartoon-work .garden-intro {
+  margin-top: 6px;
+  font-size: clamp(10px, 1.2vh, 13px);
+  line-height: 1.35;
+}
+
+.cartoon-work .eyebrow {
+  font-size: 9px;
+}
+
+.cartoon-work .pip-companion {
+  width: 136px;
+  min-width: 136px;
+  height: 82px;
+  margin: 0 12px 0 0;
+  padding: 0;
+  overflow: visible;
+  transform: scale(0.65);
+  transform-origin: right center;
+}
+
+.cartoon-work .pip-button {
+  width: 82px;
+  height: 94px;
+}
+
+.cartoon-work .pip-speech {
+  top: 4px;
+  left: -114px;
+  right: 62px;
+  width: 150px;
+  padding: 7px 9px;
+  font-size: 13px;
+  line-height: 1.05;
+}
+
+.cartoon-work .project-grid {
+  min-height: 0;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1.13fr) minmax(0, 0.87fr);
+  gap: clamp(8px, 1.2vw, 16px);
+  align-items: stretch;
+}
+
+.cartoon-work .project-card,
+.cartoon-work .project-featured {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 0;
+  padding: 0;
+  align-items: stretch;
+  border-bottom: 0;
+}
+
+.cartoon-work .project-featured {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.88fr);
+}
+
+.cartoon-work .project-card:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.cartoon-work .project-card:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.cartoon-work .project-image,
+.cartoon-work .project-featured .project-image {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.cartoon-work .project-canvas {
+  min-height: 0;
+}
+
+.cartoon-work .project-canvas svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cartoon-work .project-state {
+  top: 9px;
+  left: 9px;
+  padding: 3px 8px;
+  font-size: clamp(10px, 1.25vh, 13px);
+}
+
+.cartoon-work .project-info,
+.cartoon-work .project-featured .project-info {
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(10px, 1.45vw, 22px);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cartoon-work .project-featured .project-info {
+  padding-inline: clamp(18px, 2vw, 32px);
+}
+
+.cartoon-work .project-kicker {
+  gap: 8px;
+  font-size: clamp(7px, 0.7vw, 9px);
+}
+
+.cartoon-work .project-kicker > span:first-child {
+  font-size: clamp(15px, 1.9vh, 20px);
+}
+
+.cartoon-work .project-info h3,
+.cartoon-work .project-featured h3 {
+  margin: clamp(4px, 0.8vh, 8px) 0;
+  font-size: clamp(22px, min(2.45vw, 3.6vh), 40px);
+  line-height: 0.98;
+}
+
+.cartoon-work .project-card:not(.project-featured) .project-info h3 {
+  font-size: clamp(20px, min(2vw, 3.1vh), 30px);
+}
+
+.cartoon-work .project-info > p,
+.cartoon-work .project-featured .project-info > p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: clamp(10px, min(0.95vw, 1.5vh), 13px);
+  line-height: 1.42;
+}
+
+.cartoon-work .project-featured .project-info > p {
+  max-width: 610px;
+  font-size: clamp(11px, min(1.05vw, 1.65vh), 14px);
+}
+
+.cartoon-work .project-tags {
+  gap: 5px;
+  margin-top: clamp(5px, 0.9vh, 9px);
+}
+
+.cartoon-work .project-tags > span {
+  padding: 3px 7px;
+  font-size: clamp(7px, 0.67vw, 9px);
+}
+
+.cartoon-work .project-links {
+  gap: 14px;
+  margin-top: clamp(6px, 1vh, 10px);
+  flex-wrap: wrap;
+  font-size: clamp(9px, 0.8vw, 11px);
+}
+
+.cartoon-work .project-links svg {
+  width: 14px;
+  height: 14px;
+}
+
+.cartoon-work .project-details {
+  position: relative;
+  margin-top: clamp(4px, 0.7vh, 7px);
+}
+
+.cartoon-work .project-details summary {
+  padding: 4px 0;
+  font-size: clamp(13px, min(1.25vw, 1.9vh), 17px);
+}
+
+.cartoon-work .project-details[open] p {
+  position: absolute;
+  z-index: 5;
+  left: -8px;
+  right: -8px;
+  bottom: 100%;
+  padding: 9px;
+  border: 1px solid #758566;
+  border-radius: 9px;
+  background: #fff9ea;
+  box-shadow: 3px 4px 0 #a1ad8980;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.cartoon-work .work-github {
+  justify-self: start;
+  margin: 0;
+  font-size: clamp(13px, min(1.3vw, 1.9vh), 17px);
+  line-height: 1.1;
+}
+
+.cartoon-work > .chapter-trail {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.cartoon-work > .chapter-trail .chapter-stage {
+  height: 42px;
+}
+
+.cartoon-work > .chapter-trail .chapter-route {
+  inset: -62px 4% auto;
+}
+
+.cartoon-work > .chapter-trail .chapter-rider {
+  top: -51px;
+  transform: scale(0.31);
+  transform-origin: bottom center;
+}
+
+.cartoon-work > .chapter-trail .chapter-cloud,
+.cartoon-work > .chapter-trail .chapter-sun,
+.cartoon-work > .chapter-trail .chapter-spark,
+.cartoon-work > .chapter-trail .chapter-caption {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .cartoon-work {
+    min-height: 620px;
+    padding: 11px 0;
+  }
+
+  .cartoon-work > .wrap {
+    width: calc(100% - 22px);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .cartoon-work .work-heading {
+    gap: 7px;
+  }
+
+  .cartoon-work .work-heading h2 {
+    font-size: clamp(27px, 8.5vw, 39px);
+    line-height: 0.94;
+  }
+
+  .cartoon-work .garden-intro,
+  .cartoon-work .pip-companion,
+  .cartoon-work .work-github,
+  .cartoon-work > .chapter-trail {
+    display: none;
+  }
+
+  .cartoon-work .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1.22fr) minmax(0, 0.78fr);
+    gap: 7px;
+  }
+
+  .cartoon-work .project-featured {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    grid-template-columns: minmax(118px, 0.78fr) minmax(0, 1.22fr);
+  }
+
+  .cartoon-work .project-card:nth-child(2),
+  .cartoon-work .project-card:nth-child(3) {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 0.57fr) minmax(0, 0.43fr);
+  }
+
+  .cartoon-work .project-card:nth-child(2) {
+    grid-column: 1;
+  }
+
+  .cartoon-work .project-card:nth-child(3) {
+    grid-column: 2;
+  }
+
+  .cartoon-work .project-info,
+  .cartoon-work .project-featured .project-info {
+    padding: 7px 9px;
+  }
+
+  .cartoon-work .project-featured .project-info {
+    padding-inline: 11px;
+  }
+
+  .cartoon-work .project-info h3,
+  .cartoon-work .project-featured h3,
+  .cartoon-work .project-card:not(.project-featured) .project-info h3 {
+    margin: 3px 0;
+    font-size: clamp(16px, 4.9vw, 23px);
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-info h3 {
+    font-size: clamp(14px, 4vw, 19px);
+  }
+
+  .cartoon-work .project-info > p,
+  .cartoon-work .project-featured .project-info > p {
+    -webkit-line-clamp: 2;
+    font-size: clamp(8px, 2.45vw, 10px);
+    line-height: 1.28;
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-info > p {
+    display: none;
+  }
+
+  .cartoon-work .project-kicker {
+    gap: 4px;
+    font-size: 6px;
+  }
+
+  .cartoon-work .project-kicker > span:first-child {
+    font-size: 12px;
+  }
+
+  .cartoon-work
+    .project-card:not(.project-featured)
+    .project-kicker
+    > span:last-child {
+    display: none;
+  }
+
+  .cartoon-work .project-tags {
+    gap: 3px;
+    margin-top: 4px;
+  }
+
+  .cartoon-work .project-tags > span {
+    padding: 2px 4px;
+    font-size: 6px;
+  }
+
+  .cartoon-work .project-tags > span:nth-child(n + 3),
+  .cartoon-work
+    .project-card:not(.project-featured)
+    .project-tags
+    > span:nth-child(n + 2) {
+    display: none;
+  }
+
+  .cartoon-work .project-links {
+    gap: 8px;
+    margin-top: 4px;
+    font-size: 8px;
+  }
+
+  .cartoon-work .project-links svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .cartoon-work .project-details {
+    display: none;
+  }
+
+  .cartoon-work .project-state {
+    top: 5px;
+    left: 5px;
+    padding: 2px 5px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 430px), (max-height: 700px) {
+  .cartoon-work .eyebrow {
+    display: none;
+  }
+
+  .cartoon-work .project-grid {
+    grid-template-rows: minmax(0, 1.18fr) minmax(0, 0.82fr);
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-info {
+    justify-content: flex-start;
+    padding: 6px 7px;
+  }
+
+  .cartoon-work .project-featured .project-info > p {
+    display: none;
+  }
+}
+
+/* Final viewport balance: the card actions already expose GitHub, so the extra footer can leave. */
+.cartoon-work .work-github {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .cartoon-work .project-grid {
+    grid-template-rows: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .cartoon-work .project-card:nth-child(2),
+  .cartoon-work .project-card:nth-child(3) {
+    grid-template-rows: minmax(0, 0.46fr) minmax(0, 0.54fr);
+  }
+}
+
+@media (max-width: 430px), (max-height: 700px) {
+  .cartoon-work .project-grid {
+    grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  }
+
+  .cartoon-work .project-card:nth-child(2),
+  .cartoon-work .project-card:nth-child(3) {
+    grid-template-rows: minmax(0, 0.43fr) minmax(0, 0.57fr);
+  }
+}
+
+/* Keep Pip and the paper-plane transition visible between Projects and About. */
+@media (min-width: 901px) {
+  .cartoon-work > .wrap {
+    height: calc(100% - 78px);
+  }
+
+  .cartoon-work .work-github {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    bottom: -57px;
+    display: inline-flex;
+    margin: 0;
+    pointer-events: auto;
+  }
+
+  .cartoon-work > .chapter-trail {
+    z-index: 3;
+    height: 78px;
+    opacity: 0.96;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-stage {
+    height: 78px;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-route {
+    inset: -43px 3% auto;
+    width: 94% !important;
+    height: 118px !important;
+    opacity: 0.24;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider {
+    top: 1px;
+    width: 80px;
+    margin-left: -40px;
+    transform-origin: center;
+  }
+
+  .cartoon-work > .chapter-trail .rider-bob {
+    height: 77px;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider .pip-drawing {
+    top: 0;
+    left: 13px;
+    width: 44px;
+    height: 49px;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider .rider-plane {
+    top: 41px;
+    left: 0;
+    width: 82px;
+    height: 36px;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-spark {
+    display: block;
+    top: 13px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .cartoon-work > .wrap {
+    height: 100%;
+  }
+}
+
+@media (min-width: 901px) {
+  .cartoon-work > .wrap {
+    height: calc(100% - 88px);
+  }
+
+  .cartoon-work .work-github {
+    bottom: -66px;
+  }
+
+  .cartoon-work > .chapter-trail,
+  .cartoon-work > .chapter-trail .chapter-stage {
+    height: 88px;
+    overflow: visible;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider {
+    top: -26px;
+    width: 100px;
+    margin-left: -50px;
+  }
+
+  .cartoon-work > .chapter-trail .rider-bob {
+    height: 94px;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider .pip-drawing {
+    left: 16px;
+    width: 54px;
+    height: 60px;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider .rider-plane {
+    top: 52px;
+    width: 102px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 901px) {
+  .cartoon-work > .chapter-trail .chapter-rider .pip-drawing {
+    z-index: 2;
+  }
+
+  .cartoon-work > .chapter-trail .chapter-rider .rider-plane {
+    top: 34px;
+    z-index: 1;
+  }
+}
+
+/* A steady flight lane gives the project transition equal air above and below. */
+@media (min-width: 901px) {
+  .cartoon-work > .wrap {
+    height: calc(100% - 122px);
+  }
+
+  .cartoon-work .work-github {
+    bottom: -77px;
+  }
+
+  .cartoon-work > .projects-transition,
+  .cartoon-work > .projects-transition .chapter-stage {
+    height: 122px;
+  }
+
+  .cartoon-work > .projects-transition .chapter-rider {
+    top: 22px;
+  }
+}
+
+@media (min-width: 901px) {
+  .cartoon-work > .projects-transition .chapter-rider {
+    top: 0;
+  }
+}
+
+/* Match the full-size About transition, with a larger clear runway and no clouds. */
+@media (min-width: 901px) {
+  .cartoon-work > .wrap {
+    height: calc(100% - 220px);
+  }
+
+  .cartoon-work .work-github {
+    bottom: -66px;
+  }
+
+  .cartoon-work > .projects-transition,
+  .cartoon-work > .projects-transition .chapter-stage {
+    height: 220px;
+    overflow: visible;
+  }
+
+  .cartoon-work > .projects-transition .chapter-route {
+    inset: 35px 4% 0;
+    width: 92% !important;
+    height: 160px !important;
+  }
+
+  .cartoon-work > .projects-transition .chapter-rider {
+    top: 50px;
+    width: 130px;
+    margin-left: -65px;
+  }
+
+  .cartoon-work > .projects-transition .rider-bob {
+    height: 150px;
+  }
+
+  .cartoon-work > .projects-transition .chapter-rider .pip-drawing {
+    top: 0;
+    left: 20px;
+    width: 81px;
+    height: 90px;
+  }
+
+  .cartoon-work > .projects-transition .chapter-rider .rider-plane {
+    top: 76px;
+    left: 0;
+    width: 140px;
+    height: 61px;
+  }
+
+  .cartoon-work > .projects-transition .chapter-cloud,
+  .cartoon-work > .projects-transition .chapter-sun,
+  .cartoon-work > .projects-transition .chapter-caption {
+    display: none;
+  }
+}
+
+@media (min-width: 901px) {
+  .cartoon-work > .wrap {
+    height: calc(100% - 280px);
+  }
+
+  .cartoon-work > .projects-transition,
+  .cartoon-work > .projects-transition .chapter-stage {
+    height: 280px;
+  }
+
+  .cartoon-work > .projects-transition .chapter-rider {
+    top: 70px;
+  }
+}

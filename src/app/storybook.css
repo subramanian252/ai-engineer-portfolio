@@ -1773,3 +1773,23 @@ html[data-motion="paused"] .doodle-writing path {
     display: none;
   }
 }
+/* The first completed project reads as one large link, with its action links above it. */
+.project-card-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+.project-card:has(.project-card-hit):focus-within {
+  outline: 3px solid #526949;
+  outline-offset: 5px;
+}
+.project-card:has(.project-card-hit) .project-info,
+.project-card:has(.project-card-hit) .project-image {
+  pointer-events: none;
+}
+.project-card:has(.project-card-hit) .project-links {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}

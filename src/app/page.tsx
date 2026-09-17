@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowDown,
   ArrowDownRight,
@@ -189,6 +190,17 @@ export default function Home() {
                   }
                   key={project.id}
                 >
+                  {project.caseStudyUrl && (
+                    <Link
+                      className="project-card-hit"
+                      href={project.caseStudyUrl}
+                      aria-label={"Read the " + project.title + " case study"}
+                    >
+                      <span className="sr-only">
+                        Read the {project.title} case study
+                      </span>
+                    </Link>
+                  )}
                   <div className="project-image">
                     {project.image ? (
                       <Image
@@ -221,6 +233,11 @@ export default function Home() {
                     </div>
                     {project.status === "completed" ? (
                       <div className="project-links">
+                        {project.caseStudyUrl && (
+                          <Link href={project.caseStudyUrl}>
+                            Read the story <ArrowRight size={18} />
+                          </Link>
+                        )}
                         {project.demoUrl && (
                           <a
                             href={project.demoUrl}
@@ -265,7 +282,11 @@ export default function Home() {
               Follow the progress on GitHub <ArrowUpRight size={18} />
             </a>
           </div>
-          <ChapterTrail caption="Every idea has a little backstory…" />
+          <ChapterTrail
+            caption="Every idea has a little backstory…"
+            className="projects-transition"
+            steady
+          />
         </section>
         <section
           id="about"

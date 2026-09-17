@@ -75,6 +75,7 @@ export function ScrollCompanion({
       className="scroll-companion"
       aria-label="Pip, your portfolio guide"
       data-chat-open={open}
+      data-lab-active={chapters[chapter.index].selector === "#mission-control"}
     >
       {dismissedVisit !== chapter.visit && (
         <div className="companion-comment" key={chapter.visit}>

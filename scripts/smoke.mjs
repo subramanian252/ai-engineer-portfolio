@@ -46,6 +46,24 @@ console.log(
   "PASS homepage, navigation, eight stations, metadata, on-demand chat",
 );
 
+const lazyChat = await get("/projects/lazychat");
+assert.equal(lazyChat.status, 200, "LazyChat case study loads");
+const lazyChatHtml = await lazyChat.text();
+assert.ok(lazyChatHtml.includes("Meet LazyChat"), "LazyChat hero renders");
+assert.ok(
+  lazyChatHtml.includes("BACKEND / BUILT BY ME"),
+  "Backend authorship is explicit",
+);
+assert.ok(
+  lazyChatHtml.includes("FRONTEND / BUILT WITH AI"),
+  "Frontend authorship is explicit",
+);
+assert.ok(
+  lazyChatHtml.includes("full-rag-chatbot"),
+  "LazyChat source link is present",
+);
+console.log("PASS LazyChat case study, authorship and source link");
+
 const pdf = await get("/subramanian-resume.pdf");
 assert.equal(pdf.status, 200);
 assert.ok(pdf.headers.get("content-type")?.includes("application/pdf"));

@@ -10,6 +10,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 import "./anime.css";
 import "./storybook.css";
+import "./project-viewport.css";
 import "./journal.css";
 import "./after-hours.css";
 import "./mobile.css";
