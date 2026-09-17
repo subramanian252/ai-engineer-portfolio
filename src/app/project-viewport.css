@@ -459,176 +459,217 @@
   }
 }
 
-/* Keep Pip and the paper-plane transition visible between Projects and About. */
+/* Desktop gallery: one shared scale, with a separate flight lane below it. */
 @media (min-width: 901px) {
-  .cartoon-work > .wrap {
-    height: calc(100% - 78px);
+  .cartoon-work {
+    --gallery-type: clamp(15px, min(1.2vw, 1.9svh), 28px);
+    height: auto;
+    min-height: 0;
+    padding: 5svh 0 0;
   }
 
-  .cartoon-work .work-github {
-    position: absolute;
-    z-index: 4;
-    left: 0;
-    bottom: -57px;
-    display: inline-flex;
+  .cartoon-work > .wrap {
+    width: 90%;
+    max-width: none;
+    height: 90svh;
+    min-height: 640px;
+    grid-template-rows: max-content minmax(0, 1fr);
+    gap: clamp(18px, 2.5svh, 40px);
+  }
+
+  .cartoon-work .work-heading h2 {
+    font-size: clamp(38px, min(4.1vw, 6.3svh), 100px);
+    line-height: 1.03;
+  }
+
+  .cartoon-work .work-heading h2 > .handwritten {
+    margin-left: 0.16em;
+  }
+
+  .cartoon-work .garden-intro {
+    font-size: var(--gallery-type);
+    margin-top: 0.6em;
+  }
+
+  .cartoon-work .eyebrow {
+    font-size: calc(var(--gallery-type) * 0.7);
+  }
+
+  .cartoon-work .pip-companion {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 0 0 auto;
+    width: clamp(230px, 23vw, 520px);
+    min-width: 0;
+    height: clamp(110px, 13svh, 220px);
     margin: 0;
-    pointer-events: auto;
+    padding: 0;
+    transform: none;
   }
 
-  .cartoon-work > .chapter-trail {
-    z-index: 3;
-    height: 78px;
-    opacity: 0.96;
+  .cartoon-work .pip-button {
+    width: clamp(105px, 8.5vw, 190px);
+    height: auto;
+    flex: 0 0 auto;
   }
 
-  .cartoon-work > .chapter-trail .chapter-stage {
-    height: 78px;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-route {
-    inset: -43px 3% auto;
-    width: 94% !important;
-    height: 118px !important;
-    opacity: 0.24;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider {
-    top: 1px;
-    width: 80px;
-    margin-left: -40px;
-    transform-origin: center;
-  }
-
-  .cartoon-work > .chapter-trail .rider-bob {
-    height: 77px;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider .pip-drawing {
-    top: 0;
-    left: 13px;
-    width: 44px;
-    height: 49px;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider .rider-plane {
-    top: 41px;
+  .cartoon-work .pip-speech {
+    top: 22%;
     left: 0;
-    width: 82px;
-    height: 36px;
+    right: auto;
+    width: calc(100% - clamp(105px, 8.5vw, 190px) - 14px);
+    padding: 0.55em 0.65em;
+    font-size: clamp(20px, 1.6vw, 36px);
+    line-height: 1.1;
   }
 
-  .cartoon-work > .chapter-trail .chapter-spark {
+  .cartoon-work .project-grid {
+    grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(16px, 2svh, 30px);
+  }
+
+  .cartoon-work .project-featured {
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  }
+
+  .cartoon-work .project-card:not(.project-featured) {
+    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
+  }
+
+  .cartoon-work .project-card,
+  .cartoon-work .project-featured {
+    margin: 0;
+  }
+
+  .cartoon-work .project-info,
+  .cartoon-work .project-featured .project-info {
+    padding: clamp(18px, 2vw, 48px);
+  }
+
+  .cartoon-work .project-info h3,
+  .cartoon-work .project-card:not(.project-featured) .project-info h3 {
+    font-size: calc(var(--gallery-type) * 1.8);
+    line-height: 1.06;
+    margin: 0.24em 0;
+  }
+
+  .cartoon-work .project-featured .project-info h3 {
+    font-size: calc(var(--gallery-type) * 2.5);
+  }
+
+  .cartoon-work .project-info > p,
+  .cartoon-work .project-featured .project-info > p {
     display: block;
-    top: 13px;
-    font-size: 14px;
+    max-width: 44em;
+    font-size: var(--gallery-type);
+    line-height: 1.5;
   }
-}
 
-@media (max-width: 900px) {
-  .cartoon-work > .wrap {
-    height: 100%;
+  .cartoon-work .project-kicker {
+    font-size: calc(var(--gallery-type) * 0.62);
+    gap: 0.7em;
   }
-}
 
-@media (min-width: 901px) {
-  .cartoon-work > .wrap {
-    height: calc(100% - 88px);
+  .cartoon-work .project-kicker > span:first-child {
+    font-size: calc(var(--gallery-type) * 1.2);
+  }
+
+  .cartoon-work .project-tags {
+    margin-top: 0.8em;
+    gap: 0.4em;
+  }
+
+  .cartoon-work .project-tags > span {
+    padding: 0.35em 0.55em;
+    font-size: calc(var(--gallery-type) * 0.68);
+  }
+
+  .cartoon-work .project-links {
+    font-size: calc(var(--gallery-type) * 0.88);
+    margin-top: 0.9em;
+    gap: 1.3em;
+  }
+
+  .cartoon-work .project-links a {
+    min-height: 30px;
+  }
+
+  .cartoon-work .project-links svg {
+    width: 1.1em;
+    height: 1.1em;
+  }
+
+  .cartoon-work .project-details summary {
+    font-size: calc(var(--gallery-type) * 1.15);
+    padding-block: 0.4em;
+  }
+
+  .cartoon-work .project-state {
+    top: 12px;
+    left: 12px;
+    font-size: calc(var(--gallery-type) * 0.9);
+    padding: 0.3em 0.6em;
+  }
+
+  .cartoon-work .project-doodle {
+    padding: 38px 10px 16px;
+    gap: 8px;
+  }
+
+  .cartoon-work .project-doodle > svg {
+    width: 85%;
+    max-width: none;
+    height: 70%;
+    min-height: 0;
+    flex: 0 1 auto;
+  }
+
+  .cartoon-work .project-doodle > span {
+    margin: 0;
+    max-width: 95%;
+    text-align: center;
+    font-size: calc(var(--gallery-type) * 1.15);
+    line-height: 1.15;
+    flex: 0 0 auto;
   }
 
   .cartoon-work .work-github {
-    bottom: -66px;
+    display: inline-flex;
+    position: absolute;
+    top: calc(100% + 36px);
+    left: 0;
+    bottom: auto;
+    margin: 0;
+    z-index: 4;
+    font-size: calc(var(--gallery-type) * 1.1);
   }
 
-  .cartoon-work > .chapter-trail,
-  .cartoon-work > .chapter-trail .chapter-stage {
-    height: 88px;
-    overflow: visible;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider {
-    top: -26px;
-    width: 100px;
-    margin-left: -50px;
-  }
-
-  .cartoon-work > .chapter-trail .rider-bob {
-    height: 94px;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider .pip-drawing {
-    left: 16px;
-    width: 54px;
-    height: 60px;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider .rider-plane {
-    top: 52px;
-    width: 102px;
-    height: 44px;
-  }
-}
-
-@media (min-width: 901px) {
-  .cartoon-work > .chapter-trail .chapter-rider .pip-drawing {
-    z-index: 2;
-  }
-
-  .cartoon-work > .chapter-trail .chapter-rider .rider-plane {
-    top: 34px;
+  .cartoon-work > .projects-transition {
+    position: relative;
+    inset: auto;
+    height: 280px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
     z-index: 1;
-  }
-}
-
-/* A steady flight lane gives the project transition equal air above and below. */
-@media (min-width: 901px) {
-  .cartoon-work > .wrap {
-    height: calc(100% - 122px);
-  }
-
-  .cartoon-work .work-github {
-    bottom: -77px;
-  }
-
-  .cartoon-work > .projects-transition,
-  .cartoon-work > .projects-transition .chapter-stage {
-    height: 122px;
-  }
-
-  .cartoon-work > .projects-transition .chapter-rider {
-    top: 22px;
-  }
-}
-
-@media (min-width: 901px) {
-  .cartoon-work > .projects-transition .chapter-rider {
-    top: 0;
-  }
-}
-
-/* Match the full-size About transition, with a larger clear runway and no clouds. */
-@media (min-width: 901px) {
-  .cartoon-work > .wrap {
-    height: calc(100% - 220px);
-  }
-
-  .cartoon-work .work-github {
-    bottom: -66px;
-  }
-
-  .cartoon-work > .projects-transition,
-  .cartoon-work > .projects-transition .chapter-stage {
-    height: 220px;
     overflow: visible;
+  }
+
+  .cartoon-work > .projects-transition .chapter-stage {
+    height: 280px;
   }
 
   .cartoon-work > .projects-transition .chapter-route {
-    inset: 35px 4% 0;
-    width: 92% !important;
-    height: 160px !important;
+    inset: 35px 4% auto;
+    width: 92%;
+    height: 190px;
+    opacity: 0.24;
   }
 
   .cartoon-work > .projects-transition .chapter-rider {
-    top: 50px;
+    top: 70px;
     width: 130px;
     margin-left: -65px;
   }
@@ -642,6 +683,7 @@
     left: 20px;
     width: 81px;
     height: 90px;
+    z-index: 2;
   }
 
   .cartoon-work > .projects-transition .chapter-rider .rider-plane {
@@ -649,6 +691,11 @@
     left: 0;
     width: 140px;
     height: 61px;
+    z-index: 1;
+  }
+
+  .cartoon-work > .projects-transition .chapter-spark {
+    display: block;
   }
 
   .cartoon-work > .projects-transition .chapter-cloud,
@@ -657,22 +704,6 @@
     display: none;
   }
 }
-
-@media (min-width: 901px) {
-  .cartoon-work > .wrap {
-    height: calc(100% - 280px);
-  }
-
-  .cartoon-work > .projects-transition,
-  .cartoon-work > .projects-transition .chapter-stage {
-    height: 280px;
-  }
-
-  .cartoon-work > .projects-transition .chapter-rider {
-    top: 70px;
-  }
-}
-
 /* Mobile Idea Garden: compact cards follow their content instead of stretching. */
 @media (max-width: 600px) {
   .cartoon-work {
