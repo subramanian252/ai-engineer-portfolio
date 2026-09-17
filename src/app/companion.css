@@ -217,3 +217,25 @@ html[data-motion="paused"] .scroll-companion *::after {
   width: 34px;
   height: 38px;
 }
+
+/* Keep Pip present on mobile without covering the compact project grid. */
+@media (max-width: 720px) {
+  .scroll-companion[data-section="projects"] {
+    right: max(9px, env(safe-area-inset-right, 0px));
+    bottom: calc(9px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .scroll-companion[data-section="projects"] .companion-comment {
+    display: none;
+  }
+
+  .scroll-companion[data-section="projects"] .companion-button {
+    width: 44px;
+    height: 48px;
+  }
+
+  .scroll-companion[data-section="projects"] .companion-character {
+    width: 42px;
+    height: 47px;
+  }
+}

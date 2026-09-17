@@ -672,3 +672,162 @@
     top: 70px;
   }
 }
+
+/* Mobile Idea Garden: compact cards follow their content instead of stretching. */
+@media (max-width: 600px) {
+  .cartoon-work {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: 0;
+    padding: 30px 0 46px;
+    overflow: clip;
+  }
+
+  .cartoon-work > .wrap {
+    width: calc(100% - 28px);
+    height: auto;
+    grid-template-rows: max-content auto;
+    gap: 16px;
+  }
+
+  .cartoon-work .work-heading {
+    align-items: flex-start;
+  }
+
+  .cartoon-work .work-heading h2 {
+    margin: 0;
+    font-size: clamp(30px, 8.2vw, 35px);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+  }
+
+  .cartoon-work .work-heading h2 br,
+  .cartoon-work .work-heading h2 > span {
+    display: block;
+  }
+
+  .cartoon-work .work-heading h2 > span {
+    margin-top: 4px;
+  }
+
+  .cartoon-work .project-grid {
+    height: auto;
+    grid-template-rows: auto auto;
+    gap: 12px 10px;
+    align-items: start;
+  }
+
+  .cartoon-work .project-card,
+  .cartoon-work .project-featured {
+    height: auto;
+    margin-bottom: 0;
+    border-radius: 13px 16px 13px 17px;
+  }
+
+  .cartoon-work .project-featured {
+    grid-template-columns: minmax(0, 0.43fr) minmax(0, 0.57fr);
+  }
+
+  .cartoon-work .project-featured .project-image {
+    height: clamp(220px, 58vw, 240px);
+    min-height: 0;
+  }
+
+  .cartoon-work .project-card:nth-child(2),
+  .cartoon-work .project-card:nth-child(3) {
+    grid-template-rows: auto auto;
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-image {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.06;
+  }
+
+  .cartoon-work .project-info,
+  .cartoon-work .project-featured .project-info,
+  .cartoon-work .project-card:not(.project-featured) .project-info {
+    height: auto;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .cartoon-work .project-featured .project-info {
+    min-height: clamp(220px, 58vw, 240px);
+    padding-inline: 12px;
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-info {
+    min-height: 92px;
+  }
+
+  .cartoon-work .project-featured .project-info > p {
+    display: none;
+  }
+
+  .cartoon-work .project-featured .project-info h3 {
+    font-size: clamp(19px, 5.4vw, 23px);
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-info h3 {
+    font-size: clamp(15px, 4.1vw, 18px);
+  }
+
+  .cartoon-work .project-doodle > svg {
+    width: min(70%, 126px);
+  }
+
+  .cartoon-work .project-doodle > span {
+    max-width: 88%;
+    margin-top: -4px;
+    font-size: clamp(12px, 3.4vw, 15px);
+    line-height: 1.08;
+    text-align: center;
+  }
+
+  .cartoon-work .project-links {
+    column-gap: 8px;
+    row-gap: 4px;
+    font-size: 8px;
+  }
+
+  .cartoon-work .project-state {
+    top: 7px;
+    left: 7px;
+  }
+}
+
+@media (max-width: 370px) {
+  .cartoon-work {
+    padding: 24px 0 38px;
+  }
+
+  .cartoon-work > .wrap {
+    width: calc(100% - 20px);
+    gap: 12px;
+  }
+
+  .cartoon-work .work-heading h2 {
+    font-size: 28px;
+  }
+
+  .cartoon-work .project-grid {
+    gap: 8px 7px;
+  }
+
+  .cartoon-work .project-featured {
+    grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+  }
+
+  .cartoon-work .project-featured .project-image,
+  .cartoon-work .project-featured .project-info {
+    min-height: 210px;
+    height: 210px;
+  }
+
+  .cartoon-work .project-card:not(.project-featured) .project-info {
+    min-height: 86px;
+    padding: 8px;
+  }
+}

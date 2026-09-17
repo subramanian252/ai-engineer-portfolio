@@ -75,6 +75,7 @@ export function ScrollCompanion({
       className="scroll-companion"
       aria-label="Pip, your portfolio guide"
       data-chat-open={open}
+      data-section={chapters[chapter.index].selector.replace(/^[.#]/, "")}
       data-lab-active={chapters[chapter.index].selector === "#mission-control"}
     >
       {dismissedVisit !== chapter.visit && (
