@@ -203,8 +203,8 @@ export default function LazyChatCaseStudy() {
   return (
     <main className={styles.page}>
       <header className={styles.siteHeader}>
-        <Link href="/#projects" className={styles.backLink}>
-          <ArrowLeft size={18} /> Back to the idea garden
+        <Link href="/projects" className={styles.backLink}>
+          <ArrowLeft size={18} /> Back to all projects
         </Link>
         <div className={styles.headerActions}>
           <ProjectThemeToggle />

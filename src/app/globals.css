@@ -457,6 +457,14 @@ h2 {
   color: var(--muted);
   padding-bottom: 5px;
 }
+.garden-directory-link {
+  margin-top: 8px;
+  min-height: 0;
+  padding-block: 4px;
+  color: var(--text);
+  font-family: var(--font-hand), cursive;
+  font-size: 18px;
+}
 .project-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

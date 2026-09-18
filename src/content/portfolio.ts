@@ -25,6 +25,20 @@ export type PortfolioProfile = {
   resumeUrl?: string;
 };
 
+export type DirectoryProject = {
+  id: string;
+  title: string;
+  category: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  repositoryUrl: string;
+  tags: string[];
+  pipeline: [string, string, string];
+  proof: string;
+  note: string;
+};
+
 // Public profile details. Empty optional links stay hidden.
 export const profile: PortfolioProfile = {
   name: "Subramanian M",
@@ -61,22 +75,74 @@ export const projects: Project[] = [
   },
   {
     id: "travel-planner",
-    title: "Travel Planner",
-    category: "AI-POWERED EXPLORATION",
+    title: "LazyPlan",
+    category: "MULTI-AGENT TRAVEL PLANNER",
     summary:
-      "Less planning. More possibility. An intelligent approach to turning travel ideas into personal itineraries.",
-    status: "coming-soon",
-    tags: ["Personalization", "Trip planning"],
+      "A selective agent crew for flights, hotels, weather and budgets, with live progress and human approval before the final itinerary.",
+    status: "completed",
+    tags: ["LangGraph", "MCP", "FastAPI", "HITL"],
     visual: "travel",
+    repositoryUrl: "https://github.com/subramanian252/travel_agent",
+    caseStudyUrl: "/projects/lazyplan",
   },
   {
     id: "agentic-writer",
-    title: "Agentic Writer",
+    title: "LazyWriter",
     category: "AGENTIC WORKFLOWS",
     summary:
-      "From a blank page to a clearer story. Exploring agents that help ideas find their words.",
-    status: "coming-soon",
-    tags: ["AI agents", "Writing workflows"],
+      "A research-aware writing graph with structured plans, parallel section workers, generated diagrams and downloadable Markdown.",
+    status: "completed",
+    tags: ["LangGraph", "Tavily", "Parallel agents", "Images"],
     visual: "writer",
+    repositoryUrl: "https://github.com/subramanian252/ai-agent-writer",
+    caseStudyUrl: "/projects/lazywriter",
+  },
+];
+
+export const projectDirectory: DirectoryProject[] = [
+  {
+    id: "agentic-rag",
+    title: "Agentic RAG",
+    category: "THREE-WAY RETRIEVAL ROUTER",
+    summary:
+      "A question router that chooses a Pinecone knowledge base, live web search or a direct answer, then grades weak evidence before it reaches the final response.",
+    image: "/projects/agentic-rag.webp",
+    imageAlt:
+      "Cartoon railway switch routing a question toward a library, web telescope or direct answer lightbulb",
+    repositoryUrl: "https://github.com/subramanian252/agentic-rag",
+    tags: ["LangGraph", "Pinecone", "Tavily", "OpenRouter"],
+    pipeline: ["Route", "Grade evidence", "Rewrite or answer"],
+    proof: "Pinecone docs · web search · direct path",
+    note: "One question. Three doors. The router has the keys.",
+  },
+  {
+    id: "self-rag",
+    title: "Self-RAG",
+    category: "SELF-CHECKING BOOKISH ASSISTANT",
+    summary:
+      "A document-grounded assistant that studies two machine-learning books, filters irrelevant chunks and revises answers that are unsupported or not useful enough.",
+    image: "/projects/self-rag.webp",
+    imageAlt:
+      "Cartoon pencil inspector checking evidence pages through a looping self-review ribbon",
+    repositoryUrl: "https://github.com/subramanian252/self-rag",
+    tags: ["LangGraph", "FAISS", "Self grading", "OpenRouter"],
+    pipeline: ["Retrieve books", "Check support", "Revise if needed"],
+    proof: "Two ML books · relevance and support checks",
+    note: "It checks its homework before raising its hand.",
+  },
+  {
+    id: "corrective-rag",
+    title: "Corrective RAG",
+    category: "EVIDENCE REPAIR WORKFLOW",
+    summary:
+      "A corrective retrieval graph that grades FAISS results, rewrites weak questions, brings in Tavily evidence and filters useful sentences before answering.",
+    image: "/projects/corrective-rag.webp",
+    imageAlt:
+      "Cartoon proofreader routing weak evidence through web research and a filtering sieve",
+    repositoryUrl: "https://github.com/subramanian252/corrective-rag",
+    tags: ["LangGraph", "FAISS", "Tavily", "Corrective RAG"],
+    pipeline: ["Grade local context", "Repair with web", "Filter and answer"],
+    proof: "Local PDF · corrective web path · sentence filter",
+    note: "Bad context goes to the repair desk, not the answer box.",
   },
 ];

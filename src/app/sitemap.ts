@@ -8,7 +8,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ? [
         { url: origin + "/", changeFrequency: "monthly", priority: 1 },
         {
+          url: origin + "/projects",
+          changeFrequency: "monthly",
+          priority: 0.9,
+        },
+        {
           url: origin + "/projects/lazychat",
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
+          url: origin + "/projects/lazyplan",
+          changeFrequency: "monthly",
+          priority: 0.8,
+        },
+        {
+          url: origin + "/projects/lazywriter",
           changeFrequency: "monthly",
           priority: 0.8,
         },
