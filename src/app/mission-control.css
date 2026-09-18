@@ -1601,6 +1601,13 @@ html[data-motion="paused"] .mission-control * {
     --mc-frame-y: clamp(38px, 4.4svh, 72px);
     --mc-heading-room-gap: clamp(30px, 3.8svh, 56px);
   }
+
+  .mc-detail-body,
+  .mc-system-overview {
+    overflow: clip;
+    overscroll-behavior: auto;
+    scrollbar-width: none;
+  }
 }
 
 @media (min-width: 1001px) and (max-height: 720px) {
