@@ -376,6 +376,13 @@
     line-height: 1.5;
   }
 
+  .cartoon-work .project-card:not(.project-featured) .project-info > p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
   .cartoon-work .project-kicker {
     font-size: calc(var(--gallery-type) * 0.62);
     gap: 0.7em;

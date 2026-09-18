@@ -954,6 +954,7 @@
 :global(.project-theme-night) {
   align-items: center;
   gap: 9px;
+  white-space: nowrap;
 }
 :global(.project-theme-day) {
   display: flex;
