@@ -269,198 +269,8 @@
   display: none;
 }
 
-@media (max-width: 900px) {
-  .cartoon-work {
-    min-height: 620px;
-    padding: 11px 0;
-  }
-
-  .cartoon-work > .wrap {
-    width: calc(100% - 22px);
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: 7px;
-  }
-
-  .cartoon-work .work-heading {
-    gap: 7px;
-  }
-
-  .cartoon-work .work-heading h2 {
-    font-size: clamp(27px, 8.5vw, 39px);
-    line-height: 0.94;
-  }
-
-  .cartoon-work .garden-intro,
-  .cartoon-work .pip-companion,
-  .cartoon-work .work-github,
-  .cartoon-work > .chapter-trail {
-    display: none;
-  }
-
-  .cartoon-work .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: minmax(0, 1.22fr) minmax(0, 0.78fr);
-    gap: 7px;
-  }
-
-  .cartoon-work .project-featured {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    grid-template-columns: minmax(118px, 0.78fr) minmax(0, 1.22fr);
-  }
-
-  .cartoon-work .project-card:nth-child(2),
-  .cartoon-work .project-card:nth-child(3) {
-    grid-row: 2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(0, 0.57fr) minmax(0, 0.43fr);
-  }
-
-  .cartoon-work .project-card:nth-child(2) {
-    grid-column: 1;
-  }
-
-  .cartoon-work .project-card:nth-child(3) {
-    grid-column: 2;
-  }
-
-  .cartoon-work .project-info,
-  .cartoon-work .project-featured .project-info {
-    padding: 7px 9px;
-  }
-
-  .cartoon-work .project-featured .project-info {
-    padding-inline: 11px;
-  }
-
-  .cartoon-work .project-info h3,
-  .cartoon-work .project-featured h3,
-  .cartoon-work .project-card:not(.project-featured) .project-info h3 {
-    margin: 3px 0;
-    font-size: clamp(16px, 4.9vw, 23px);
-  }
-
-  .cartoon-work .project-card:not(.project-featured) .project-info h3 {
-    font-size: clamp(14px, 4vw, 19px);
-  }
-
-  .cartoon-work .project-info > p,
-  .cartoon-work .project-featured .project-info > p {
-    -webkit-line-clamp: 2;
-    font-size: clamp(8px, 2.45vw, 10px);
-    line-height: 1.28;
-  }
-
-  .cartoon-work .project-card:not(.project-featured) .project-info > p {
-    display: none;
-  }
-
-  .cartoon-work .project-kicker {
-    gap: 4px;
-    font-size: 6px;
-  }
-
-  .cartoon-work .project-kicker > span:first-child {
-    font-size: 12px;
-  }
-
-  .cartoon-work
-    .project-card:not(.project-featured)
-    .project-kicker
-    > span:last-child {
-    display: none;
-  }
-
-  .cartoon-work .project-tags {
-    gap: 3px;
-    margin-top: 4px;
-  }
-
-  .cartoon-work .project-tags > span {
-    padding: 2px 4px;
-    font-size: 6px;
-  }
-
-  .cartoon-work .project-tags > span:nth-child(n + 3),
-  .cartoon-work
-    .project-card:not(.project-featured)
-    .project-tags
-    > span:nth-child(n + 2) {
-    display: none;
-  }
-
-  .cartoon-work .project-links {
-    gap: 8px;
-    margin-top: 4px;
-    font-size: 8px;
-  }
-
-  .cartoon-work .project-links svg {
-    width: 10px;
-    height: 10px;
-  }
-
-  .cartoon-work .project-details {
-    display: none;
-  }
-
-  .cartoon-work .project-state {
-    top: 5px;
-    left: 5px;
-    padding: 2px 5px;
-    font-size: 8px;
-  }
-}
-
-@media (max-width: 430px), (max-height: 700px) {
-  .cartoon-work .eyebrow {
-    display: none;
-  }
-
-  .cartoon-work .project-grid {
-    grid-template-rows: minmax(0, 1.18fr) minmax(0, 0.82fr);
-  }
-
-  .cartoon-work .project-card:not(.project-featured) .project-info {
-    justify-content: flex-start;
-    padding: 6px 7px;
-  }
-
-  .cartoon-work .project-featured .project-info > p {
-    display: none;
-  }
-}
-
-/* Final viewport balance: the card actions already expose GitHub, so the extra footer can leave. */
-.cartoon-work .work-github {
-  display: none;
-}
-
-@media (max-width: 900px) {
-  .cartoon-work .project-grid {
-    grid-template-rows: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  }
-
-  .cartoon-work .project-card:nth-child(2),
-  .cartoon-work .project-card:nth-child(3) {
-    grid-template-rows: minmax(0, 0.46fr) minmax(0, 0.54fr);
-  }
-}
-
-@media (max-width: 430px), (max-height: 700px) {
-  .cartoon-work .project-grid {
-    grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  }
-
-  .cartoon-work .project-card:nth-child(2),
-  .cartoon-work .project-card:nth-child(3) {
-    grid-template-rows: minmax(0, 0.43fr) minmax(0, 0.57fr);
-  }
-}
-
 /* Desktop gallery: one shared scale, with a separate flight lane below it. */
-@media (min-width: 901px) {
+@media (min-width: 1101px) {
   .cartoon-work {
     --gallery-type: clamp(15px, min(1.2vw, 1.9svh), 28px);
     height: auto;
@@ -704,22 +514,20 @@
     display: none;
   }
 }
-/* Mobile Idea Garden: compact cards follow their content instead of stretching. */
-@media (max-width: 600px) {
+/* Phones and tablets use content height, not a fraction of the viewport. */
+@media (max-width: 1100px) {
   .cartoon-work {
-    width: 100%;
-    max-width: 100%;
     height: auto;
     min-height: 0;
-    padding: 30px 0 46px;
-    overflow: clip;
+    padding: clamp(40px, 6vw, 64px) 0 clamp(48px, 7vw, 80px);
   }
 
   .cartoon-work > .wrap {
-    width: calc(100% - 28px);
+    width: calc(100% - clamp(32px, 6vw, 64px));
     height: auto;
-    grid-template-rows: max-content auto;
-    gap: 16px;
+    min-height: 0;
+    grid-template-rows: auto auto;
+    gap: 24px;
   }
 
   .cartoon-work .work-heading {
@@ -727,138 +535,226 @@
   }
 
   .cartoon-work .work-heading h2 {
-    margin: 0;
-    font-size: clamp(30px, 8.2vw, 35px);
-    line-height: 0.9;
-    letter-spacing: -0.055em;
+    font-size: clamp(34px, 5.5vw, 56px);
+    line-height: 1.05;
   }
 
-  .cartoon-work .work-heading h2 br,
-  .cartoon-work .work-heading h2 > span {
+  .cartoon-work .work-heading h2 br {
     display: block;
   }
 
-  .cartoon-work .work-heading h2 > span {
-    margin-top: 4px;
+  .cartoon-work .eyebrow {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 10px;
+  }
+
+  .cartoon-work .garden-intro {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .cartoon-work .pip-companion,
+  .cartoon-work .work-github,
+  .cartoon-work > .chapter-trail {
+    display: none;
   }
 
   .cartoon-work .project-grid {
     height: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: auto auto;
-    gap: 12px 10px;
-    align-items: start;
+    gap: 22px;
+    align-items: stretch;
   }
 
   .cartoon-work .project-card,
   .cartoon-work .project-featured {
     height: auto;
-    margin-bottom: 0;
-    border-radius: 13px 16px 13px 17px;
+    min-height: 0;
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
   }
 
   .cartoon-work .project-featured {
-    grid-template-columns: minmax(0, 0.43fr) minmax(0, 0.57fr);
+    grid-column: 1 / -1;
+    grid-row: auto;
+    grid-template-columns: minmax(0, 0.38fr) minmax(0, 0.62fr);
+    grid-template-rows: auto;
   }
 
+  .cartoon-work .project-card:not(.project-featured) {
+    grid-column: auto;
+    grid-row: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 190px auto;
+  }
+
+  .cartoon-work .project-image,
   .cartoon-work .project-featured .project-image {
-    height: clamp(220px, 58vw, 240px);
-    min-height: 0;
-  }
-
-  .cartoon-work .project-card:nth-child(2),
-  .cartoon-work .project-card:nth-child(3) {
-    grid-template-rows: auto auto;
-  }
-
-  .cartoon-work .project-card:not(.project-featured) .project-image {
     height: auto;
     min-height: 0;
-    aspect-ratio: 1.06;
+    aspect-ratio: auto;
   }
 
   .cartoon-work .project-info,
   .cartoon-work .project-featured .project-info,
   .cartoon-work .project-card:not(.project-featured) .project-info {
     height: auto;
-    justify-content: center;
-    padding: 10px;
+    min-height: 0;
+    padding: clamp(20px, 3vw, 30px);
+    justify-content: flex-start;
+    overflow: visible;
   }
 
   .cartoon-work .project-featured .project-info {
-    min-height: clamp(220px, 58vw, 240px);
-    padding-inline: 12px;
+    justify-content: center;
   }
 
-  .cartoon-work .project-card:not(.project-featured) .project-info {
-    min-height: 92px;
+  .cartoon-work .project-kicker {
+    gap: 8px;
+    font-size: 9px;
+    line-height: 1.5;
   }
 
-  .cartoon-work .project-featured .project-info > p {
-    display: none;
+  .cartoon-work .project-kicker > span:first-child {
+    font-size: 18px;
   }
 
-  .cartoon-work .project-featured .project-info h3 {
-    font-size: clamp(19px, 5.4vw, 23px);
-  }
-
+  .cartoon-work .project-info h3,
+  .cartoon-work .project-featured .project-info h3,
   .cartoon-work .project-card:not(.project-featured) .project-info h3 {
-    font-size: clamp(15px, 4.1vw, 18px);
+    font-size: clamp(25px, 3.3vw, 34px);
+    line-height: 1.12;
+    margin: 6px 0 12px;
   }
 
-  .cartoon-work .project-doodle > svg {
-    width: min(70%, 126px);
+  .cartoon-work .project-info > p,
+  .cartoon-work .project-featured .project-info > p {
+    display: block;
+    max-width: 42em;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+    font-size: 15px;
+    line-height: 1.6;
   }
 
-  .cartoon-work .project-doodle > span {
-    max-width: 88%;
-    margin-top: -4px;
-    font-size: clamp(12px, 3.4vw, 15px);
-    line-height: 1.08;
-    text-align: center;
+  .cartoon-work .project-tags {
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .cartoon-work .project-tags > span {
+    padding: 5px 8px;
+    font-size: 11px;
+    line-height: 1.4;
   }
 
   .cartoon-work .project-links {
-    column-gap: 8px;
-    row-gap: 4px;
-    font-size: 8px;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .cartoon-work .project-links a {
+    min-height: 44px;
+    color: var(--text);
+  }
+
+  .cartoon-work .project-links svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .cartoon-work .project-details {
+    display: block;
+    margin-top: 16px;
+  }
+
+  .cartoon-work .project-details summary {
+    min-height: 44px;
+    padding: 8px 0;
+    font-size: 20px;
+  }
+
+  .cartoon-work .project-details[open] p {
+    position: static;
+    padding: 8px 0 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   .cartoon-work .project-state {
-    top: 7px;
-    left: 7px;
+    top: 12px;
+    left: 12px;
+    padding: 4px 9px;
+    font-size: 13px;
+  }
+
+  .cartoon-work .project-doodle {
+    padding: 38px 12px 16px;
+    gap: 4px;
+    justify-content: center;
+  }
+
+  .cartoon-work .project-doodle > svg {
+    width: 100%;
+    max-width: 250px;
+    height: 125px;
+    max-height: none;
+    flex: 0 0 auto;
+  }
+
+  .cartoon-work .project-featured .project-doodle > svg {
+    height: 155px;
+  }
+
+  .cartoon-work .project-doodle > span {
+    margin: 0;
+    max-width: 100%;
+    font-size: 19px;
+    line-height: 1.15;
+    text-align: center;
   }
 }
 
-@media (max-width: 370px) {
-  .cartoon-work {
-    padding: 24px 0 38px;
-  }
-
-  .cartoon-work > .wrap {
-    width: calc(100% - 20px);
-    gap: 12px;
-  }
-
+@media (max-width: 600px) {
   .cartoon-work .work-heading h2 {
-    font-size: 28px;
+    font-size: clamp(32px, 8.5vw, 46px);
   }
 
   .cartoon-work .project-grid {
-    gap: 8px 7px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    gap: 24px;
   }
 
-  .cartoon-work .project-featured {
-    grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
+  .cartoon-work .project-card,
+  .cartoon-work .project-featured,
+  .cartoon-work .project-card:not(.project-featured) {
+    grid-column: auto;
+    grid-row: auto;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 184px auto;
   }
 
-  .cartoon-work .project-featured .project-image,
-  .cartoon-work .project-featured .project-info {
-    min-height: 210px;
-    height: 210px;
+  .cartoon-work .project-featured .project-doodle > svg {
+    height: 125px;
   }
+}
 
-  .cartoon-work .project-card:not(.project-featured) .project-info {
-    min-height: 86px;
-    padding: 8px;
+@media (min-width: 1101px) and (max-height: 700px) {
+  .cartoon-work .eyebrow {
+    display: none;
   }
 }

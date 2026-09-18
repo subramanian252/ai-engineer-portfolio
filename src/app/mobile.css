@@ -459,3 +459,108 @@
 html[data-motion="paused"] .chat-dialog[open] {
   animation: none;
 }
+
+/* A framed portrait keeps the subject and copy separate on tablet screens. */
+@media (min-width: 721px) and (max-width: 1100px) {
+  .living-hero.anime-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    column-gap: clamp(24px, 4vw, 44px);
+    height: max(760px, 100svh);
+    padding: 160px 32px 100px;
+    background: var(--bg);
+  }
+
+  .living-hero .anime-hero-content {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .living-hero h1 {
+    font-size: clamp(38px, 5.1vw, 56px);
+    line-height: 1.1;
+  }
+
+  .living-hero .anime-intro {
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .living-hero .anime-intro .desktop-break {
+    display: none;
+  }
+
+  .living-hero .anime-actions {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .living-hero .ink-button,
+  .living-hero .ink-resume {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  .living-hero .field-guide-trigger {
+    font-size: 22px;
+  }
+
+  .living-hero .hero-depth {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    max-height: max(460px, calc(100svh - 300px));
+    border: 6px solid var(--bg);
+    outline: 1.5px solid var(--line);
+    border-radius: 16px 16px 8px 8px;
+    overflow: hidden;
+    box-shadow: 5px 6px 0 var(--line);
+    transform: none !important;
+  }
+
+  .living-hero .hero-depth .scene-art,
+  .living-hero .hero-depth .scene-art-layer {
+    inset: 0;
+    transform: none !important;
+  }
+
+  .living-hero .hero-depth .scene-image-day {
+    object-position: 82% 35%;
+  }
+
+  .living-hero .hero-depth .scene-image-night {
+    object-position: 72% 50%;
+  }
+
+  .living-hero .hero-atmosphere {
+    display: none;
+  }
+
+  .living-hero .sky-switch {
+    top: 110px;
+    right: 48px;
+    left: auto;
+  }
+
+  .living-hero .sky-switch-note {
+    display: none;
+  }
+
+  .living-hero .scene-caption {
+    bottom: 32px;
+    font-size: 8px;
+  }
+
+  .living-hero .hero-scroll-sticker {
+    bottom: 30px;
+  }
+}
