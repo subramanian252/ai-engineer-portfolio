@@ -106,7 +106,7 @@ export default function Home() {
           </span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#projects">Work</a>
+          <Link href="/projects">Projects</Link>
           <a href="#about">About</a>
           <a href="#stack">Stack</a>
         </nav>

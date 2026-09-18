@@ -45,6 +45,8 @@ const handwritten = Caveat({
 
 const siteUrl = getSiteUrl();
 
+const themeInitScript = `try{const saved=localStorage.getItem("portfolio-theme");if(saved==="day"||saved==="night")document.documentElement.dataset.theme=saved}catch{}`;
+
 export const metadata: Metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
   applicationName: "Subramanian’s little AI lab",
@@ -76,7 +78,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="day">
+    <html lang="en" data-theme="day" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${manrope.variable} ${display.variable} ${playful.variable} ${handwritten.variable}`}
       >

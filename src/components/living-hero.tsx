@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  useEffect,
   useRef,
   useState,
   type ReactNode,
@@ -9,7 +8,12 @@ import {
 } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import { Moon, Sun } from "lucide-react";
-import { SceneArt, DriftingLeaves, useQuietMotion } from "./scene-art";
+import {
+  SceneArt,
+  DriftingLeaves,
+  useNightTheme,
+  useQuietMotion,
+} from "./scene-art";
 
 // User-supplied night landscape; the original daytime portrait stays unchanged.
 const NIGHT_SCENE = "/art/hero.png";
@@ -35,7 +39,7 @@ function prepareNightArtwork() {
 }
 
 export function LivingHero({ children }: { children: ReactNode }) {
-  const [night, setNight] = useState(false);
+  const night = useNightTheme();
   const quiet = useQuietMotion();
   const changing = useRef(false);
   const [preparing, setPreparing] = useState(false);
@@ -50,8 +54,11 @@ export function LivingHero({ children }: { children: ReactNode }) {
         setPreparing(true);
         await prepareNightArtwork();
       }
-      document.documentElement.dataset.theme = night ? "day" : "night";
-      setNight(!night);
+      const theme = night ? "day" : "night";
+      document.documentElement.dataset.theme = theme;
+      try {
+        localStorage.setItem("portfolio-theme", theme);
+      } catch {}
     } catch {
       setThemeError("The night artwork could not load. Please try again.");
     } finally {
@@ -67,9 +74,6 @@ export function LivingHero({ children }: { children: ReactNode }) {
   const cursorY = useMotionValue(0);
   const x = useSpring(cursorX, { stiffness: 70, damping: 24 });
   const y = useSpring(cursorY, { stiffness: 70, damping: 24 });
-  useEffect(() => {
-    document.documentElement.dataset.theme = night ? "night" : "day";
-  }, [night]);
   function move(event: PointerEvent<HTMLElement>) {
     if (quiet || event.pointerType !== "mouse") return;
     const bounds = event.currentTarget.getBoundingClientRect();

@@ -37,6 +37,10 @@ function isNightTheme() {
   return document.documentElement.dataset.theme === "night";
 }
 
+export function useNightTheme() {
+  return useSyncExternalStore(subscribeTheme, isNightTheme, () => false);
+}
+
 export function SceneArt({
   src,
   alt,
@@ -55,7 +59,7 @@ export function SceneArt({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const night = useSyncExternalStore(subscribeTheme, isNightTheme, () => false);
+  const night = useNightTheme();
   const quiet = useQuietMotion();
   const { scrollYProgress } = useScroll({
     target: ref,

@@ -5,7 +5,11 @@ import { Moon, Sun } from "lucide-react";
 export function ProjectThemeToggle() {
   function toggleTheme() {
     const root = document.documentElement;
-    root.dataset.theme = root.dataset.theme === "night" ? "day" : "night";
+    const theme = root.dataset.theme === "night" ? "day" : "night";
+    root.dataset.theme = theme;
+    try {
+      localStorage.setItem("portfolio-theme", theme);
+    } catch {}
   }
 
   return (
