@@ -386,6 +386,7 @@
 
 .cardLinks a,
 .repositoryLink,
+.demoLink,
 .footer a {
   display: inline-flex;
   align-items: center;
@@ -588,8 +589,27 @@
   transform: rotate(-1deg);
 }
 
-.repositoryLink {
+.directoryActions {
   margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+}
+
+.demoLink {
+  padding: 10px 14px;
+  border: 1px solid var(--ink);
+  border-radius: 9px;
+  background: var(--ink);
+  color: var(--paper-2);
+  box-shadow: 3px 3px 0 color-mix(in srgb, var(--outline) 45%, transparent);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.demoLink:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--outline) 45%, transparent);
 }
 
 .footer {
@@ -852,6 +872,7 @@
   .featuredCard,
   .directoryImage img,
   .headerActions > a,
+  .demoLink,
   :global(.project-theme-toggle) {
     transition: none;
   }

@@ -33,6 +33,7 @@ export type DirectoryProject = {
   image: string;
   imageAlt: string;
   repositoryUrl: string;
+  demoUrl: string;
   tags: string[];
   pipeline: [string, string, string];
   proof: string;
@@ -110,6 +111,7 @@ export const projectDirectory: DirectoryProject[] = [
     imageAlt:
       "Cartoon railway switch routing a question toward a library, web telescope or direct answer lightbulb",
     repositoryUrl: "https://github.com/subramanian252/agentic-rag",
+    demoUrl: "https://agentic-rag-two-rouge.vercel.app/",
     tags: ["LangGraph", "Pinecone", "Tavily", "OpenRouter"],
     pipeline: ["Route", "Grade evidence", "Rewrite or answer"],
     proof: "Pinecone docs · web search · direct path",
@@ -125,6 +127,7 @@ export const projectDirectory: DirectoryProject[] = [
     imageAlt:
       "Cartoon pencil inspector checking evidence pages through a looping self-review ribbon",
     repositoryUrl: "https://github.com/subramanian252/self-rag",
+    demoUrl: "https://self-rag-ashy.vercel.app/",
     tags: ["LangGraph", "FAISS", "Self grading", "OpenRouter"],
     pipeline: ["Retrieve books", "Check support", "Revise if needed"],
     proof: "Two ML books · relevance and support checks",
@@ -140,6 +143,7 @@ export const projectDirectory: DirectoryProject[] = [
     imageAlt:
       "Cartoon proofreader routing weak evidence through web research and a filtering sieve",
     repositoryUrl: "https://github.com/subramanian252/corrective-rag",
+    demoUrl: "https://corrective-rag-kappa.vercel.app/",
     tags: ["LangGraph", "FAISS", "Tavily", "Corrective RAG"],
     pipeline: ["Grade local context", "Repair with web", "Filter and answer"],
     proof: "Local PDF · corrective web path · sentence filter",

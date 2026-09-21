@@ -194,15 +194,26 @@ export default function ProjectsPage() {
                 </div>
                 <p className={styles.funnyNote}>{project.note}</p>
 
-                <a
-                  className={styles.repositoryLink}
-                  href={project.repositoryUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Inspect the repository
-                  <ArrowUpRight size={18} />
-                </a>
+                <div className={styles.directoryActions}>
+                  <a
+                    className={styles.demoLink}
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Try live demo
+                    <ArrowUpRight size={18} />
+                  </a>
+                  <a
+                    className={styles.repositoryLink}
+                    href={project.repositoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github size={17} />
+                    Inspect repository
+                  </a>
+                </div>
               </div>
             </article>
           ))}
