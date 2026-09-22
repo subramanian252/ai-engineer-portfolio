@@ -110,6 +110,16 @@ export default function ProjectsPage() {
                       Read the field notes <ArrowRight size={17} />
                     </Link>
                   )}
+                  {project.demoUrl && (
+                    <a
+                      className={styles.demoLink}
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Try live demo <ArrowUpRight size={17} />
+                    </a>
+                  )}
                   {project.repositoryUrl && (
                     <a
                       href={project.repositoryUrl}

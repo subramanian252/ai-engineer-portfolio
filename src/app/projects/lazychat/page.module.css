@@ -161,6 +161,7 @@
 }
 
 .primaryButton,
+.secondaryButton,
 .futureButton,
 .futureButtonCompact,
 .finalActions > a {
@@ -178,15 +179,26 @@
 }
 
 .primaryButton,
+.secondaryButton,
 .finalActions > a {
-  background: var(--ink);
-  color: var(--paper);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
+.primaryButton,
+.finalActions > a {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.secondaryButton {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
 .primaryButton:hover,
+.secondaryButton:hover,
 .finalActions > a:hover {
   transform: translate(2px, 2px);
   box-shadow: 2px 3px 0 var(--shadow);
@@ -707,6 +719,11 @@
 .finalActions > a {
   background: #193d34;
   color: #f7f0db;
+}
+.finalActions > a.liveDemoButton {
+  border-color: #193d34;
+  background: #f7f0db;
+  color: #193d34;
 }
 .finalActions .futureButtonCompact {
   border-color: #193d34;

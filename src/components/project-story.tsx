@@ -3,6 +3,7 @@ import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   Check,
   Clock3,
   Github,
@@ -36,6 +37,7 @@ export type ProjectStory = {
   headline: string;
   lede: string;
   repositoryUrl: string;
+  demoUrl?: string;
   sourceLabel: string;
   futureLabel: string;
   futureNote: string;
@@ -123,19 +125,44 @@ export function ProjectStoryPage({ story }: { story: ProjectStory }) {
             </h1>
             <p className={styles.lede}>{story.lede}</p>
             <div className={styles.heroActions}>
-              <a
-                className={styles.primaryButton}
-                href={story.repositoryUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Github size={19} /> {story.sourceLabel}{" "}
-                <ArrowRight size={18} />
-              </a>
-              <FutureButton label={story.futureLabel} />
+              {story.demoUrl ? (
+                <>
+                  <a
+                    className={styles.primaryButton}
+                    href={story.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Sparkles size={19} /> {story.futureLabel}
+                    <ArrowUpRight size={18} />
+                  </a>
+                  <a
+                    className={styles.secondaryButton}
+                    href={story.repositoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github size={19} /> {story.sourceLabel}
+                  </a>
+                </>
+              ) : (
+                <>
+                  <a
+                    className={styles.primaryButton}
+                    href={story.repositoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Github size={19} /> {story.sourceLabel}{" "}
+                    <ArrowRight size={18} />
+                  </a>
+                  <FutureButton label={story.futureLabel} />
+                </>
+              )}
             </div>
             <p className={styles.futureNote}>
-              <Clock3 size={15} /> {story.futureNote}
+              {story.demoUrl ? <Check size={15} /> : <Clock3 size={15} />}
+              {story.futureNote}
             </p>
           </div>
 
@@ -323,10 +350,22 @@ export function ProjectStoryPage({ story }: { story: ProjectStory }) {
             <h2>{story.finalTitle}</h2>
           </div>
           <div className={styles.finalActions}>
+            {story.demoUrl && (
+              <a
+                className={styles.liveDemoButton}
+                href={story.demoUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Sparkles /> {story.futureLabel} <ArrowUpRight />
+              </a>
+            )}
             <a href={story.repositoryUrl} target="_blank" rel="noreferrer">
               <Github /> View on GitHub <ArrowRight />
             </a>
-            <FutureButton label={story.futureLabel} compact />
+            {!story.demoUrl && (
+              <FutureButton label={story.futureLabel} compact />
+            )}
           </div>
         </section>
       </article>

@@ -243,6 +243,7 @@ export default function Home() {
                         )}
                         {project.demoUrl && (
                           <a
+                            className="project-demo-link"
                             href={project.demoUrl}
                             target="_blank"
                             rel="noreferrer"
@@ -250,7 +251,7 @@ export default function Home() {
                             Try it live <ArrowUpRight size={18} />
                           </a>
                         )}
-                        {project.repositoryUrl && (
+                        {project.repositoryUrl && !project.demoUrl && (
                           <a
                             href={project.repositoryUrl}
                             target="_blank"

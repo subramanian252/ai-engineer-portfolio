@@ -96,6 +96,7 @@ export const projects: Project[] = [
     tags: ["LangGraph", "Tavily", "Parallel agents", "Images"],
     visual: "writer",
     repositoryUrl: "https://github.com/subramanian252/ai-agent-writer",
+    demoUrl: "https://ai-agent-writer.vercel.app/",
     caseStudyUrl: "/projects/lazywriter",
   },
 ];

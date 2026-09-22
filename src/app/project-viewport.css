@@ -205,6 +205,22 @@
   height: 14px;
 }
 
+.cartoon-work .project-links .project-demo-link {
+  padding: 0.58em 0.82em;
+  border: 1px solid var(--text);
+  border-radius: 7px;
+  background: var(--text);
+  color: var(--bg);
+  box-shadow: 2px 3px 0 color-mix(in srgb, var(--text) 24%, transparent);
+  font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.cartoon-work .project-links .project-demo-link:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 5px 0 color-mix(in srgb, var(--text) 24%, transparent);
+}
+
 .cartoon-work .project-details {
   position: relative;
   margin-top: clamp(4px, 0.7vh, 7px);

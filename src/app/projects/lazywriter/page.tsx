@@ -22,6 +22,7 @@ import { getSiteUrl } from "@/lib/site-url";
 import styles from "../lazychat/page.module.css";
 
 const repositoryUrl = "https://github.com/subramanian252/ai-agent-writer";
+const demoUrl = "https://ai-agent-writer.vercel.app/";
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
@@ -48,10 +49,11 @@ const story: ProjectStory = {
   lede:
     "An end-to-end technical writing system that routes each topic, gathers evidence when needed, plans the article, writes sections in parallel and places generated diagrams where they actually help.",
   repositoryUrl,
+  demoUrl,
   sourceLabel: "Explore the source",
   futureLabel: "Open LazyWriter",
   futureNote:
-    "The public writing desk comes later. The complete backend story is open on GitHub.",
+    "The public writing desk is live. Give it a topic and watch the editorial crew get to work.",
   consoleLabel: "LAZYWRITER / DRAFT 019",
   consoleStatus: "5 WORKERS WRITING",
   consolePrompt: "Explain how LangGraph coordinates parallel AI agents.",
