@@ -3,10 +3,11 @@ import Link from "next/link";
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   Bot,
   Check,
   CircleDollarSign,
-  Clock3,
+  Cloud,
   Code2,
   Database,
   FileText,
@@ -25,12 +26,13 @@ import { getSiteUrl } from "@/lib/site-url";
 import styles from "./page.module.css";
 
 const repositoryUrl = "https://github.com/subramanian252/full-rag-chatbot";
+const demoUrl = "https://full-rag-chatbot.vercel.app/";
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: "LazyChat — Stateful AI Workspace",
   description:
-    "Inside LazyChat: document RAG, selectable models, visible tools, human approval, persistent conversations and honest usage tracking.",
+    "Inside LazyChat: Pinecone document RAG, selectable models, visible tools, RDS persistence, human approval and a Vercel deployment.",
   alternates: siteUrl
     ? { canonical: siteUrl + "/projects/lazychat" }
     : undefined,
@@ -38,7 +40,7 @@ export const metadata: Metadata = {
     type: "article",
     title: "LazyChat — Big questions. Tiny robot energy.",
     description:
-      "A playful walkthrough of Subramanian’s stateful LLM workspace.",
+      "A playful walkthrough of Subramanian’s live, stateful LLM workspace.",
     url: siteUrl ? siteUrl + "/projects/lazychat" : undefined,
   },
 };
@@ -62,7 +64,7 @@ const features = [
     icon: FileText,
     number: "03",
     title: "Bring your own documents",
-    text: "PDF, TXT, Markdown, CSV and DOCX files become conversation-scoped chunks, embeddings and FAISS search results.",
+    text: "PDF, TXT, Markdown, CSV and DOCX files become conversation-scoped chunks, embeddings and Pinecone search results.",
     note: "The PDF has entered the chat.",
   },
   {
@@ -76,7 +78,7 @@ const features = [
     icon: ShieldCheck,
     number: "05",
     title: "A human keeps the keys",
-    text: "Sensitive simulated actions pause at the exact LangGraph checkpoint until a person approves or rejects them.",
+    text: "Sensitive simulated actions pause at an RDS-backed LangGraph checkpoint, survive a reload and wait for a matching approval.",
     note: "Pip cannot impulse-buy stocks.",
   },
   {
@@ -91,9 +93,9 @@ const features = [
 const flow = [
   ["React", "asks"],
   ["FastAPI", "validates"],
-  ["LangGraph", "remembers"],
+  ["Graph + RDS", "remembers"],
   ["Model", "reasons"],
-  ["Tools + RAG", "find evidence"],
+  ["Tools + Pinecone", "find evidence"],
   ["SSE", "streams back"],
 ];
 
@@ -185,20 +187,6 @@ function LazyBotConsole() {
   );
 }
 
-function FutureChatButton({ compact = false }: { compact?: boolean }) {
-  return (
-    <span
-      className={compact ? styles.futureButtonCompact : styles.futureButton}
-      aria-disabled="true"
-      title="The public chat will be connected later"
-    >
-      <MessageSquareText size={18} />
-      <span>{compact ? "Chat coming soon" : "Open LazyChat"}</span>
-      {!compact && <em>COMING SOON</em>}
-    </span>
-  );
-}
-
 export default function LazyChatCaseStudy() {
   return (
     <main className={styles.page}>
@@ -227,22 +215,30 @@ export default function LazyChatCaseStudy() {
             <p className={styles.lede}>
               A stateful LLM workspace where documents become evidence, tools
               stay visible, risky actions wait for a human and every token keeps
-              its receipt.
+              its receipt—now running as a public Vercel application.
             </p>
             <div className={styles.heroActions}>
               <a
                 className={styles.primaryButton}
+                href={demoUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <MessageSquareText size={19} /> Open the live chat{" "}
+                <ArrowUpRight size={18} />
+              </a>
+              <a
+                className={styles.secondaryButton}
                 href={repositoryUrl}
                 target="_blank"
                 rel="noreferrer"
               >
                 <Github size={19} /> Explore the source <ArrowRight size={18} />
               </a>
-              <FutureChatButton />
             </div>
             <p className={styles.futureNote}>
-              <Clock3 size={15} /> The public chat door is painted. Wiring comes
-              next.
+              <Check size={15} /> The public chat is live, with its React build
+              bundled into the FastAPI deployment.
             </p>
           </div>
           <LazyBotConsole />
@@ -307,9 +303,10 @@ export default function LazyChatCaseStudy() {
             ))}
           </div>
           <p className={styles.flowCaption}>
-            The graph restores the conversation checkpoint before the model
-            decides whether to answer, retrieve context or call a tool. Results
-            stream back as server-sent events and are saved with their usage.
+            The graph restores its PostgreSQL checkpoint before the model
+            decides whether to answer, retrieve Pinecone context or call a tool.
+            Results stream back as server-sent events and are saved with their
+            provider-reported usage.
           </p>
         </section>
 
@@ -318,10 +315,11 @@ export default function LazyChatCaseStudy() {
             <p className={styles.eyebrow}>THE DOCUMENT DETOUR</p>
             <h2>RAG, explained with a paper trail.</h2>
             <p>
-              Every uploaded file belongs to one conversation. It is parsed,
-              divided into useful chunks, embedded through OpenRouter and placed
-              in its own FAISS index. A query retrieves the three most relevant
-              pieces before the model writes its answer.
+              Every uploaded file belongs to one conversation. Up to 4 MB is
+              parsed from request bytes, split into 1,000-character chunks with
+              overlap, embedded through OpenRouter and stored in a Pinecone
+              namespace matching the thread ID. A query retrieves the three most
+              relevant pieces before the model writes its answer.
             </p>
             <div className={styles.fileTypes}>
               {["PDF", "TXT", "MD", "CSV", "DOCX"].map((type) => (
@@ -345,12 +343,57 @@ export default function LazyChatCaseStudy() {
             <ArrowRight />
             <div>
               <Database />
-              <span>FAISS</span>
+              <span>PINECONE</span>
             </div>
             <ArrowRight />
             <div>
               <Search />
               <span>TOP 3</span>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.ragSection}>
+          <div className={styles.ragCopy}>
+            <p className={styles.eyebrow}>THE VERCEL SUITCASE</p>
+            <h2>One deployment carries both halves.</h2>
+            <p>
+              Vite compiles the React interface into the public directory.
+              Vercel bundles those assets with the FastAPI Function, installs
+              the locked Python environment and promotes the result to the live
+              production alias. RDS and Pinecone keep durable state outside the
+              serverless runtime.
+            </p>
+            <div className={styles.fileTypes}>
+              {["React 19", "FastAPI", "Fluid compute", "TLS to RDS"].map(
+                (type) => (
+                  <span key={type}>{type}</span>
+                ),
+              )}
+            </div>
+          </div>
+          <div
+            className={styles.ragMachine}
+            aria-label="LazyChat Vercel deployment pipeline"
+          >
+            <div>
+              <Code2 />
+              <span>REACT BUILD</span>
+            </div>
+            <ArrowRight />
+            <div>
+              <Cloud />
+              <span>VERCEL</span>
+            </div>
+            <ArrowRight />
+            <div>
+              <TerminalSquare />
+              <span>FASTAPI</span>
+            </div>
+            <ArrowRight />
+            <div>
+              <Database />
+              <span>DURABLE DATA</span>
             </div>
           </div>
         </section>
@@ -393,10 +436,13 @@ export default function LazyChatCaseStudy() {
                   <Check /> LangGraph + LangChain
                 </li>
                 <li>
-                  <Check /> SQLite + SQLAlchemy
+                  <Check /> Amazon RDS + SQLAlchemy
                 </li>
                 <li>
-                  <Check /> FAISS + OpenRouter
+                  <Check /> Pinecone + OpenRouter
+                </li>
+                <li>
+                  <Check /> Vercel FastAPI runtime
                 </li>
               </ul>
             </article>
@@ -413,7 +459,7 @@ export default function LazyChatCaseStudy() {
               </p>
               <ul>
                 <li>
-                  <Check /> React + TypeScript
+                  <Check /> React 19 + TypeScript
                 </li>
                 <li>
                   <Check /> Vite
@@ -440,11 +486,12 @@ export default function LazyChatCaseStudy() {
             <p className={styles.eyebrow}>HONEST EDGES</p>
             <h2>Built as a personal workspace.</h2>
             <p>
-              LazyChat currently assumes one trusted user and a single backend
-              worker. A public multi-user release needs authentication, per-user
-              data isolation and shared coordination for checkpoints and
-              conversation locks. The stock purchase tool is a simulation; no
-              real trade is placed.
+              The live app is a single-user-oriented demonstration. Conversation
+              IDs are application identifiers, not authorization boundaries, and
+              its overlapping-request guard is process-local. A multi-tenant
+              release still needs identity, ownership, rate limits, distributed
+              coordination and retention controls. The stock purchase tool is a
+              simulation; no real trade is placed.
             </p>
           </div>
         </section>
@@ -452,14 +499,21 @@ export default function LazyChatCaseStudy() {
         <section className={styles.finalCta}>
           <Bot size={42} />
           <div>
-            <p className={styles.eyebrow}>THE DOOR IS ALMOST OPEN</p>
-            <h2>Read the code now. Talk to LazyChat later.</h2>
+            <p className={styles.eyebrow}>THE CHAT DOOR IS OPEN</p>
+            <h2>Ask a question live. Then inspect how the answer travelled.</h2>
           </div>
           <div className={styles.finalActions}>
+            <a
+              className={styles.liveDemoButton}
+              href={demoUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageSquareText /> Open LazyChat <ArrowUpRight />
+            </a>
             <a href={repositoryUrl} target="_blank" rel="noreferrer">
               <Github /> View on GitHub <ArrowRight />
             </a>
-            <FutureChatButton compact />
           </div>
         </section>
       </article>
@@ -468,7 +522,7 @@ export default function LazyChatCaseStudy() {
         <Link href="/#projects">
           <ArrowLeft size={17} /> Back to all projects
         </Link>
-        <span>LAZYCHAT / BIG QUESTIONS. TINY ROBOT ENERGY.</span>
+        <span>LAZYCHAT / BIG QUESTIONS. TINY ROBOT ENERGY. LIVE ON VERCEL.</span>
       </footer>
     </main>
   );

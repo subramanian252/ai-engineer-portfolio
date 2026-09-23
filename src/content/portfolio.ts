@@ -65,13 +65,14 @@ export const projects: Project[] = [
   {
     id: "full-llm-chat",
     title: "LazyChat",
-    category: "STATEFUL LLM AGENT",
+    category: "DEPLOYED STATEFUL LLM AGENT",
     summary:
-      "A stateful agent workspace with document RAG, model selection, visible tool calls, human approval and honest usage tracking.",
+      "A live stateful agent workspace with Pinecone RAG, RDS persistence, visible tools, human approval and honest usage tracking.",
     status: "completed",
-    tags: ["RAG", "LangGraph", "FastAPI", "Tool calling"],
+    tags: ["LangGraph", "Pinecone", "Amazon RDS", "Vercel"],
     visual: "chat",
     repositoryUrl: "https://github.com/subramanian252/full-rag-chatbot",
+    demoUrl: "https://full-rag-chatbot.vercel.app/",
     caseStudyUrl: "/projects/lazychat",
   },
   {
