@@ -77,14 +77,16 @@ export const projects: Project[] = [
   {
     id: "travel-planner",
     title: "LazyPlan",
-    category: "MULTI-AGENT TRAVEL PLANNER",
+    category: "DEPLOYED MULTI-AGENT TRAVEL PLANNER",
     summary:
-      "A selective agent crew for flights, hotels, weather and budgets, with live progress and human approval before the final itinerary.",
+      "A live travel crew with selective agents, streamed progress, human approval and a production path through AWS ECS.",
     status: "completed",
-    tags: ["LangGraph", "MCP", "FastAPI", "HITL"],
+    tags: ["LangGraph", "HITL", "MCP", "AWS ECS"],
     visual: "travel",
     repositoryUrl: "https://github.com/subramanian252/travel_agent",
     caseStudyUrl: "/projects/lazyplan",
+    demoUrl:
+      "http://travel-agent-lb-1346259227.eu-north-1.elb.amazonaws.com/",
   },
   {
     id: "agentic-writer",

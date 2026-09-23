@@ -3,6 +3,7 @@ import {
   BadgeDollarSign,
   CheckCircle2,
   CloudSun,
+  Container,
   Database,
   FileCheck2,
   GitBranch,
@@ -22,12 +23,14 @@ import { getSiteUrl } from "@/lib/site-url";
 import styles from "../lazychat/page.module.css";
 
 const repositoryUrl = "https://github.com/subramanian252/travel_agent";
+const demoUrl =
+  "http://travel-agent-lb-1346259227.eu-north-1.elb.amazonaws.com/";
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   title: "LazyPlan — Multi-Agent Travel Planner",
   description:
-    "Inside LazyPlan: selective travel agents, live workflow streaming, durable checkpoints, human approval and focused itinerary revisions.",
+    "Inside LazyPlan: selective travel agents, live workflow streaming, durable checkpoints, human approval and an AWS ECS deployment.",
   alternates: siteUrl
     ? { canonical: siteUrl + "/projects/lazyplan" }
     : undefined,
@@ -35,7 +38,7 @@ export const metadata: Metadata = {
     type: "article",
     title: "LazyPlan — A travel crew inside one graph",
     description:
-      "A playful walkthrough of Subramanian’s multi-agent travel planner.",
+      "A playful walkthrough of Subramanian’s live, AWS-deployed multi-agent travel planner.",
     url: siteUrl ? siteUrl + "/projects/lazyplan" : undefined,
   },
 };
@@ -46,12 +49,13 @@ const story: ProjectStory = {
   heroEyebrow: "THE ITINERARY MACHINE",
   headline: "A tiny travel crew with a very serious clipboard.",
   lede:
-    "A multi-agent travel planner that checks the brief, calls only the specialists a trip needs, streams their progress and pauses for approval before the itinerary becomes final.",
+    "A live multi-agent travel planner that checks the brief, calls only the specialists a trip needs, streams their progress, pauses for approval and serves the whole workflow from an AWS container.",
   repositoryUrl,
+  demoUrl,
   sourceLabel: "Explore the source",
-  futureLabel: "Open LazyPlan",
+  futureLabel: "Plan a trip live",
   futureNote:
-    "The public trip desk is being packed. The full workflow is already in the repository.",
+    "The public trip desk is open. Try the deployed workflow, then inspect every moving part in the repository.",
   consoleLabel: "LAZYPLAN / TRIP 042",
   consoleStatus: "AWAITING APPROVAL",
   consolePrompt: "Paris, four days, museums, food, and a sensible budget.",
@@ -106,7 +110,7 @@ const story: ProjectStory = {
   ),
   builderAside: "The itinerary waits for a human. As it should.",
   featureEyebrow: "WHAT TRAVELS INSIDE",
-  featureTitle: "Six moving parts. One trip that stays on track.",
+  featureTitle: "Seven moving parts. One trip that stays on track.",
   featureIntro:
     "LazyPlan treats planning as a stateful workflow rather than one heroic prompt.",
   features: [
@@ -152,6 +156,13 @@ const story: ProjectStory = {
       text: "PostgreSQL checkpoints keep the graph resumable, and a confirmed New Trip removes the old thread explicitly.",
       note: "No mystery holiday leftovers.",
     },
+    {
+      icon: Container,
+      number: "07",
+      title: "The trip desk has a real runway",
+      text: "Docker packages the app, ECR stores the image, ECS runs it, and the load balancer sends traffic only after the health check passes.",
+      note: "CloudWatch keeps the flight recorder.",
+    },
   ],
   flowEyebrow: "ONE BRIEF, SIX STOPS",
   flowTitle: "From travel wish to approved itinerary.",
@@ -192,6 +203,19 @@ const story: ProjectStory = {
         { icon: CheckCircle2, label: "FINAL" },
       ],
     },
+    {
+      eyebrow: "THE AWS RUNWAY",
+      title: "A healthy container earns real traffic.",
+      body:
+        "A versioned Docker image moves through Amazon ECR into an ECS task. The Application Load Balancer checks the FastAPI health endpoint before routing users, while CloudWatch collects container and Uvicorn logs. PostgreSQL remains outside the task so paused trips survive a container restart.",
+      tags: ["Docker image", "ECS service", "ALB health check"],
+      steps: [
+        { icon: Container, label: "DOCKER" },
+        { icon: Database, label: "ECR" },
+        { icon: Route, label: "ECS" },
+        { icon: CheckCircle2, label: "HEALTHY" },
+      ],
+    },
   ],
   toolsEyebrow: "THE TRAVEL TOOL BELT",
   toolsTitle: "Real research, connected through clear contracts.",
@@ -204,9 +228,14 @@ const story: ProjectStory = {
     "Aviationstack",
     "Weather MCP",
     "OpenRouter",
+    "Docker",
+    "Amazon ECR",
+    "Amazon ECS",
+    "Application Load Balancer",
+    "CloudWatch",
   ],
   toolsNote:
-    "Hotel, flight and weather context arrive through MCP-backed tools. Budget guidance is clearly labeled as an estimate, and the browser receives the graph’s actual SSE events.",
+    "Hotel, flight and weather context arrive through MCP-backed tools. The browser receives the graph’s actual SSE events, while the AWS stack keeps the container healthy, reachable and observable.",
   backendTitle: "The travel engine",
   backendText:
     "Workflow architecture, graph state, agent routing, tool integration, persistence, review commands, thread lifecycle and API behavior were built by me.",
@@ -215,6 +244,8 @@ const story: ProjectStory = {
     "LangGraph + LangChain",
     "PostgreSQL checkpoints",
     "MCP + SSE",
+    "Docker + AWS ECS",
+    "ALB + CloudWatch",
   ],
   frontendTitle: "The departure lounge",
   frontendText:
@@ -228,11 +259,11 @@ const story: ProjectStory = {
   boundaryEyebrow: "HONEST EDGES",
   boundaryTitle: "Research helps you plan; it does not book the plane.",
   boundaryText:
-    "LazyPlan produces researched travel guidance and estimated budgets. External data can change, so availability, pricing and critical travel details still need verification before booking. The public demo will be connected later.",
+    "LazyPlan produces researched travel guidance and estimated budgets. External data can change, so availability, pricing and critical travel details still need verification before booking. The live button opens the current AWS deployment.",
   boundaryIcon: MapPinned,
-  finalEyebrow: "THE SUITCASE IS PACKED",
-  finalTitle: "Read the graph now. Plan a trip here later.",
-  footerLine: "LAZYPLAN / MANY AGENTS. ONE HUMAN APPROVAL.",
+  finalEyebrow: "THE TRIP DESK IS OPEN",
+  finalTitle: "Plan a trip live. Then inspect how every agent got there.",
+  footerLine: "LAZYPLAN / MANY AGENTS. ONE HUMAN APPROVAL. LIVE ON ECS.",
 };
 
 export default function LazyPlanCaseStudy() {
