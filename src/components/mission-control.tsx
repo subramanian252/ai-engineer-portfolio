@@ -106,7 +106,7 @@ export function MissionControl() {
     run.status === "idle"
       ? "Pick a machine. Try its experiment. Collect a little know-how."
       : run.status === "complete"
-        ? "All eight steps complete. Nothing caught fire. A promising start."
+        ? "All six steps complete. Nothing caught fire. A promising start."
         : run.status === "paused"
           ? "Pipeline paused. Explore a step or resume the run."
           : stations[run.step].run;
@@ -173,7 +173,7 @@ export function MissionControl() {
           <div
             className="mc-stage"
             role="group"
-            aria-label="Eight pipeline steps, left to right"
+            aria-label="Six pipeline steps, left to right"
           >
             {stations.map((item, i) => (
               <button
@@ -203,6 +203,14 @@ export function MissionControl() {
                 <MachineDrawing id={item.id} />
                 <span className="mc-station-label">{item.short}</span>
                 <span className="mc-station-subtitle">{item.subtitle}</span>
+                <span
+                  className="mc-station-substeps"
+                  aria-label={`${item.short} substeps: ${item.substeps.join(", ")}`}
+                >
+                  {item.substeps.map((step) => (
+                    <small key={step}>{step}</small>
+                  ))}
+                </span>
                 {tried.includes(item.id) && (
                   <span
                     className="mc-station-stamp"
@@ -240,7 +248,7 @@ export function MissionControl() {
             <p role="status">{message}</p>
             <span className="mc-run-count">
               {run.status === "idle"
-                ? "8 STEPS"
+                ? `${stations.length} STEPS`
                 : `${run.status === "complete" ? stations.length : run.step + 1} / ${stations.length}`}
             </span>
           </div>
@@ -269,7 +277,7 @@ export function MissionControl() {
               </span>
               <div className="mc-desk-actions">
                 <span className="mc-passport-count" role="status">
-                  {tried.length}/8 tried
+                  {tried.length}/{stations.length} tried
                 </span>
                 {station && activeIndex !== null && (
                   <>
@@ -361,8 +369,8 @@ export function MissionControl() {
                     <em>ship useful AI.</em>
                   </h3>
                   <p>
-                    Turn messy data into an answer someone can actually use.
-                    Eight little experiments. A few things you’re encouraged to
+                    Turn messy data into an answer someone can actually use. Six
+                    focused experiments. A few things you’re encouraged to
                     break.
                   </p>
                   <button
@@ -394,7 +402,7 @@ export function MissionControl() {
                     </div>
                     <div>
                       <dt>
-                        <span>03–05</span> Reason
+                        <span>03–04</span> Reason
                       </dt>
                       <dd>
                         Find evidence.
@@ -404,7 +412,7 @@ export function MissionControl() {
                     </div>
                     <div>
                       <dt>
-                        <span>06–08</span> Deliver
+                        <span>05–06</span> Deliver
                       </dt>
                       <dd>
                         Serve an answer.
@@ -417,7 +425,7 @@ export function MissionControl() {
                     <PipDrawing />
                     <div>
                       <strong>
-                        {tried.length === 8
+                        {tried.length === stations.length
                           ? "A full passport. Nicely done."
                           : "A stamp for every experiment you try."}
                       </strong>

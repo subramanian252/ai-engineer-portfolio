@@ -6,7 +6,7 @@ import { PipDrawing } from "./pip";
 
 const chapters = [
   { selector: ".living-hero", line: "Hi, I’m Pip. Your tiny tour guide." },
-  { selector: "#projects", line: "Still in the workshop. I’m supervising." },
+  { selector: "#projects", line: "I named the bugs. We’re coworkers now." },
   { selector: "#about", line: "Plot twist: he used to edit videos." },
   { selector: "#stack", line: "He knows too many frameworks." },
   {

@@ -213,7 +213,9 @@
   color: var(--bg);
   box-shadow: 2px 3px 0 color-mix(in srgb, var(--text) 24%, transparent);
   font-weight: 800;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .cartoon-work .project-links .project-demo-link:hover {
@@ -315,6 +317,13 @@
   .cartoon-work .garden-intro {
     font-size: var(--gallery-type);
     margin-top: 0.6em;
+  }
+
+  .cartoon-work .garden-directory-link {
+    min-height: 2.4em;
+    margin-top: 0.65em;
+    padding-inline: 0.8em;
+    font-size: clamp(23px, calc(var(--gallery-type) * 1.15), 38px);
   }
 
   .cartoon-work .eyebrow {

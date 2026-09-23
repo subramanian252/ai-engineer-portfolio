@@ -15,18 +15,9 @@ test("tour visits every station once, completes, and ignores late timer ticks", 
     visited.push(stations[state.step].id);
     state = act(state, "tick");
   }
-  assert.deepEqual(visited, [
-    "data",
-    "model",
-    "rag",
-    "agents",
-    "guardrails",
-    "api",
-    "mlops",
-    "monitoring",
-  ]);
-  assert.equal(new Set(visited).size, 8);
-  assert.deepEqual(state, { status: "complete", step: 7 });
+  assert.deepEqual(visited, ["data", "model", "rag", "agents", "api", "mlops"]);
+  assert.equal(new Set(visited).size, 6);
+  assert.deepEqual(state, { status: "complete", step: 5 });
   assert.deepEqual(act(state, "tick"), state);
   assert.deepEqual(act(state, "resume"), state);
 });

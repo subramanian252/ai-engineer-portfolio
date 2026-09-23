@@ -10,7 +10,7 @@ An illustrated, interactive portfolio for Subramanian M, an AI engineer based in
 
 - **Day and night scenes** — original anime illustrations, coordinated color transitions, drifting leaves in the daytime artwork, and subtle nighttime fireflies.
 - **Pip, the portfolio guide** — a cartoon companion with section-aware comments and a chat interface for questions about Subramanian’s background, skills, and experience.
-- **AI Engineer Mission Control** — eight interactive stations covering data preparation, models, retrieval, agents, guardrails, APIs, deployment, and monitoring.
+- **AI Engineer Mission Control** — six interactive stations covering data preparation, models, retrieval, safe agent tools, APIs, deployment, and monitoring.
 - **Project showcase** — a compact one-viewport idea garden with LazyChat as the completed feature and Travel Planner plus Agentic Writer as coming-soon experiments. LazyChat opens into a full illustrated technical case study.
 - **About, stack, and contact** — technology icons, career background, social links, a downloadable résumé, and an illustrated field guide for navigation.
 - **Responsive and accessible interactions** — a compact mobile hero and chat sheet, keyboard-friendly dialogs, reduced-motion support, and a manual animation control.
@@ -69,13 +69,13 @@ The endpoint validates message roles, length, conversation size, and session-ID 
 
 ## Mission Control
 
-The control room explains eight parts of an AI system:
+The control room explains six stages of an AI system:
 
-**Data prep → Model → RAG → Agents → Guardrails → API → Deploy → Monitor**
+**Data prep → Model → RAG → Agents + guardrails → API → Deploy + monitor**
 
-Mission Control stays inside one viewport. A compact eight-stop route sits above a larger experiment desk, with one responsive type scale for the overview, explanations, and controls. Each station shows its input and output; trying its controls earns a stamp in Pip’s lab passport for the current visit. Smaller screens use a four-by-two route, with details scrolling inside the desk rather than extending the section.
+Mission Control stays inside one viewport on desktop. A six-stop route sits above a larger experiment desk, with compact substeps preserving permission checks and live monitoring without crowding the main route. Each station shows its input and output; trying its controls earns a stamp in Pip’s lab passport for the current visit. Smaller screens use a three-by-two route and let the section grow naturally.
 
-Experiments include cleaning duplicate rows, comparing training and validation loss, exploring attention and LoRA adapters, stepping through retrieval, selecting agent tools, inspecting requests, breaking a deployment test gate, and comparing cached monitoring readings. **Run the system** guides visitors through every station, with pause, resume, and reset controls.
+Experiments include cleaning duplicate rows, comparing training and validation loss, exploring attention and LoRA adapters, stepping through retrieval, selecting allowed agent tools, inspecting requests, and exercising a deployment test gate. **Run the system** guides visitors through every station, with pause, resume, and reset controls.
 
 These are educational simulations. They do not train models, call external tools, deploy containers, or display live infrastructure metrics. Reduced-motion mode supports manual progression. See [the implementation notes](design/MISSION-CONTROL.md).
 
@@ -126,7 +126,7 @@ In a second terminal, verify the running production server:
 npm run smoke -- http://127.0.0.1:3000
 ```
 
-The smoke check verifies page sections and navigation, the eight stations, résumé download, social preview dimensions, optimized night images, robots and sitemap routes, the 404 page, and chat validation and saved answers. It skips paid model calls when live AI is configured. Complete a browser review of desktop, mobile, theme switching, and keyboard interactions before a public launch; HTTP checks do not replace visual testing.
+The smoke check verifies page sections and navigation, the six stations, résumé download, social preview dimensions, optimized night images, robots and sitemap routes, the 404 page, and chat validation and saved answers. It skips paid model calls when live AI is configured. Complete a browser review of desktop, mobile, theme switching, and keyboard interactions before a public launch; HTTP checks do not replace visual testing.
 
 ## Deploy
 

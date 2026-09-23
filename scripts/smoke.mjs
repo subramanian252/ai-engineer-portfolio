@@ -22,8 +22,8 @@ for (const id of [
 }
 assert.equal(
   [...html.matchAll(/data-station="([^"]+)"/g)].length,
-  8,
-  "Eight pipeline steps",
+  6,
+  "Six pipeline steps",
 );
 for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
   assert.ok(html.includes('id="' + id + '"'), "Anchor resolves: " + id);
@@ -43,7 +43,7 @@ assert.ok(
 );
 assert.ok(!html.includes('id="chat-question"'), "Chat loads only when opened");
 console.log(
-  "PASS homepage, navigation, eight stations, metadata, on-demand chat",
+  "PASS homepage, navigation, six stations, metadata, on-demand chat",
 );
 
 const lazyChat = await get("/projects/lazychat");

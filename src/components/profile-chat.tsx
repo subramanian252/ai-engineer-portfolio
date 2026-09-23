@@ -178,9 +178,9 @@ export function ProfileChat() {
             </h2>
             <p>
               <span className="chat-desktop-copy">
-                Your guide to Subramanian’s world
+                Every project, its architecture, and the person behind it
               </span>
-              <span className="chat-mobile-copy">About Subramanian</span>
+              <span className="chat-mobile-copy">Projects & profile</span>
             </p>
           </div>
         </div>
@@ -223,8 +223,9 @@ export function ProfileChat() {
               </span>
             </div>
             <p className="chat-welcome-copy">
-              I’m Pip, the little keeper of this journal. Ask me about
-              Subramanian’s work, his tools, or how he got here.
+              I’m Pip, the little keeper of this portfolio. Ask me about any
+              project, its features and architecture, Subramanian’s tools,
+              background, or what he wants to build next.
             </p>
             <div className="chat-suggestions">
               {suggestedQuestions.map((question, index) => {
@@ -330,11 +331,14 @@ export function ProfileChat() {
         )}
       </form>
       <footer className="chat-bottom">
-        <span>
+        <span className="chat-status">
           <span className="connection-dot" />
-          {mode === "live"
-            ? "Pip live · Session memory"
-            : "Profile answers · Live webhook not configured"}
+          <span>
+            {mode === "live"
+              ? "Live portfolio · Session memory"
+              : "Profile answers · Live webhook not configured"}
+          </span>
+          <small className="chat-powered">Powered by n8n + ECS</small>
         </span>
         <span className="enter-hint">
           <CornerDownLeft size={13} /> to send

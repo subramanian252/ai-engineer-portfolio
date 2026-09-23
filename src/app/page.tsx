@@ -180,7 +180,7 @@ export default function Home() {
                   Little experiments. Big curiosity. Room to grow.
                 </p>
                 <Link className="text-link garden-directory-link" href="/projects">
-                  Browse all six projects <ArrowRight size={18} />
+                  Browse all projects <ArrowRight size={18} />
                 </Link>
               </div>
               <Pip />

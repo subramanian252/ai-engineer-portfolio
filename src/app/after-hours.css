@@ -122,6 +122,12 @@ html[data-theme="night"] .ai-hero .sky-switch-note {
 html[data-theme="night"] .cartoon-work {
   background-image: radial-gradient(#b8aad019 0.8px, transparent 0.8px);
 }
+html[data-theme="night"] .garden-directory-link {
+  color: var(--night-ink);
+  background: #30283e;
+  border-color: #7c6b8f;
+  box-shadow: 2px 3px 0 #0b0d1855;
+}
 html[data-theme="night"] .cartoon-work .project-card {
   background: var(--night-secondary);
   border-color: #61566f;

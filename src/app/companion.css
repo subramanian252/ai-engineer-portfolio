@@ -201,7 +201,6 @@ html[data-motion="paused"] .scroll-companion *::after {
   transition: none !important;
 }
 
-
 /* Keep Pip and his project note visible without covering the compact grid. */
 @media (max-width: 720px) {
   .scroll-companion[data-section="projects"] {
@@ -212,23 +211,23 @@ html[data-motion="paused"] .scroll-companion *::after {
 
   .scroll-companion[data-section="projects"] .companion-comment {
     display: block;
-    width: min(176px, calc(100vw - 78px));
-    padding: 9px 12px;
-    margin-bottom: 5px;
+    width: min(196px, calc(100vw - 92px));
+    padding: 10px 13px;
+    margin-bottom: 7px;
   }
 
   .scroll-companion[data-section="projects"] .companion-comment p {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.1;
   }
 
   .scroll-companion[data-section="projects"] .companion-button {
-    width: 48px;
-    height: 52px;
+    width: 60px;
+    height: 66px;
   }
 
   .scroll-companion[data-section="projects"] .companion-character {
-    width: 46px;
-    height: 51px;
+    width: 58px;
+    height: 64px;
   }
 }

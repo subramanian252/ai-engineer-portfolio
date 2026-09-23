@@ -188,7 +188,7 @@ html[data-theme="night"] .mission-control {
 .mc-stage {
   --mc-gap: clamp(12px, 1.15vw, 36px);
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-auto-rows: minmax(0, 1fr);
   gap: var(--mc-gap);
   min-height: 0;
@@ -295,6 +295,22 @@ html[data-theme="night"] .mission-control {
 .mc-station-subtitle {
   color: var(--mc-muted);
   font-size: 0.7em;
+}
+.mc-station-substeps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3em;
+  margin-top: 0.35em;
+}
+.mc-station-substeps small {
+  padding: 0.2em 0.45em;
+  border: 1px dashed var(--mc-soft);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mc-tint) 42%, var(--mc-paper));
+  color: var(--mc-muted);
+  font: 0.5em/1.2 var(--font-mono);
+  white-space: nowrap;
 }
 .mc-flow-arrow {
   position: absolute;
@@ -603,7 +619,7 @@ html[data-theme="night"] .mission-control {
   border-style: solid;
   transform: rotate(-12deg);
 }
-/* All eight experiments inherit the same type size as their brief. */
+/* All six experiments inherit the same type size as their brief. */
 .mc-laundry {
   padding: 0.2em 0.1em;
 }
@@ -1137,7 +1153,7 @@ html[data-theme="night"] .mission-control {
     grid-template-rows: auto minmax(0, 0.8fr) 3px auto minmax(0, 1.4fr) auto;
   }
   .mc-stage {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1em;
     padding: 0.9em;
   }
@@ -1150,7 +1166,7 @@ html[data-theme="night"] .mission-control {
   .mc-station-subtitle {
     display: none;
   }
-  .mc-station:nth-child(4) .mc-flow-arrow {
+  .mc-station:nth-child(3) .mc-flow-arrow {
     display: none;
   }
   .mc-detail-body,
@@ -1284,6 +1300,14 @@ html[data-theme="night"] .mission-control {
   }
   .mc-station-label {
     font-size: 11px;
+  }
+  .mc-station-substeps {
+    gap: 3px;
+    margin-top: 4px;
+  }
+  .mc-station-substeps small {
+    padding: 2px 4px;
+    font-size: 7px;
   }
   .mc-station-number {
     font-size: 8px;

@@ -458,12 +458,24 @@ h2 {
   padding-bottom: 5px;
 }
 .garden-directory-link {
-  margin-top: 8px;
-  min-height: 0;
-  padding-block: 4px;
+  margin-top: 12px;
+  min-height: 48px;
+  padding: 8px 14px;
+  border: 1px dashed currentColor;
+  border-radius: 999px;
+  background: #fff8e566;
   color: var(--text);
   font-family: var(--font-hand), cursive;
-  font-size: 18px;
+  font-size: clamp(21px, 1.55vw, 29px);
+  line-height: 1;
+  box-shadow: 2px 3px 0 #596a4524;
+}
+.garden-directory-link:hover {
+  transform: translateY(-2px) rotate(-1deg);
+}
+.garden-directory-link svg {
+  width: 1em;
+  height: 1em;
 }
 .project-grid {
   display: grid;
