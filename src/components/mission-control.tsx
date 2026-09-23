@@ -125,7 +125,7 @@ export function MissionControl() {
         <header className="mc-heading">
           <div>
             <p className="mc-eyebrow">
-              05 / THE LITTLE AI LAB · TOUCH THE BUTTONS
+              02 / THE CONTROL ROOM · TOUCH THE BUTTONS
             </p>
             <h2 id="mission-title">
               <span>AI Engineer</span> <em>Mission Control.</em>
@@ -453,7 +453,7 @@ export function MissionControl() {
                         ))}
                       </div>
                       <p>
-                        {tried.length === 8
+                        {tried.length === stations.length
                           ? "Pip is adding “button specialist” to your résumé."
                           : "Choose a station above and give its controls a go."}
                       </p>

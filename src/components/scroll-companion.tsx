@@ -10,8 +10,8 @@ const chapters = [
   { selector: "#about", line: "Plot twist: he used to edit videos." },
   { selector: "#stack", line: "He knows too many frameworks." },
   {
-    selector: "#mission-control",
-    line: "I pushed the big button. For science.",
+    selector: "#workshop-invite",
+    line: "The big button has its own page now. It demanded benefits.",
   },
   { selector: "#contact", line: "You came this far. Just hire him." },
 ];
@@ -76,7 +76,7 @@ export function ScrollCompanion({
       aria-label="Pip, your portfolio guide"
       data-chat-open={open}
       data-section={chapters[chapter.index].selector.replace(/^[.#]/, "")}
-      data-lab-active={chapters[chapter.index].selector === "#mission-control"}
+      data-lab-active={chapters[chapter.index].selector === "#workshop-invite"}
     >
       {dismissedVisit !== chapter.visit && (
         <div className="companion-comment" key={chapter.visit}>

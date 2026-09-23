@@ -10,7 +10,7 @@ An illustrated, interactive portfolio for Subramanian M, an AI engineer based in
 
 - **Day and night scenes** — original anime illustrations, coordinated color transitions, drifting leaves in the daytime artwork, and subtle nighttime fireflies.
 - **Pip, the portfolio guide** — a cartoon companion with section-aware comments and a chat interface for questions about Subramanian’s background, skills, and experience.
-- **AI Engineer Mission Control** — six interactive stations covering data preparation, models, retrieval, safe agent tools, APIs, deployment, and monitoring.
+- **Pip’s Workshop** — a separate playful mission page with six interactive stations covering data preparation, models, retrieval, safe agent tools, APIs, deployment, and monitoring.
 - **Project showcase** — a compact one-viewport idea garden with LazyChat as the completed feature and Travel Planner plus Agentic Writer as coming-soon experiments. LazyChat opens into a full illustrated technical case study.
 - **About, stack, and contact** — technology icons, career background, social links, a downloadable résumé, and an illustrated field guide for navigation.
 - **Responsive and accessible interactions** — a compact mobile hero and chat sheet, keyboard-friendly dialogs, reduced-motion support, and a manual animation control.
@@ -67,13 +67,16 @@ The chat loads on demand. Conversation history stays in memory for the current p
 
 The endpoint validates message roles, length, conversation size, and session-ID shape, rejects cross-origin browser requests, and applies a request timeout. Configure hosting-level rate limits before publicly enabling the workflow.
 
-## Mission Control
+## Pip’s Workshop
 
-The control room explains six stages of an AI system:
+The `/workshop` route turns Mission Control into a small game. Visitors pick a
+briefing, run the pipeline, open every machine, try its controls, and collect
+six stamps in Pip’s lab passport. The control room explains six stages of an AI
+system:
 
 **Data prep → Model → RAG → Agents + guardrails → API → Deploy + monitor**
 
-Mission Control stays inside one viewport on desktop. A six-stop route sits above a larger experiment desk, with compact substeps preserving permission checks and live monitoring without crowding the main route. Each station shows its input and output; trying its controls earns a stamp in Pip’s lab passport for the current visit. Smaller screens use a three-by-two route and let the section grow naturally.
+Mission Control stays inside one viewport on desktop. A six-stop route sits above a larger experiment desk, with compact substeps preserving permission checks and live monitoring without crowding the main route. Each station shows its input and output; trying its controls earns a stamp in Pip’s lab passport for the current visit. Smaller screens use a three-by-two route and let the section grow naturally. The home page keeps a compact invitation into the Workshop rather than embedding the entire game.
 
 Experiments include cleaning duplicate rows, comparing training and validation loss, exploring attention and LoRA adapters, stepping through retrieval, selecting allowed agent tools, inspecting requests, and exercising a deployment test gate. **Run the system** guides visitors through every station, with pause, resume, and reset controls.
 

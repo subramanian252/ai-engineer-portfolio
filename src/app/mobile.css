@@ -45,6 +45,9 @@
     min-height: 44px;
     padding: 0 10px;
   }
+  .anime-header nav .header-nav-stack {
+    display: none;
+  }
 
   .living-hero.anime-hero {
     display: grid;

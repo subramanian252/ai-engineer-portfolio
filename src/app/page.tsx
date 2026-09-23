@@ -10,6 +10,8 @@ import {
   Linkedin,
   Plus,
   Asterisk,
+  Gamepad2,
+  Trophy,
 } from "lucide-react";
 import {
   siPython,
@@ -35,7 +37,6 @@ import { ProjectDoodle } from "@/components/project-doodle";
 import { ToolSticker } from "@/components/tool-sticker";
 import { LivingHero } from "@/components/living-hero";
 import { FieldGuide } from "@/components/field-guide";
-import { MissionControl } from "@/components/mission-control";
 
 const stack = [
   { icon: siPython, name: "Python", detail: "The foundation" },
@@ -107,8 +108,11 @@ export default function Home() {
         </a>
         <nav aria-label="Main navigation">
           <Link href="/projects">Projects</Link>
+          <Link href="/workshop">Workshop</Link>
           <a href="#about">About</a>
-          <a href="#stack">Stack</a>
+          <a className="header-nav-stack" href="#stack">
+            Stack
+          </a>
         </nav>
         <a href="#contact" className="header-contact">
           Let’s talk <ArrowUpRight size={18} />
@@ -454,7 +458,50 @@ export default function Home() {
           />
         </section>
 
-        <MissionControl />
+        <section
+          id="workshop-invite"
+          className="workshop-invite"
+          aria-labelledby="workshop-invite-title"
+        >
+          <div className="workshop-invite-inner wrap">
+            <Reveal className="workshop-invite-copy">
+              <p className="eyebrow">05 / PIP’S BUTTON BASEMENT</p>
+              <h2 id="workshop-invite-title">
+                Six machines.
+                <br />
+                <span>One useful AI.</span>
+              </h2>
+              <p>
+                Pull levers, test tiny systems, and collect a stamp at every
+                station. Pip has prepared a very official clipboard.
+              </p>
+              <div className="workshop-invite-actions">
+                <Link className="workshop-invite-button" href="/workshop">
+                  Enter the workshop <Gamepad2 size={20} />
+                </Link>
+                <span>
+                  <Trophy size={17} /> Collect all six stamps
+                </span>
+              </div>
+            </Reveal>
+            <Reveal className="workshop-invite-board">
+              <span className="workshop-invite-tape">OPEN-ish</span>
+              <div className="workshop-invite-pip">
+                <Pip />
+              </div>
+              <p>
+                “Do not feed the agents after midnight. They start making
+                roadmaps.”
+              </p>
+              <div className="workshop-invite-readout">
+                <span>BUTTONS</span>
+                <strong>06</strong>
+                <span>CLOUD BILL</span>
+                <strong>₹0</strong>
+              </div>
+            </Reveal>
+          </div>
+        </section>
 
         <section
           id="contact"

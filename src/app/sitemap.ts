@@ -13,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
           priority: 0.9,
         },
         {
+          url: origin + "/workshop",
+          changeFrequency: "monthly",
+          priority: 0.9,
+        },
+        {
           url: origin + "/projects/lazychat",
           changeFrequency: "monthly",
           priority: 0.8,

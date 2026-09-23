@@ -1,0 +1,204 @@
+.workshop-invite {
+  --wi-paper: #f7eed9;
+  --wi-ink: #294638;
+  --wi-muted: #64725d;
+  --wi-border: #708267;
+  --wi-accent: #b44e2e;
+  --wi-sage: #dbe4c3;
+  padding: clamp(76px, 9vw, 144px) 0;
+  overflow: hidden;
+  color: var(--wi-ink);
+  background-color: var(--wi-paper);
+  background-image: radial-gradient(#657b5d20 0.9px, transparent 0.9px);
+  background-size: 22px 22px;
+  border-block: 1px dashed color-mix(in srgb, var(--wi-border) 40%, transparent);
+}
+
+.workshop-invite-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(330px, 0.72fr);
+  align-items: center;
+  gap: clamp(44px, 8vw, 130px);
+}
+
+.workshop-invite-copy h2 {
+  margin: 14px 0 22px;
+  font: 700 clamp(52px, 6.6vw, 104px) / 0.9 var(--font-display);
+  letter-spacing: -0.055em;
+}
+
+.workshop-invite-copy h2 span {
+  color: var(--wi-accent);
+  font-family: var(--font-hand);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.workshop-invite-copy > p:not(.eyebrow) {
+  max-width: 620px;
+  color: var(--wi-muted);
+  font-size: clamp(17px, 1.35vw, 22px);
+  line-height: 1.65;
+}
+
+.workshop-invite-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 34px;
+}
+
+.workshop-invite-button,
+.workshop-invite-actions > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.workshop-invite-button {
+  min-height: 58px;
+  padding: 14px 22px;
+  border: 1.5px solid #203b2d;
+  border-radius: 9px 7px 10px 6px;
+  background: #29483a;
+  color: #fff5dd;
+  box-shadow: 4px 5px 0 #29483a35;
+  font-weight: 750;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.workshop-invite-button:hover {
+  transform: translate(-2px, -3px) rotate(-1deg);
+  box-shadow: 7px 8px 0 #29483a35;
+}
+
+.workshop-invite-actions > span {
+  color: var(--wi-muted);
+  font-size: 13px;
+}
+
+.workshop-invite-board {
+  position: relative;
+  min-height: 430px;
+  padding: 34px 32px 30px;
+  display: grid;
+  align-content: end;
+  border: 2px solid var(--wi-border);
+  border-radius: 42% 42% 18px 18px;
+  background: var(--wi-sage);
+  box-shadow: 9px 10px 0 #6c7b5d24;
+  transform: rotate(1deg);
+}
+
+.workshop-invite-tape {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  padding: 7px 16px;
+  border: 1px solid #9b8a62;
+  background: #fff1c8;
+  box-shadow: 2px 3px 0 #4d5c4630;
+  color: #775d35;
+  font: 700 11px var(--font-mono);
+  letter-spacing: 0.08em;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.workshop-invite-pip {
+  position: absolute;
+  inset: 72px 22px auto;
+  display: grid;
+  place-items: center;
+}
+
+.workshop-invite-pip .pip-companion {
+  transform: scale(1.35);
+}
+
+.workshop-invite-board > p {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border: 1px dashed var(--wi-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--wi-paper) 88%, transparent);
+  font: 650 clamp(20px, 2vw, 28px) / 1.15 var(--font-hand);
+  transform: rotate(-1deg);
+}
+
+.workshop-invite-readout {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  align-items: baseline;
+  gap: 8px 12px;
+  font-family: var(--font-mono);
+}
+
+.workshop-invite-readout span {
+  color: var(--wi-muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.workshop-invite-readout strong {
+  font-size: 20px;
+}
+
+html[data-theme="night"] .workshop-invite {
+  --wi-paper: #171a2b;
+  --wi-ink: #eee9f5;
+  --wi-muted: #b8b1ca;
+  --wi-border: #77738d;
+  --wi-accent: #e7b082;
+  --wi-sage: #283448;
+  background-image: radial-gradient(#c8bbdf17 0.9px, transparent 0.9px);
+}
+
+html[data-theme="night"] .workshop-invite-button {
+  border-color: #9d91af;
+  background: #3e3554;
+  color: #f5edf7;
+}
+
+html[data-theme="night"] .workshop-invite-tape {
+  border-color: #796d8c;
+  background: #393247;
+  color: #e7d9ef;
+}
+
+@media (max-width: 860px) {
+  .workshop-invite-inner {
+    grid-template-columns: 1fr;
+  }
+  .workshop-invite-board {
+    width: min(520px, 100%);
+    min-height: 400px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .workshop-invite {
+    padding: 68px 0 82px;
+  }
+  .workshop-invite-copy h2 {
+    font-size: clamp(48px, 15vw, 68px);
+  }
+  .workshop-invite-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .workshop-invite-button {
+    width: 100%;
+  }
+  .workshop-invite-board {
+    min-height: 360px;
+    padding-inline: 20px;
+  }
+  .workshop-invite-pip .pip-companion {
+    transform: scale(1.08);
+  }
+  .workshop-invite-readout {
+    grid-template-columns: auto 1fr;
+  }
+}

@@ -1,0 +1,559 @@
+.page {
+  --paper: #f8f0dd;
+  --paper-2: #fff8e8;
+  --ink: #244434;
+  --muted: #61705b;
+  --outline: #61755a;
+  --peach: #efbd98;
+  --sage: #cfdbb6;
+  --orange: #ba542d;
+  min-height: 100svh;
+  overflow: hidden;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image: radial-gradient(#69816120 0.85px, transparent 0.85px);
+  background-size: 22px 22px;
+}
+
+:global(html[data-theme="night"]) .page {
+  --paper: #171a2b;
+  --paper-2: #22263a;
+  --ink: #eee9f5;
+  --muted: #b8b1ca;
+  --outline: #77738d;
+  --peach: #6a4550;
+  --sage: #3f574e;
+  --orange: #e6af83;
+  background-image: radial-gradient(#c8bbdf17 0.85px, transparent 0.85px);
+}
+
+.skipLink {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+  padding: 10px 14px;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--outline);
+  transform: translateY(-160%);
+}
+
+.skipLink:focus {
+  transform: none;
+}
+
+.siteHeader,
+.hero,
+.afterShift,
+.footer,
+.controlRoomBridge {
+  width: min(1500px, calc(100% - 96px));
+  margin-inline: auto;
+}
+
+.siteHeader {
+  min-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid color-mix(in srgb, var(--outline) 35%, transparent);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.brand small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font: 500 9px var(--font-mono);
+  letter-spacing: 0.14em;
+}
+
+.brandMark {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 4px;
+  border: 1px solid var(--outline);
+  background: var(--paper-2);
+  font-size: 28px;
+  letter-spacing: -0.16em;
+  transform: rotate(-5deg);
+}
+
+.brandMark span {
+  color: var(--orange);
+}
+
+.headerActions,
+.headerActions > a,
+:global(.project-theme-toggle),
+:global(.project-theme-day),
+:global(.project-theme-night) {
+  display: flex;
+  align-items: center;
+}
+
+.headerActions {
+  gap: 10px;
+}
+
+.headerActions > a,
+:global(.project-theme-toggle) {
+  min-height: 44px;
+  flex-shrink: 0;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 1px solid var(--outline);
+  border-radius: 999px;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-size: 12px;
+  white-space: nowrap;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.headerActions > a:hover,
+:global(.project-theme-toggle:hover) {
+  transform: translateY(-2px);
+}
+
+:global(.project-theme-day),
+:global(.project-theme-night) {
+  gap: 7px;
+  white-space: nowrap;
+}
+
+:global(.project-theme-day) {
+  display: inline-flex;
+}
+
+:global(.project-theme-night) {
+  display: none;
+}
+
+:global(html[data-theme="night"] .project-theme-day) {
+  display: none;
+}
+
+:global(html[data-theme="night"] .project-theme-night) {
+  display: inline-flex;
+}
+
+.hero {
+  min-height: calc(100svh - 104px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(370px, 0.78fr);
+  align-items: center;
+  gap: clamp(48px, 8vw, 132px);
+  padding: clamp(62px, 8vw, 118px) 0 clamp(76px, 9vw, 132px);
+}
+
+.kicker,
+.eyebrow {
+  color: var(--muted);
+  font: 600 10px/1.5 var(--font-mono);
+  letter-spacing: 0.12em;
+}
+
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.hero h1 {
+  max-width: 850px;
+  margin: 22px 0 28px;
+  font: 750 clamp(68px, 8.2vw, 134px) / 0.82 var(--font-display);
+  letter-spacing: -0.06em;
+}
+
+.hero h1 em {
+  display: block;
+  color: var(--orange);
+  font: 700 0.82em/0.95 var(--font-hand);
+  letter-spacing: -0.035em;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+
+.lede {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: clamp(17px, 1.35vw, 22px);
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 36px;
+}
+
+.heroActions a,
+.heroActions button {
+  min-height: 55px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 13px 19px;
+  border: 1.5px solid var(--outline);
+  border-radius: 8px 6px 10px 7px;
+  font-weight: 750;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.heroActions a {
+  background: var(--ink);
+  color: var(--paper-2);
+  box-shadow: 4px 5px 0 color-mix(in srgb, var(--ink) 20%, transparent);
+}
+
+.heroActions button {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.heroActions a:hover,
+.heroActions button:hover {
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+.rules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px 20px;
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.rules li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.missionDeck {
+  position: relative;
+  min-height: 590px;
+  padding: 230px 30px 30px;
+  border: 2px solid var(--outline);
+  border-radius: 46% 46% 22px 22px;
+  background: var(--sage);
+  box-shadow: 10px 11px 0 color-mix(in srgb, var(--outline) 18%, transparent);
+  transform: rotate(1deg);
+}
+
+.deckTape {
+  position: absolute;
+  top: 23px;
+  left: 50%;
+  z-index: 2;
+  padding: 8px 16px;
+  border: 1px solid #9b8a62;
+  background: #fff1c8;
+  box-shadow: 2px 3px 0 #4d5c4630;
+  color: #775d35;
+  font: 700 9px var(--font-mono);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.missionPip {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.missionPip :global(.pip-drawing) {
+  width: 138px;
+  height: 154px;
+  filter: drop-shadow(0 8px 0 #43563b12);
+}
+
+.missionPip span {
+  margin-top: -6px;
+  font: 700 17px var(--font-hand);
+}
+
+.missionPip small {
+  color: var(--muted);
+  font: 8px var(--font-mono);
+}
+
+.missionCard {
+  min-height: 225px;
+  padding: 24px;
+  border: 1.5px solid var(--outline);
+  border-radius: 14px 12px 17px 11px;
+  background: var(--paper-2);
+  box-shadow: 4px 5px 0 color-mix(in srgb, var(--outline) 16%, transparent);
+  transform: rotate(-1deg);
+}
+
+.missionCard > p:first-child {
+  color: var(--orange);
+  font: 700 9px var(--font-mono);
+  letter-spacing: 0.12em;
+}
+
+.missionCard h2 {
+  margin: 8px 0 12px;
+  font: 750 clamp(28px, 2.6vw, 42px) / 1 var(--font-playful);
+  letter-spacing: -0.04em;
+}
+
+.missionCard > p:not(:first-child) {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.missionCard strong {
+  display: block;
+  margin-top: 17px;
+  color: var(--orange);
+  font: 650 17px var(--font-hand);
+}
+
+.missionTabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.missionTabs button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--outline);
+  border-radius: 50%;
+  background: var(--paper-2);
+  color: var(--muted);
+  font: 700 10px var(--font-mono);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.missionTabs button[aria-pressed="true"] {
+  background: var(--peach);
+  color: var(--ink);
+  transform: rotate(-8deg) scale(1.1);
+}
+
+.controlRoomBridge {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 25px 0;
+  color: var(--muted);
+  font: 600 9px var(--font-mono);
+  letter-spacing: 0.11em;
+}
+
+.controlRoomBridge i {
+  height: 1px;
+  flex: 1;
+  border-top: 1px dashed var(--outline);
+}
+
+.page :global(.mission-control) {
+  scroll-margin-top: 0;
+}
+
+.afterShift {
+  display: grid;
+  grid-template-columns: 1fr 0.78fr;
+  gap: clamp(40px, 8vw, 120px);
+  align-items: end;
+  padding: clamp(90px, 10vw, 160px) 0;
+}
+
+.afterShift h2 {
+  margin-top: 15px;
+  font: 750 clamp(54px, 7vw, 110px) / 0.86 var(--font-display);
+  letter-spacing: -0.05em;
+}
+
+.afterShift h2 span {
+  display: block;
+  color: var(--orange);
+  font-family: var(--font-hand);
+  font-size: 0.75em;
+  line-height: 1;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+}
+
+.afterShiftCopy p {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.afterShiftCopy a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 26px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--outline);
+  font-weight: 750;
+}
+
+.footer {
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  border-top: 1px solid color-mix(in srgb, var(--outline) 35%, transparent);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media (max-width: 1000px) {
+  .siteHeader,
+  .hero,
+  .afterShift,
+  .footer,
+  .controlRoomBridge {
+    width: min(100% - 48px, 820px);
+  }
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .missionDeck {
+    width: min(520px, 100%);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .siteHeader {
+    min-height: 88px;
+  }
+  .brand > span:last-child,
+  .headerActions > a:first-child span {
+    display: none;
+  }
+  .headerActions {
+    gap: 6px;
+  }
+  .headerActions > a,
+  :global(.project-theme-toggle) {
+    min-height: 40px;
+    padding: 9px 11px;
+    font-size: 11px;
+  }
+  .headerActions > a:first-child {
+    font-size: 0;
+    gap: 0;
+  }
+  .headerActions > a:first-child svg {
+    width: 18px;
+    height: 18px;
+  }
+  .hero {
+    min-height: 0;
+    padding-top: 62px;
+  }
+  .hero h1 {
+    font-size: clamp(62px, 20vw, 92px);
+  }
+  .heroActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .heroActions a,
+  .heroActions button {
+    width: 100%;
+  }
+  .afterShift {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 28px 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .siteHeader,
+  .hero,
+  .afterShift,
+  .footer,
+  .controlRoomBridge {
+    width: calc(100% - 32px);
+  }
+  .brandMark {
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+  }
+  .headerActions > a:nth-child(2) {
+    font-size: 0;
+    gap: 0;
+  }
+  .headerActions > a:nth-child(2) svg {
+    width: 18px;
+    height: 18px;
+  }
+  :global(.project-theme-toggle) span span {
+    display: none;
+  }
+  .kicker {
+    align-items: flex-start;
+  }
+  .missionDeck {
+    min-height: 550px;
+    padding: 220px 18px 24px;
+  }
+  .missionCard {
+    padding: 21px 18px;
+  }
+  .controlRoomBridge {
+    gap: 10px;
+    font-size: 7px;
+  }
+  .controlRoomBridge span:last-child {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroActions a,
+  .heroActions button,
+  .missionTabs button,
+  .headerActions > a,
+  :global(.project-theme-toggle) {
+    transition: none;
+  }
+}

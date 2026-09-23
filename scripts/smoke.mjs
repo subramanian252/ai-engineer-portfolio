@@ -15,16 +15,11 @@ for (const id of [
   "projects",
   "about",
   "stack",
-  "mission-control",
+  "workshop-invite",
   "contact",
 ]) {
   assert.ok(html.includes('id="' + id + '"'), "Section exists: " + id);
 }
-assert.equal(
-  [...html.matchAll(/data-station="([^"]+)"/g)].length,
-  6,
-  "Six pipeline steps",
-);
 for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) {
   assert.ok(html.includes('id="' + id + '"'), "Anchor resolves: " + id);
 }
@@ -43,8 +38,19 @@ assert.ok(
 );
 assert.ok(!html.includes('id="chat-question"'), "Chat loads only when opened");
 console.log(
-  "PASS homepage, navigation, six stations, metadata, on-demand chat",
+  "PASS homepage, navigation, metadata, on-demand chat",
 );
+
+const workshop = await get("/workshop");
+assert.equal(workshop.status, 200, "Workshop page loads");
+const workshopHtml = await workshop.text();
+assert.ok(workshopHtml.includes('id="mission-control"'), "Control room exists");
+assert.equal(
+  [...workshopHtml.matchAll(/data-station="([^"]+)"/g)].length,
+  6,
+  "Six pipeline steps",
+);
+console.log("PASS workshop route and six interactive stations");
 
 const lazyChat = await get("/projects/lazychat");
 assert.equal(lazyChat.status, 200, "LazyChat case study loads");

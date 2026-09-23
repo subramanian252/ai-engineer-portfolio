@@ -18,6 +18,7 @@ import "./fireflies.css";
 import "./theme-transitions.css";
 import "./companion.css";
 import "./mission-control.css";
+import "./workshop-invite.css";
 import { AmbientFireflies } from "@/components/ambient-fireflies";
 
 const manrope = Manrope({
