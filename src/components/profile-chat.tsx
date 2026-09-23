@@ -17,6 +17,9 @@ import { suggestedQuestions } from "@/content/knowledge";
 import type { ChatMessage } from "@/lib/profile-answers";
 
 type Message = ChatMessage & { sources?: string[]; notice?: string };
+type ChatMode = "profile" | "live";
+
+const PIP_SESSION_STORAGE_KEY = "pip_session_id";
 const questionIcons = [Sprout, Code2, Clapperboard, Compass];
 const compactQuestions = [
   "His work",
@@ -25,21 +28,54 @@ const compactQuestions = [
   "Opportunities",
 ];
 
+function createPipSessionId() {
+  if (
+    typeof globalThis.crypto !== "undefined" &&
+    typeof globalThis.crypto.randomUUID === "function"
+  )
+    return globalThis.crypto.randomUUID();
+  return (
+    "pip_" +
+    Date.now().toString(36) +
+    "_" +
+    Math.random().toString(36).slice(2, 14)
+  );
+}
+
+function getPipSessionId() {
+  const fallback = createPipSessionId();
+  try {
+    const stored = window.sessionStorage.getItem(PIP_SESSION_STORAGE_KEY);
+    if (stored) return stored;
+    window.sessionStorage.setItem(PIP_SESSION_STORAGE_KEY, fallback);
+  } catch {}
+  return fallback;
+}
+
+function renewPipSessionId() {
+  const next = createPipSessionId();
+  try {
+    window.sessionStorage.setItem(PIP_SESSION_STORAGE_KEY, next);
+  } catch {}
+  return next;
+}
+
 export function ProfileChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [mode, setMode] = useState<"profile" | "ai">("profile");
+  const [mode, setMode] = useState<ChatMode>("profile");
   const log = useRef<HTMLDivElement>(null);
   const textarea = useRef<HTMLTextAreaElement>(null);
   const pending = useRef<AbortController | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
+    getPipSessionId();
     fetch("/api/chat", { signal: controller.signal })
       .then((r) => r.json())
-      .then((data) => setMode(data.mode === "ai" ? "ai" : "profile"))
+      .then((data) => setMode(data.mode === "live" ? "live" : "profile"))
       .catch(() => {});
     return () => {
       controller.abort();
@@ -73,6 +109,7 @@ export function ProfileChat() {
           AbortSignal.timeout(30_000),
         ]),
         body: JSON.stringify({
+          pip_session_id: getPipSessionId(),
           messages: next
             .slice(-11)
             .map(({ role, content }) => ({ role, content })),
@@ -83,7 +120,7 @@ export function ProfileChat() {
         throw new Error(
           data.error || "Couldn’t send that message. Please try again.",
         );
-      setMode(data.mode);
+      setMode(data.mode === "live" ? "live" : "profile");
       setMessages([
         ...next,
         {
@@ -114,6 +151,7 @@ export function ProfileChat() {
     setMessages([]);
     setError("");
     setInput("");
+    renewPipSessionId();
     textarea.current?.focus();
   }
   function submit(event: FormEvent) {
@@ -294,9 +332,9 @@ export function ProfileChat() {
       <footer className="chat-bottom">
         <span>
           <span className="connection-dot" />
-          {mode === "ai"
-            ? "AI · Résumé & profile"
-            : "Profile answers · No live AI connected"}
+          {mode === "live"
+            ? "Pip live · Session memory"
+            : "Profile answers · Live webhook not configured"}
         </span>
         <span className="enter-hint">
           <CornerDownLeft size={13} /> to send

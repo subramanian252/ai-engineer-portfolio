@@ -202,24 +202,33 @@ html[data-motion="paused"] .scroll-companion *::after {
 }
 
 
-/* Keep Pip present on mobile without covering the compact project grid. */
+/* Keep Pip and his project note visible without covering the compact grid. */
 @media (max-width: 720px) {
   .scroll-companion[data-section="projects"] {
     right: max(9px, env(safe-area-inset-right, 0px));
     bottom: calc(9px + env(safe-area-inset-bottom, 0px));
+    gap: 6px;
   }
 
   .scroll-companion[data-section="projects"] .companion-comment {
-    display: none;
+    display: block;
+    width: min(176px, calc(100vw - 78px));
+    padding: 9px 12px;
+    margin-bottom: 5px;
+  }
+
+  .scroll-companion[data-section="projects"] .companion-comment p {
+    font-size: 16px;
+    line-height: 1.1;
   }
 
   .scroll-companion[data-section="projects"] .companion-button {
-    width: 44px;
-    height: 48px;
+    width: 48px;
+    height: 52px;
   }
 
   .scroll-companion[data-section="projects"] .companion-character {
-    width: 42px;
-    height: 47px;
+    width: 46px;
+    height: 51px;
   }
 }

@@ -48,27 +48,24 @@ No API key is required to explore the portfolio or use saved profile answers.
 
 ## Configuration
 
-Copy [.env.example](.env.example) to `.env.local` when configuring the deployment URL or enabling live AI. Restart the development server after changing environment variables.
+Copy [.env.example](.env.example) to `.env.local` when configuring the deployment URL or enabling live Pip. Restart the development server after changing environment variables.
 
-| Variable         | Purpose                                                                      |
-| ---------------- | ---------------------------------------------------------------------------- |
-| `SITE_URL`       | Final public origin, such as `https://your-domain.com`. Set before building. |
-| `OPENAI_API_KEY` | Optional server-side key for live AI answers.                                |
-| `CHAT_MODEL`     | Provider model identifier; defaults to the value in `.env.example`.          |
-| `CHAT_API_KEY`   | Optional provider key override; takes precedence over `OPENAI_API_KEY`.      |
-| `CHAT_BASE_URL`  | OpenAI-compatible API base URL ending in `/v1`.                              |
+| Variable          | Purpose                                                                      |
+| ----------------- | ---------------------------------------------------------------------------- |
+| `SITE_URL`        | Final public origin, such as `https://your-domain.com`. Set before building. |
+| `PIP_WEBHOOK_URL` | Server-only production n8n webhook used by Pip.                              |
 
 Keep secrets on the server. Do not prefix API keys with `NEXT_PUBLIC_`. Local environment files are excluded from Git.
 
 ### How the chat works
 
-Without a key, Pip uses **Profile answers**: keyword-based retrieval over the curated résumé and profile facts in [knowledge.ts](src/content/knowledge.ts). It answers the suggested questions and supported follow-ups, and acknowledges information that is missing. This mode does not use a language model.
+Without `PIP_WEBHOOK_URL`, Pip uses **Profile answers**: keyword-based retrieval over the curated résumé and profile facts in [knowledge.ts](src/content/knowledge.ts). It answers the suggested questions and supported follow-ups, and acknowledges information that is missing.
 
-With a provider key, `/api/chat` sends the conversation and curated public profile context to an OpenAI-compatible Chat Completions endpoint. The provider must support `max_completion_tokens`. Provider failures fall back to a clearly labeled saved profile answer.
+With `PIP_WEBHOOK_URL`, `/api/chat` sends the latest user message and a browser-session identifier to n8n as `{ "message": "...", "pip_session_id": "..." }`. It reads the reply from `output.answer`. The webhook URL remains inside the server route and is never added to the browser bundle.
 
-The chat loads on demand. Conversation history stays in memory for the current page, survives closing and reopening the chat, and clears on reload or **New conversation**. There is no conversation database or analytics integration. The PDF itself is not uploaded to the provider. Live AI requires valid provider credentials and has not been tested with a paid key in this repository checkpoint.
+The chat loads on demand. Conversation history stays in memory for the current page and survives closing and reopening the chat. A generated `pip_session_id` lives in session storage for the browser tab; **New conversation** clears the visible chat and creates a fresh ID.
 
-The endpoint validates message roles, length, and conversation size, and rejects cross-origin browser requests. Configure hosting-level rate limits and provider spending limits before publicly enabling a paid model.
+The endpoint validates message roles, length, conversation size, and session-ID shape, rejects cross-origin browser requests, and applies a request timeout. Configure hosting-level rate limits before publicly enabling the workflow.
 
 ## Mission Control
 
@@ -138,7 +135,7 @@ Use a host that supports **Next.js server rendering and route handlers**, such a
 1. Connect this repository and select the `main` branch.
 2. Use Node.js 24, `npm ci` to install, and `npm run build` to build. On a self-hosted Node server, start with `npm start`; managed Next.js platforms handle startup.
 3. Set `SITE_URL` to the final HTTPS origin before building, with no path, query, or fragment. On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` is used automatically if `SITE_URL` is blank.
-4. Leave API keys unset to launch with saved profile answers, or configure the optional live provider and its usage limits.
+4. Set `PIP_WEBHOOK_URL` to enable live Pip, or leave it unset to use saved profile answers.
 5. Run `npm run smoke -- https://your-domain.com` against the deployed site.
 
 Canonical URLs and sitemap entries are omitted until a production origin is configured. Social previews are generated at `/opengraph-image`; crawl configuration is available at `/robots.txt` and `/sitemap.xml`. Vercel preview deployments are marked `noindex`.
